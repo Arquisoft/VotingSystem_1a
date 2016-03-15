@@ -10,6 +10,9 @@ Voting System
 # Authors
 
 * Jose Labra
+* Pablo Blanco Pacho
+* Jairo Montes Presa
+* Carlos Villa Blanco
 
 
 
