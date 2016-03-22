@@ -1,11 +1,11 @@
-package es.uniovi.asw.dbUpdate;
+package es.uniovi.asw.dbupdate;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 
-import es.uniovi.asw.reportWriter.WriteReport;
+import es.uniovi.asw.reportwriter.WriteReport;
 
 public class WreportR implements WriteReport {
 

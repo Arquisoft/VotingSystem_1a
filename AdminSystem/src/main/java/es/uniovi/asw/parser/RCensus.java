@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import es.uniovi.asw.model.User;
-import es.uniovi.asw.reportWriter.WreportP;
+import es.uniovi.asw.reportwriter.WreportP;
 import es.uniovi.asw.util.Comprobador;
 
 public class RCensus implements ReadCensus {

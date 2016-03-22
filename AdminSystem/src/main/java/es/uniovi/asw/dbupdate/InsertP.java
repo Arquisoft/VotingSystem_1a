@@ -1,4 +1,4 @@
-package es.uniovi.asw.dbUpdate;
+package es.uniovi.asw.dbupdate;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 
 import es.uniovi.asw.model.User;
-import es.uniovi.asw.reportWriter.WriteReport;
+import es.uniovi.asw.reportwriter.WriteReport;
 
 public class InsertP implements Insert {
 

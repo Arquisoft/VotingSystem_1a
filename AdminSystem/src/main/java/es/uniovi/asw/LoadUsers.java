@@ -12,7 +12,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import es.uniovi.asw.dbUpdate.Jpa;
+import es.uniovi.asw.dbupdate.Jpa;
 import es.uniovi.asw.factorias.CartasFactory;
 import es.uniovi.asw.factorias.CartasPDFFactory;
 import es.uniovi.asw.factorias.CartasTXTFactory;

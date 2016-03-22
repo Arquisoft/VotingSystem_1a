@@ -1,4 +1,4 @@
-package es.uniovi.asw.dbUpdate;
+package es.uniovi.asw.dbupdate;
 
 
 import java.io.IOException;
