@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>censuses1a - Checkstyle report</title>
+    <link>http://projects.spring.io/spring-boot/censuses1a/</link>
+    <description>censuses1a - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2016 University of Oviedo</copyright>
+    <item>
+      <title>File: 23,
+             Errors: 1316,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://projects.spring.io/spring-boot/censuses1a//checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.dbUpdate.Jpa.java">es/uniovi/asw/dbUpdate/Jpa.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  60
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.dbUpdate.Insert.java">es/uniovi/asw/dbUpdate/Insert.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.factorias.CartasTXTFactory.java">es/uniovi/asw/factorias/CartasTXTFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.model.User.java">es/uniovi/asw/model/User.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  150
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.parser.InsertR.java">es/uniovi/asw/parser/InsertR.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  68
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.dbUpdate.InsertP.java">es/uniovi/asw/dbUpdate/InsertP.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  72
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.LoadUsers.java">es/uniovi/asw/LoadUsers.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  340
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.util.Comprobador.java">es/uniovi/asw/util/Comprobador.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  135
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.factorias.CartasPDFFactory.java">es/uniovi/asw/factorias/CartasPDFFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.util.GeneradorPasswords.java">es/uniovi/asw/util/GeneradorPasswords.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  79
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.factorias.ParserXLSFactory.java">es/uniovi/asw/factorias/ParserXLSFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.parser.Parser.java">es/uniovi/asw/parser/Parser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.factorias.CartasFactory.java">es/uniovi/asw/factorias/CartasFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.parser.GeneradorCartas.java">es/uniovi/asw/parser/GeneradorCartas.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.parser.RCensus.java">es/uniovi/asw/parser/RCensus.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  62
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.parser.ParserXLS.java">es/uniovi/asw/parser/ParserXLS.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  80
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.reportWriter.WreportP.java">es/uniovi/asw/reportWriter/WreportP.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  34
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.reportWriter.WriteReport.java">es/uniovi/asw/reportWriter/WriteReport.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.parser.GeneradorCartasPDF.java">es/uniovi/asw/parser/GeneradorCartasPDF.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  48
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.parser.GeneradorCartasTXT.java">es/uniovi/asw/parser/GeneradorCartasTXT.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  57
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.dbUpdate.WreportR.java">es/uniovi/asw/dbUpdate/WreportR.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.factorias.ParserFactory.java">es/uniovi/asw/factorias/ParserFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://projects.spring.io/spring-boot/censuses1a//checkstyle.html#es.uniovi.asw.parser.ReadCensus.java">es/uniovi/asw/parser/ReadCensus.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  18
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

@@ -1,0 +1,58 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+ 
+	<persistence-unit name="censuses" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+			
+		<class>es.uniovi.asw.model.User</class>
+			
+		
+		<properties>
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.connection.driver_class" value="org.h2.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" />
+			<property name="hibernate.connection.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="sa" />
+			 <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+	
+				
+		</properties>
+		
+	
+	</persistence-unit>
+	
+	<!--  
+		<persistence-unit name="censuses" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+		
+			
+		
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql:loadbalance://localhost:3306" />
+			<property name="javax.persistence.jdbc.user" value="travis" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			
+		
+
+	
+				
+		</properties>
+		
+	
+	</persistence-unit>
+	
+	-->
+	 
+	
+	
+
+
+</persistence>
