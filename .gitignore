@@ -6,7 +6,7 @@
 *.ear
 .classpath
 .settings/*
-/target
+target
 
 .metadata
 bin/
