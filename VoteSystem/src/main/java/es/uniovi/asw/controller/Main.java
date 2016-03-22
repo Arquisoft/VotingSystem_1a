@@ -7,6 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+/*
+Utilizar comando: mvn spring-boot:run 
+para lanzar la aplicación
+
+*/
 
 @Controller
 public class Main {
@@ -16,7 +21,7 @@ public class Main {
   @RequestMapping("/")
   public ModelAndView landing(Model model) {
     LOG.info("Landing page access");
-    return new ModelAndView("landing");
+    return new ModelAndView("index");
   }
   
 }
