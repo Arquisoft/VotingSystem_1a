@@ -1,7 +1,7 @@
-package es.uniovi.asw.factorias;
+package es.uniovi.asw.ConfParser.factorias;
 
-import es.uniovi.asw.parser.Parser;
-import es.uniovi.asw.parser.ParserXLS;
+import es.uniovi.asw.ConfParser.Parser;
+import es.uniovi.asw.ConfParser.ParserXLS;
 
 public class ParserXLSFactory implements ParserFactory{
 

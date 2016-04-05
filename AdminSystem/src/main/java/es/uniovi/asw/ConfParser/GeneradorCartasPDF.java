@@ -1,4 +1,4 @@
-package es.uniovi.asw.parser;
+package es.uniovi.asw.ConfParser;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

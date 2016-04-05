@@ -4,9 +4,9 @@ package es.uniovi.asw.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.uniovi.asw.ReportWriterConf.WreportP;
+import es.uniovi.asw.ReportWriterConf.WriteReport;
 import es.uniovi.asw.model.User;
-import es.uniovi.asw.reportwriter.WreportP;
-import es.uniovi.asw.reportwriter.WriteReport;
 
 public class Comprobador {
 	

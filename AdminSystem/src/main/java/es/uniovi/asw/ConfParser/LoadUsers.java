@@ -1,4 +1,4 @@
-package es.uniovi.asw;
+package es.uniovi.asw.ConfParser;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -12,16 +12,12 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import es.uniovi.asw.dbupdate.Jpa;
-import es.uniovi.asw.factorias.CartasFactory;
-import es.uniovi.asw.factorias.CartasPDFFactory;
-import es.uniovi.asw.factorias.CartasTXTFactory;
-import es.uniovi.asw.factorias.ParserFactory;
-import es.uniovi.asw.factorias.ParserXLSFactory;
-import es.uniovi.asw.parser.GeneradorCartas;
-import es.uniovi.asw.parser.Parser;
-import es.uniovi.asw.parser.RCensus;
-import es.uniovi.asw.parser.ReadCensus;
+import es.uniovi.asw.ConfParser.factorias.CartasFactory;
+import es.uniovi.asw.ConfParser.factorias.CartasPDFFactory;
+import es.uniovi.asw.ConfParser.factorias.CartasTXTFactory;
+import es.uniovi.asw.ConfParser.factorias.ParserFactory;
+import es.uniovi.asw.ConfParser.factorias.ParserXLSFactory;
+import es.uniovi.asw.DBVote.Jpa;
 
 /**
  * Main application

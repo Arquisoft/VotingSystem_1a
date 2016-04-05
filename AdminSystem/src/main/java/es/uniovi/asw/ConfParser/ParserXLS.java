@@ -1,4 +1,4 @@
-package es.uniovi.asw.parser;
+package es.uniovi.asw.ConfParser;
 
 import java.io.File;
 import java.io.IOException;

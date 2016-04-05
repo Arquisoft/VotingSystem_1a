@@ -1,7 +1,7 @@
-package es.uniovi.asw.factorias;
+package es.uniovi.asw.ConfParser.factorias;
 
-import es.uniovi.asw.parser.GeneradorCartas;
-import es.uniovi.asw.parser.GeneradorCartasPDF;
+import es.uniovi.asw.ConfParser.GeneradorCartas;
+import es.uniovi.asw.ConfParser.GeneradorCartasPDF;
 
 public class CartasPDFFactory implements CartasFactory {
 
