@@ -1,0 +1,3 @@
+Fichero de cambios de versión 1.0 a 2.0
+
+En la arquitectura del sistema 'VoteSystem' se ha decidido utilizar una estructura en capas más acorde con la de una aplicación web. Dividiendo esta en capas de 'business', 'controller', 'infraestructure', 'model', 'persistence' y 'presentation'. Debido a esto se ha decido unificar los módulos 'UserVoting' y 'PollingStationVoting' (ver figura 9 del doc v1.0) en un componente denominado 'VoteSystem'.

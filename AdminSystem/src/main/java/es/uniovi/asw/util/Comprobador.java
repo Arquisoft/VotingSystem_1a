@@ -6,7 +6,6 @@ import java.util.List;
 
 import es.uniovi.asw.ReportWriterConf.WreportP;
 import es.uniovi.asw.ReportWriterConf.WriteReport;
-import es.uniovi.asw.model.User;
 
 public class Comprobador {
 	
@@ -53,22 +52,5 @@ public class Comprobador {
 		return true;
 	}
 	
-	public static List<User> comprobacionDatosDBUpdate(List<User> usuarios){
-		
-		//Pablo añade comprobación usuarios con mismo NIF. 
-		//Los dos que tienen mismo NIF se van fuera
-		List<User> usuariosValidos = usuarios;
-		for(int i=0; i<usuarios.size();i++){
-			for (int j = i; j < usuarios.size(); j++) {
-				
-				if(usuarios.get(i).getNIF().equalsIgnoreCase(usuarios.get(j).getNIF()))
-						usuariosValidos.remove(i);
-			}
-		}
-		
-		
-		return usuariosValidos;
-		
-	}
 
 }

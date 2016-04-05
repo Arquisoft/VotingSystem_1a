@@ -2,8 +2,6 @@ package es.uniovi.asw.ConfParser;
 
 import java.util.List;
 
-import es.uniovi.asw.model.User;
-
 public interface ReadCensus {
 
 	/**
@@ -12,11 +10,6 @@ public interface ReadCensus {
 	 */
 	void readCensus();
 	
-	/**
-	 * Obtiene los usuarios leidos y que sean válidos
-	 * 
-	 * @return
-	 */
-	List<User> getUsuarios();
+
 
 }

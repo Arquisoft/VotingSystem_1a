@@ -12,9 +12,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import es.uniovi.asw.ConfParser.factorias.CartasFactory;
-import es.uniovi.asw.ConfParser.factorias.CartasPDFFactory;
-import es.uniovi.asw.ConfParser.factorias.CartasTXTFactory;
+
 import es.uniovi.asw.ConfParser.factorias.ParserFactory;
 import es.uniovi.asw.ConfParser.factorias.ParserXLSFactory;
 import es.uniovi.asw.DBVote.Jpa;
@@ -25,22 +23,19 @@ import es.uniovi.asw.DBVote.Jpa;
  * @author Labra
  *
  */
-public class LoadUsers {
+public class LoadConfiguration {
 	
 	 ReadCensus readCensus = null;
 	 
-	 static Map<String,CartasFactory> factoriasCartas = new HashMap<String,CartasFactory>();
 	 static Map<String,ParserFactory> factoriasFicheroEntrada = new HashMap<String,ParserFactory>();
 	 
-	 static List<String> opcionesCartasSalida = new LinkedList<String>();
 	 static List<String> opcionesFicherosEntrada = new LinkedList<String>();
-
 
 	public static void main(String... args) {
 		
 		cargarFactorias();
 		cargarOpciones();
-		LoadUsers runner = new LoadUsers();
+		LoadConfiguration runner = new LoadConfiguration();
 		runner.run(args);
 
 	}
@@ -48,8 +43,6 @@ public class LoadUsers {
 	void run(String... args) {		
 		Options options = new Options();
 		options.addOption("x", false, "add xls file");
-		options.addOption("p", false, "generates pdf files");
-		options.addOption("t", false, "generates txt files");
 		options.addOption("h", false, "help");
 		
 		CommandLineParser cLParser = new DefaultParser();
@@ -62,25 +55,18 @@ public class LoadUsers {
 			if(!cmd.hasOption("h")){
 			
 			//Se comprueba si se inserto una opción para el fichero de entrada
-			//y otra para el de salida
-			if(opcionFicheroEntrada(cmd) && opcionCartas(cmd)) {
+			if(opcionFicheroEntrada(cmd)) {
 				
-				GeneradorCartas generador = null;
 				Parser parser = null;
 					
 				//Obtiene parser de ficheros de entrada especificado en las opciones
 				for(Option opt: cmd.getOptions())	
 					if(opcionesFicherosEntrada.contains(opt.getOpt()))
 						parser = factoriasFicheroEntrada.get(opt.getOpt()).crearParser();
-								
-				
-				//Obtiene generador de cartas especificado en las opciones
-				for(Option opt: cmd.getOptions())	
-					if(opcionesCartasSalida.contains(opt.getOpt()))
-						generador = factoriasCartas.get(opt.getOpt()).crearGeneradorCartas();
+							
 				
 				
-				readCensus = new RCensus(args[0],generador,parser);
+				readCensus = new RCensus(args[0],parser);
 
 			}			
 			
@@ -99,10 +85,9 @@ public class LoadUsers {
 				System.out.println("------------------------------------------"
 						+ "----------------------------");
 				
-				System.out.println("Ayuda para programa Censuses:");
+				System.out.println("Ayuda para programa AdminSystem:");
 				System.out.println("Para utilizar el programa debe de "
-						+ "especificar el formato de los ficheros de entrada "
-						+ "y el formato de las cartas generadas.");
+						+ "especificar el formato de los ficheros de entrada ");
 				
 				System.out.println();
 				
@@ -112,21 +97,12 @@ public class LoadUsers {
 				System.out.println("  -x -> Archivos excel (Formato xls)");
 				
 				
-				System.out.println("Los formatos de ficheros de salida "
-						+ "permitidos son:");
-				
-				System.out.println("  -t -> Archivo txt");
-				System.out.println("  -p -> Archivo pdf");
-				
-				System.out.println();
-				
 				System.out.println("Ejemplo: ");
 				
-				System.out.println("Generar cartas en formato pdf obteniendo "
-						+ "los datos de xls:");
+				System.out.println("Datos leidos de xls:");
 
-				System.out.println("  java -jar target/censuses1a-0.0.1.jar "
-						+ "Censos.xls -x -p");
+				System.out.println("  java -jar target/adminSystem-0.0.1.jar "
+						+ "lugares.xls opcionesVoto.xls configuracion.xls -x");
 				
 				
 				System.out.println("------------------------------------------"
@@ -149,9 +125,6 @@ public class LoadUsers {
 		//Factorias parsers
 		factoriasFicheroEntrada.put("x", new ParserXLSFactory());
 		
-		//Factorias generadores cartas
-		factoriasCartas.put("t",new CartasTXTFactory());
-		factoriasCartas.put("p",new CartasPDFFactory());
 		
 	}
 	
@@ -163,13 +136,6 @@ public class LoadUsers {
 	private static void cargarOpciones() {
 		//Opciones de ficheros entrada
 		opcionesFicherosEntrada.add("x");
-		
-		
-		//Opciones de ficheros salida
-		opcionesCartasSalida.add("p");
-		opcionesCartasSalida.add("t");
-		
-		
 		
 	}
 
@@ -192,24 +158,7 @@ public class LoadUsers {
 		
 	}
 	
-	/**
-	 * Comprueba si alguna de las opciones es para describir el 
-	 * formato de las cartas
-	 * @param cmd
-	 * @return
-	 */
-	public boolean opcionCartas(CommandLine cmd){
-		
-		for(Option option: cmd.getOptions()){
-			if(opcionesCartasSalida.contains(option.getOpt())){
-				return true;
-			}
-		}		
-		
-		return false;
-		
-		
-	}
+
 	
 	
 }
