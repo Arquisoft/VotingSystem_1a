@@ -32,7 +32,6 @@
 
     <dependencies>
     	
-    	<dependencies>
 			
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -133,6 +132,5 @@
 			</dependency>
 		</dependencies>
      
-    </dependencies>
 
 </project>
