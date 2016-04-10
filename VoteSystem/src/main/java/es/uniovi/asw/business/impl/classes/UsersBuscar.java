@@ -14,7 +14,7 @@ public class UsersBuscar {
 	
 	public User findByLogin(String login) {
 		UserDao dao = Factories.persistence.createUserDao();
-		User u = dao.findByLogin(login);
+		User u = dao.findByEmail(login);
 		return u;
 	}
 

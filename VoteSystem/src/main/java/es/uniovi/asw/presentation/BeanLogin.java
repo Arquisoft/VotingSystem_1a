@@ -3,6 +3,7 @@ package es.uniovi.asw.presentation;
 import java.io.Serializable;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -11,21 +12,26 @@ import es.uniovi.asw.business.LoginService;
 import es.uniovi.asw.infraestructure.Factories;
 import es.uniovi.asw.model.UserLogin;
 
-@ManagedBean(name = "login")
+@ManagedBean(name="login")
 @SessionScoped
 public class BeanLogin implements Serializable {
 	private static final long serialVersionUID = 6L;
-	private String name = "";
+	private String email = "";
 	private String password = "";
 	private String result = "login_form_result_valid";
 
 	public BeanLogin() {
 		System.out.println("BeanLogin - No existia");
 	}
+	
+	 @PostConstruct
+	    public void init(){
+	        System.out.println("Creación del BeanLogin");
+	    }
 
 	public String verify() {
 		LoginService login = Factories.services.createLoginService();
-		UserLogin user = login.verify(name, password);
+		UserLogin user = login.verify(email, password);
 		if (user != null) {
 			putUserInSession(user);
 			return "principal";
@@ -45,12 +51,12 @@ public class BeanLogin implements Serializable {
 		session.put("LOGGEDIN_USER", user);
 	}
 
-	public String getName() {
-		return name;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

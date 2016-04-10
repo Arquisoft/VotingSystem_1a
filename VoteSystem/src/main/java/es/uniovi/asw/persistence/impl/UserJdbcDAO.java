@@ -24,6 +24,7 @@ public class UserJdbcDAO implements UserDao {
 			res.setCodigoMesa(	Integer.parseInt(rs.getString("CODIGOMESA")));
 			res.setName(  		rs.getString("name") );
 			res.setEmail(  		rs.getString("email") );
+			res.setPassword(  		rs.getString("contraseña") );
 			
 			return res;
 		}
@@ -44,9 +45,9 @@ public class UserJdbcDAO implements UserDao {
 
 
 	@Override
-	public User findByLogin(String login) {
+	public User findByEmail(String login) {
 		return jdbcTemplate.queryForObject(
-				"USER_FIND_BY_LOGIN", 
+				"USER_FIND_BY_EMAIL", 
 				new UserMapper(), 
 				login
 			);

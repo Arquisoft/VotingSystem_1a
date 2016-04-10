@@ -7,20 +7,21 @@ import es.uniovi.asw.persistence.UserDao;
 
 public class LoginVerify {
 	
-	public boolean verifyPassword(String login,String password){
+	public boolean verifyPassword(String email,String password){
 		UserDao dao = Factories.persistence.createUserDao();
-		User user = dao.findByLogin(login);
+		User user = dao.findByEmail(email);
 		
 		if(user==null)
 			return false;
 		if(user.getPassword().compareTo(password)==0)
 			return true;
+		
 		return false;
 	}
 
 	public static UserLogin getUserLogin(String login) {
 		UserDao dao = Factories.persistence.createUserDao();
-		User user = dao.findByLogin(login);
+		User user = dao.findByEmail(login);
 		
 		UserLogin userLogin = new UserLogin(login, user.getName(),user.getId());
 		
