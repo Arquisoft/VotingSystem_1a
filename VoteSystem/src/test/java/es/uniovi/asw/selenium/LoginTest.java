@@ -28,59 +28,11 @@ public class LoginTest {
 	  }
 
 	  @Test
-	  public void testMy() throws Exception {
+	  public void testLogin() throws Exception {
 	    driver.get(baseUrl + "/");
-	    driver.findElement(By.id("cabecera_keywords")).clear();
-	    driver.findElement(By.id("cabecera_keywords")).sendKeys("rector");
-	    driver.findElement(By.id("cabecera_search")).click();
-	    try {
-	      assertEquals("Rector", driver.findElement(By.cssSelector("li.alt > div.resultado_contenido > span.titulo > span.highlight")).getText());
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
+	    
 	  }
 
-	  @After
-	  public void tearDown() throws Exception {
-	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      fail(verificationErrorString);
-	    }
-	  }
-
-	  private boolean isElementPresent(By by) {
-	    try {
-	      driver.findElement(by);
-	      return true;
-	    } catch (NoSuchElementException e) {
-	      return false;
-	    }
-	  }
-
-	  private boolean isAlertPresent() {
-	    try {
-	      driver.switchTo().alert();
-	      return true;
-	    } catch (NoAlertPresentException e) {
-	      return false;
-	    }
-	  }
-
-	  private String closeAlertAndGetItsText() {
-	    try {
-	      Alert alert = driver.switchTo().alert();
-	      String alertText = alert.getText();
-	      if (acceptNextAlert) {
-	        alert.accept();
-	      } else {
-	        alert.dismiss();
-	      }
-	      return alertText;
-	    } finally {
-	      acceptNextAlert = true;
-	    }
-	  }
-	
+	 
 
 }
