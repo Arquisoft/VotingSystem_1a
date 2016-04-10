@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 	
-<p:panel id="panelLogin" header="#{msgs.iniciarSesion}">
+<p:panel id="panelLogin" header="Iniciar Sesion">
 	<h:form id="form-login">
 	<p:panelGrid id="Grid" columns="2" cellpadding="5">
 		
@@ -22,7 +22,6 @@
 			<p:message for="password" />
 		</h:panelGroup>
 
-		<h:outputText id="msgAlta" value="#{msgs[login.result]}" />
 		<p:commandButton value="Login"
 			action="#{login.verify}" update="Grid" process="@form"
 			id="login">
