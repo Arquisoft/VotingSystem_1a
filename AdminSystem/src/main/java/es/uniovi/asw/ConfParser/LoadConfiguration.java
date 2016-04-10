@@ -15,8 +15,11 @@ import org.apache.commons.cli.ParseException;
 
 import es.uniovi.asw.ConfParser.factorias.ParserFactory;
 import es.uniovi.asw.ConfParser.factorias.ParserXLSFactory;
+import es.uniovi.asw.ConfParserOficial.RConf;
 import es.uniovi.asw.ConfParserOficial.ROptions;
+import es.uniovi.asw.ConfParserOficial.RPlaces;
 import es.uniovi.asw.DBVote.Jpa;
+import es.uniovi.asw.a.Parser.conf.impl.ParserConfXLS;
 import es.uniovi.asw.a.Parser.options.impl.ParserOptXLS;
 
 /**
@@ -35,6 +38,8 @@ public class LoadConfiguration {
 
 	 //Esto se añade en votingSystem
 	 ROptions rOptions = null;
+	 RConf rConf = null;
+	 RPlaces rPlaces = null;
 	 
 	public static void main(String... args) {
 		
@@ -72,10 +77,10 @@ public class LoadConfiguration {
 				
 				
 				readCensus = new RCensus(args[0],parser);
-
 				
 				//Esto es para probar, queda por hacer cosas
-				rOptions = new ROptions(args[0], new ParserOptXLS());
+//				rOptions = new ROptions(args[0], new ParserOptXLS());
+				rConf = new RConf(args[0], new ParserConfXLS());
 			}			
 			
 			else {
@@ -87,8 +92,11 @@ public class LoadConfiguration {
 			if(readCensus!=null)
 				readCensus.readCensus(); 
 			
-			if(rOptions!= null){
-				rOptions.leerDatos();
+//			if(rOptions!= null){
+//				rOptions.leerDatos();
+//			}
+			if(rConf != null){
+				rConf.leerDatos();
 			}
 			
 			}else{
