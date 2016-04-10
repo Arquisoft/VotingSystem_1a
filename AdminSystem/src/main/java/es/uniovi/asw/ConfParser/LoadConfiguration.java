@@ -15,7 +15,9 @@ import org.apache.commons.cli.ParseException;
 
 import es.uniovi.asw.ConfParser.factorias.ParserFactory;
 import es.uniovi.asw.ConfParser.factorias.ParserXLSFactory;
+import es.uniovi.asw.ConfParserOficial.ROptions;
 import es.uniovi.asw.DBVote.Jpa;
+import es.uniovi.asw.a.Parser.options.impl.ParserOptXLS;
 
 /**
  * Main application
@@ -31,6 +33,9 @@ public class LoadConfiguration {
 	 
 	 static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
+	 //Esto se añade en votingSystem
+	 ROptions rOptions = null;
+	 
 	public static void main(String... args) {
 		
 		cargarFactorias();
@@ -68,6 +73,9 @@ public class LoadConfiguration {
 				
 				readCensus = new RCensus(args[0],parser);
 
+				
+				//Esto es para probar, queda por hacer cosas
+				rOptions = new ROptions(args[0], new ParserOptXLS());
 			}			
 			
 			else {
@@ -79,6 +87,9 @@ public class LoadConfiguration {
 			if(readCensus!=null)
 				readCensus.readCensus(); 
 			
+			if(rOptions!= null){
+				rOptions.leerDatos();
+			}
 			
 			}else{
 				
