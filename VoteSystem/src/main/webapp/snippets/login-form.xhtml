@@ -22,6 +22,8 @@
 			<p:message for="password" />
 		</h:panelGroup>
 
+		<h:outputText id="msgAlta" value="#{login.result}" />
+
 		<p:commandButton value="Login"
 			action="#{login.verify}" update="Grid" process="@form"
 			id="login">

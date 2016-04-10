@@ -18,7 +18,7 @@ public class BeanLogin implements Serializable {
 	private static final long serialVersionUID = 6L;
 	private String email = "";
 	private String password = "";
-	private String result = "login_form_result_valid";
+	private String result;
 
 	public BeanLogin() {
 		System.out.println("BeanLogin - No existia");
@@ -27,6 +27,8 @@ public class BeanLogin implements Serializable {
 	 @PostConstruct
 	    public void init(){
 	        System.out.println("Creación del BeanLogin");
+	        
+	        this.result="";
 	    }
 
 	public String verify() {
@@ -36,8 +38,8 @@ public class BeanLogin implements Serializable {
 			putUserInSession(user);
 			return "principal";
 		}
-		setResult("login_form_result_error");
-		return "error";
+		setResult("Contraseña o usuario incorrecto");
+		return null;
 	}
 
 	public String closeSession(){

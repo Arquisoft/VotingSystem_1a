@@ -1,12 +1,8 @@
 package es.uniovi.asw;
 
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -19,8 +15,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.ServletContextAware;
-
-import com.sun.faces.config.FacesInitializer;
 
 @Configuration
 @EnableAutoConfiguration
