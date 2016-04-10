@@ -21,7 +21,15 @@ public class RPlaces {
 		//Recibe una lista o un map de strings
 		List<Map<String, String>> lugares = parser.leerDatos(fichero);
 		//Los formatea correctamente
-		
+		for (int i = 0; i < lugares.size(); i++) {
+			Map<String, String> lugar = lugares.get(i);
+			System.out.println(lugar.get("id"));
+			System.out.println(lugar.get("nombre"));
+			System.out.println(lugar.get("contrasena"));
+			System.out.println(lugar.get("ciudad"));
+			System.out.println(lugar.get("pais"));
+			
+		}
 		//Lo guarda en la BD
 	}
 }

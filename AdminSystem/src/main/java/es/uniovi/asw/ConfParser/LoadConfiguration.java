@@ -21,6 +21,7 @@ import es.uniovi.asw.ConfParserOficial.RPlaces;
 import es.uniovi.asw.DBVote.Jpa;
 import es.uniovi.asw.a.Parser.conf.impl.ParserConfXLS;
 import es.uniovi.asw.a.Parser.options.impl.ParserOptXLS;
+import es.uniovi.asw.a.Parser.places.impl.ParserPlacesXLS;
 
 /**
  * Main application
@@ -80,7 +81,8 @@ public class LoadConfiguration {
 				
 				//Esto es para probar, queda por hacer cosas
 //				rOptions = new ROptions(args[0], new ParserOptXLS());
-				rConf = new RConf(args[0], new ParserConfXLS());
+//				rConf = new RConf(args[0], new ParserConfXLS());
+				rPlaces = new RPlaces(args[0], new ParserPlacesXLS());
 			}			
 			
 			else {
@@ -95,8 +97,11 @@ public class LoadConfiguration {
 //			if(rOptions!= null){
 //				rOptions.leerDatos();
 //			}
-			if(rConf != null){
-				rConf.leerDatos();
+//			if(rConf != null){
+//				rConf.leerDatos();
+//			}
+			if(rPlaces != null){
+				rPlaces.leerDatos();
 			}
 			
 			}else{
