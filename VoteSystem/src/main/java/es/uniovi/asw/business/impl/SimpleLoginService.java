@@ -11,9 +11,9 @@ public class SimpleLoginService implements LoginService {
 			return null;
 		return getUserLogin(login);
 	}
-	
+
 	private UserLogin getUserLogin(String login){
-		return LoginVerify.getUserLogin(login);
+		return new LoginVerify().getUserLogin(login);
 	}
 	
 	private boolean validLogin(String login, String password) {

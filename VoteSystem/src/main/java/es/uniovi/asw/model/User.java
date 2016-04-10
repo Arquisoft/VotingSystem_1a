@@ -13,7 +13,7 @@ public class User {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	private String NIF;
+	private String nif;
 	private String email;
 	private int codigoMesa;
 	private String password;
@@ -39,11 +39,11 @@ public class User {
 	}
 
 	public String getNIF() {
-		return NIF;
+		return nif;
 	}
 
-	public void setNIF(String nIF) {
-		NIF = nIF;
+	public void setNIF(String nif) {
+		nif = nif;
 	}
 
 	public String getEmail() {
@@ -66,7 +66,7 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((NIF == null) ? 0 : NIF.hashCode());
+		result = prime * result + ((nif == null) ? 0 : nif.hashCode());
 		return result;
 	}
 
@@ -79,17 +79,17 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (NIF == null) {
-			if (other.NIF != null)
+		if (nif == null) {
+			if (other.nif != null)
 				return false;
-		} else if (!NIF.equals(other.NIF))
+		} else if (!nif.equals(other.nif))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", NIF=" + NIF + ", email=" + email + ", codigoMesa=" + codigoMesa
+		return "User [id=" + id + ", name=" + name + ", NIF=" + nif + ", email=" + email + ", codigoMesa=" + codigoMesa
 				+ ", contraseña=" + password + "]";
 	}
 

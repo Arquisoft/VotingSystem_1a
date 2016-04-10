@@ -26,8 +26,7 @@ public class BeanLogin implements Serializable {
 	
 	 @PostConstruct
 	    public void init(){
-	        System.out.println("Creación del BeanLogin");
-	        
+	        System.out.println("BeanLogin PostConstruct");        
 	        this.result="";
 	    }
 
