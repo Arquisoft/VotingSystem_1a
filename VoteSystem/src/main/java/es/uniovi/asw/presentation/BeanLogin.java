@@ -28,10 +28,10 @@ public class BeanLogin implements Serializable {
 		UserLogin user = login.verify(name, password);
 		if (user != null) {
 			putUserInSession(user);
-			return "exito";
+			return "principal";
 		}
 		setResult("login_form_result_error");
-		return "fallo";
+		return "error";
 	}
 
 	public String closeSession(){

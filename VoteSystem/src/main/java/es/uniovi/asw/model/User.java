@@ -1,45 +1,33 @@
 package es.uniovi.asw.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TUsers")
 public class User {
 
+	@Id
+	@GeneratedValue
 	private Long id;
-	private String login;
-	private String password;
 	private String name;
-	private String surname;
+	private String NIF;
 	private String email;
+	private int codigoMesa;
+	private String password;
 
+	public User() {
 
-	public String getEmail() {
-		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public User(String name, String NIF, String email, int codigoMesa,String password) {
+		this.setName(name);
+		this.setNIF(NIF);
+		this.setEmail(email);
+		this.setCodigoMesa(codigoMesa);
+		this.setPassword(password);
 	}
 
 	public String getName() {
@@ -50,23 +38,74 @@ public class User {
 		this.name = name;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getNIF() {
+		return NIF;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setNIF(String nIF) {
+		NIF = nIF;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getCodigoMesa() {
+		return codigoMesa;
+	}
+
+	public void setCodigoMesa(int codigoMesa) {
+		this.codigoMesa = codigoMesa;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((NIF == null) ? 0 : NIF.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (NIF == null) {
+			if (other.NIF != null)
+				return false;
+		} else if (!NIF.equals(other.NIF))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id 
-				+ ", login=" + login 
-				+ ", password=" + password 
-				+ ", name=" + name 
-				+ ", surname=" + surname 
-				+ ", email=" + email
-			+ "]";
+		return "User [id=" + id + ", name=" + name + ", NIF=" + NIF + ", email=" + email + ", codigoMesa=" + codigoMesa
+				+ ", contraseña=" + password + "]";
 	}
+
+	public Long getId(){
+		return id;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+
 
 }
