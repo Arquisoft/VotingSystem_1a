@@ -45,9 +45,9 @@ public class UserJdbcDAO implements UserDao {
 
 
 	@Override
-	public User findByEmail(String login) {
+	public User findByDni(String login) {
 		return jdbcTemplate.queryForObject(
-				"USER_FIND_BY_EMAIL", 
+				"USER_FIND_BY_DNI", 
 				new UserMapper(), 
 				login
 			);

@@ -16,7 +16,7 @@ import es.uniovi.asw.model.UserLogin;
 @SessionScoped
 public class BeanLogin implements Serializable {
 	private static final long serialVersionUID = 6L;
-	private String email = "";
+	private String dni = "";
 	private String password = "";
 	private String result;
 
@@ -33,7 +33,7 @@ public class BeanLogin implements Serializable {
 
 	public String verify() {
 		LoginService login = Factories.services.createLoginService();
-		UserLogin user = login.verify(email, password);
+		UserLogin user = login.verify(dni, password);
 		if (user != null) {
 			putUserInSession(user);
 			return "principal";
@@ -53,12 +53,12 @@ public class BeanLogin implements Serializable {
 		session.put("LOGGEDIN_USER", user);
 	}
 
-	public String getEmail() {
-		return email;
+	public String getDni() {
+		return dni;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getPassword() {
