@@ -7,9 +7,3 @@ before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 #give xvfb some time to start
-
-addons:
-  sauce_connect:
-    username: "carlvilla"
-    access_key:
-      secure: "QUQmbealyMcyOvj66hPzlPunW/GfNjM6d38BMJSTJzrVQvHJFO+80Bc2T7hWEsIsqbSPmjFXUWVjB3SevOYaTYD2MXNiPLnLbevbzuwB6O/Q9j7oguOvmlWAGH405QmhxFcH/jVATIr2aTb7ePw+nK8BdL3Ut/jYmlmBYOpe1L72QQHqprUY4BQsDnW2j7cArTJJo00xWcWrWc/bkulPqVBe9kKvFqKUaXT+8ZZsZV/UiQcLmgR16cISM43Cdf7l6AWg8T1V2OzQuwybxdFRkdZpqm0dbktSTUYPGUlR4XrjeZNLEB7yZIDk9XmCOvz4hnO1k+Wykz+APxrrnY3TKLtDfUEB+MFL1pOcSJmD4f5qmB6nPRcwX1KNtpLqEM7vuJu31JFZRspNGNITu6U5+LOoY/eCnG2pBdcWqTf36p7C18DCIDFH1/IidrKhpGiDW8gSKA9PBuKSBPph/KutNCOkNfHj3ZfHdAkNVc7/l9C44z5snZrMqORjZ/otFGk2ESxF3vWmW5LghJd7C3B94YJShSgz57po/k2GbSUnwGyE6g0cbq07Q/iKVLTkOj57Kw89YSOK//Hlv9kCGiqIQD7QuZ0dWRox6YxwrfWAP1f/qu/2pHxNxEqnK0y5xNVhkjP7ERqVY6nHeDObXQr0u65Ih9JG9pt9irDm7YIqx7U="
