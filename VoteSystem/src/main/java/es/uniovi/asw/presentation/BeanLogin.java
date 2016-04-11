@@ -43,7 +43,7 @@ public class BeanLogin implements Serializable {
 
 	public String closeSession(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "login";
+		return "cerrarSesion";
 	}
 	
 	private void putUserInSession(UserLogin user) {
