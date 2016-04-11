@@ -43,7 +43,7 @@ public class User {
 	}
 
 	public void setNIF(String nif) {
-		nif = nif;
+		this.nif = nif;
 	}
 
 	public String getEmail() {

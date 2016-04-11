@@ -7,7 +7,7 @@ import es.uniovi.asw.model.User;
 
 
 @Repository
-public interface UserDao extends CrudRepository<User, Long> { 
+public interface UserRepository extends CrudRepository<User, Long> { 
 
 	   public User findBynif(String nif);
 }

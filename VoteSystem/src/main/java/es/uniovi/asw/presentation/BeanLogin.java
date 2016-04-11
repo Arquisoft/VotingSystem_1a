@@ -8,8 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import es.uniovi.asw.business.LoginService;
-import es.uniovi.asw.infraestructure.Factories;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.jsf.FacesContextUtils;
+
+import es.uniovi.asw.business.impl.SimpleLoginService;
 import es.uniovi.asw.model.UserLogin;
 
 @ManagedBean(name="login")
@@ -30,8 +32,10 @@ public class BeanLogin implements Serializable {
 	        this.result="";
 	    }
 
-	public String verify() {
-		LoginService login = Factories.services.createLoginService();
+	public String verify() {		
+		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
+		
 		UserLogin user = login.verify(dni, password);
 		if (user != null) {
 			putUserInSession(user);
