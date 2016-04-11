@@ -24,9 +24,7 @@ public class RVotes {
 		//Se formatean correctamente
 		for (int i = 0; i < recuentos.size(); i++) {
 			Map<String, String> recuento = recuentos.get(i);
-			recuento.get("lugar");
-			recuento.get("opcion");
-			recuento.get("numero");
+			System.out.println(recuento.get("lugar") + " " + recuento.get("opcion") + " " + recuento.get("numero"));
 			
 		}
 	}

@@ -17,6 +17,8 @@ import es.uniovi.asw.ConfParser.Parser.options.impl.ParserOptXLS;
 import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
 import es.uniovi.asw.ConfParser.Parser.places.impl.ParserPlacesXLS;
 import es.uniovi.asw.DBVote.Jpa;
+import es.uniovi.asw.countVoteParser.RVotes;
+import es.uniovi.asw.countVoteParser.parser.impl.ParserVotesXLS;
 
 /**
  * Main application
@@ -34,6 +36,8 @@ public class LoadConfiguration {
 	 ROptions rOptions = null;
 	 RConf rConf = null;
 	 RPlaces rPlaces = null;
+	 
+	 RVotes rVotes = null;
 	 
 	public static void main(String... args) {
 		
@@ -75,11 +79,14 @@ public class LoadConfiguration {
 				//Funciona de momento para este en concreto
 				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/options.xls -x AdminSystem/conf.xls -x AdminSystem/places.xls -x 
 
+				//Si quieres usar la linea de arriba debes descomentar estas 3 lineas y comentar la de rVotes
 				
 				//Esto es para probar, queda por hacer cosas
-				rOptions = new ROptions(args[0], new ParserOptXLS());
-				rConf = new RConf(args[2], new ParserConfXLS());
-				rPlaces = new RPlaces(args[4], new ParserPlacesXLS());
+//				rOptions = new ROptions(args[0], new ParserOptXLS());
+//				rConf = new RConf(args[2], new ParserConfXLS());
+//				rPlaces = new RPlaces(args[4], new ParserPlacesXLS());
+//				
+				rVotes = new RVotes(args[0], new ParserVotesXLS());
 			}			
 			
 			else {
@@ -98,6 +105,9 @@ public class LoadConfiguration {
 				rPlaces.leerDatos();
 			}
 			
+			if(rVotes != null){
+				rVotes.leerDatos();
+			}
 			}else{
 				
 				System.out.println("------------------------------------------"
