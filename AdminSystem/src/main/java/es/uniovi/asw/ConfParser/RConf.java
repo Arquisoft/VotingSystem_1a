@@ -29,7 +29,7 @@ public class RConf {
 		else{
 			System.out.println("El fichero de configuracion esta vacio");
 		}
-		//Lo guarda en la BD
+		//Lo guarda en la BD a traves de InsertConfP
 	}
 	
 }

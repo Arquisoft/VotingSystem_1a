@@ -30,7 +30,7 @@ public class ROptions {
 		else{
 			System.out.println("Las opciones estan vacias");
 		}
-		//Lo guarda en la BD
+		//Lo guarda en la BD a traves de InsertConfP
 	}
 	
 }

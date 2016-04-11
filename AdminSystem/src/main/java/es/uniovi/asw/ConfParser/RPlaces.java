@@ -27,6 +27,6 @@ public class RPlaces {
 			System.out.println(lugar.get("id") + lugar.get("nombre") + lugar.get("contrasena") + lugar.get("ciudad") + lugar.get("pais"));
 			
 		}
-		//Lo guarda en la BD
+		//Lo guarda en la BD a traves de InsertConfP
 	}
 }
