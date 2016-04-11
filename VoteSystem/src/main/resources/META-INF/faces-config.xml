@@ -3,16 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
 	version="2.2">
-	
-	
-	 <managed-bean>
-    <managed-bean-name>login</managed-bean-name>
-    <managed-bean-class>
-     es.uniovi.asw.presentation.BeanLogin
-    </managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
-	
+
+
+	<managed-bean>
+		<managed-bean-name>login</managed-bean-name>
+		<managed-bean-class>
+			es.uniovi.asw.presentation.BeanLogin
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
 
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver
@@ -23,7 +23,6 @@
 		<phase-listener>org.springframework.web.jsf.DelegatingPhaseListenerMulticaster
 		</phase-listener>
 	</lifecycle>
-	
-	
+
 </faces-config>
 

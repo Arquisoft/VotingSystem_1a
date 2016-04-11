@@ -8,15 +8,17 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import es.uniovi.asw.business.LoginService;
-import es.uniovi.asw.infraestructure.Factories;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.jsf.FacesContextUtils;
+
+import es.uniovi.asw.business.impl.SimpleLoginService;
 import es.uniovi.asw.model.UserLogin;
 
 @ManagedBean(name="login")
 @SessionScoped
 public class BeanLogin implements Serializable {
 	private static final long serialVersionUID = 6L;
-	private String email = "";
+	private String dni = "";
 	private String password = "";
 	private String result;
 
@@ -26,14 +28,15 @@ public class BeanLogin implements Serializable {
 	
 	 @PostConstruct
 	    public void init(){
-	        System.out.println("Creación del BeanLogin");
-	        
+	        System.out.println("BeanLogin PostConstruct");        
 	        this.result="";
 	    }
 
-	public String verify() {
-		LoginService login = Factories.services.createLoginService();
-		UserLogin user = login.verify(email, password);
+	public String verify() {		
+		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
+		
+		UserLogin user = login.verify(dni, password);
 		if (user != null) {
 			putUserInSession(user);
 			return "principal";
@@ -44,7 +47,7 @@ public class BeanLogin implements Serializable {
 
 	public String closeSession(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "cerrarSesion";
+		return "login";
 	}
 	
 	private void putUserInSession(UserLogin user) {
@@ -53,12 +56,12 @@ public class BeanLogin implements Serializable {
 		session.put("LOGGEDIN_USER", user);
 	}
 
-	public String getEmail() {
-		return email;
+	public String getDni() {
+		return dni;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getPassword() {
