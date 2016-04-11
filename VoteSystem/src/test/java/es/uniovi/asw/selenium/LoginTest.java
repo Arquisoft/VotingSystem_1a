@@ -43,7 +43,7 @@ public class LoginTest {
 	  String saucePassword = System.getenv("SAUCE_ACCESS_KEY");
 	  
 	          if (sauceUser != null && saucePassword != null && !sauceUser.isEmpty() && !saucePassword.isEmpty()) {
-	              URL saucelabs = new URL("http://" + sauceUser + ":" + saucePassword + "@localhost:4445/wd/hub");
+	              saucelabs = new URL("http://" + sauceUser + ":" + saucePassword + "@localhost:4445/wd/hub");
 	  
 	              // https://saucelabs.com/docs/platforms
 	              DesiredCapabilities capabilities = DesiredCapabilities.firefox();
