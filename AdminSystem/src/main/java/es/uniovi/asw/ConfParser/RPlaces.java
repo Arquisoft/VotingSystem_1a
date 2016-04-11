@@ -1,10 +1,11 @@
-package es.uniovi.asw.ConfParserOficial;
+package es.uniovi.asw.ConfParser;
 
 import java.io.File;
 import java.util.List;
 import java.util.Map;
 
-import es.uniovi.asw.a.Parser.places.ParserPlaces;
+import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
+
 
 public class RPlaces {
 

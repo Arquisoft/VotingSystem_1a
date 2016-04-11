@@ -1,4 +1,4 @@
-package es.uniovi.asw.a.Parser.places.impl;
+package es.uniovi.asw.ConfParser.Parser.places.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import es.uniovi.asw.a.Parser.places.ParserPlaces;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
+import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
 
 public class ParserPlacesXLS implements ParserPlaces{
 

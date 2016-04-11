@@ -1,9 +1,7 @@
 package es.uniovi.asw.ConfParser;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -12,16 +10,13 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import es.uniovi.asw.ConfParserOficial.RConf;
-import es.uniovi.asw.ConfParserOficial.ROptions;
-import es.uniovi.asw.ConfParserOficial.RPlaces;
+import es.uniovi.asw.ConfParser.Parser.conf.ParserConf;
+import es.uniovi.asw.ConfParser.Parser.conf.impl.ParserConfXLS;
+import es.uniovi.asw.ConfParser.Parser.options.ParserOpt;
+import es.uniovi.asw.ConfParser.Parser.options.impl.ParserOptXLS;
+import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
+import es.uniovi.asw.ConfParser.Parser.places.impl.ParserPlacesXLS;
 import es.uniovi.asw.DBVote.Jpa;
-import es.uniovi.asw.a.Parser.conf.ParserConf;
-import es.uniovi.asw.a.Parser.conf.impl.ParserConfXLS;
-import es.uniovi.asw.a.Parser.options.ParserOpt;
-import es.uniovi.asw.a.Parser.options.impl.ParserOptXLS;
-import es.uniovi.asw.a.Parser.places.ParserPlaces;
-import es.uniovi.asw.a.Parser.places.impl.ParserPlacesXLS;
 
 /**
  * Main application

@@ -1,14 +1,14 @@
-package es.uniovi.asw.a.Parser.options.impl;
+package es.uniovi.asw.ConfParser.Parser.options.impl;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.uniovi.asw.a.Parser.options.ParserOpt;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
+import es.uniovi.asw.ConfParser.Parser.options.ParserOpt;
 
 public class ParserOptXLS implements ParserOpt{
 

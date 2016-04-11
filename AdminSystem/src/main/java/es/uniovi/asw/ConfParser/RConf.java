@@ -1,9 +1,10 @@
-package es.uniovi.asw.ConfParserOficial;
+package es.uniovi.asw.ConfParser;
 
 import java.io.File;
 import java.util.Map;
 
-import es.uniovi.asw.a.Parser.conf.ParserConf;
+import es.uniovi.asw.ConfParser.Parser.conf.ParserConf;
+
 
 public class RConf {
 

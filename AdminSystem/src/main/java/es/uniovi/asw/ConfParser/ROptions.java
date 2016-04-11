@@ -1,9 +1,11 @@
-package es.uniovi.asw.ConfParserOficial;
+package es.uniovi.asw.ConfParser;
 
 import java.io.File;
 import java.util.List;
 
-import es.uniovi.asw.a.Parser.options.ParserOpt;
+import es.uniovi.asw.ConfParser.Parser.options.ParserOpt;
+
+
 
 public class ROptions {
 
