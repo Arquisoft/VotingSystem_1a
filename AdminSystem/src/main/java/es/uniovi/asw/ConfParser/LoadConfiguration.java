@@ -12,15 +12,15 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-
-import es.uniovi.asw.ConfParser.factorias.ParserFactory;
-import es.uniovi.asw.ConfParser.factorias.ParserXLSFactory;
 import es.uniovi.asw.ConfParserOficial.RConf;
 import es.uniovi.asw.ConfParserOficial.ROptions;
 import es.uniovi.asw.ConfParserOficial.RPlaces;
 import es.uniovi.asw.DBVote.Jpa;
+import es.uniovi.asw.a.Parser.conf.ParserConf;
 import es.uniovi.asw.a.Parser.conf.impl.ParserConfXLS;
+import es.uniovi.asw.a.Parser.options.ParserOpt;
 import es.uniovi.asw.a.Parser.options.impl.ParserOptXLS;
+import es.uniovi.asw.a.Parser.places.ParserPlaces;
 import es.uniovi.asw.a.Parser.places.impl.ParserPlacesXLS;
 
 /**
@@ -30,10 +30,8 @@ import es.uniovi.asw.a.Parser.places.impl.ParserPlacesXLS;
  *
  */
 public class LoadConfiguration {
-	
-	 ReadCensus readCensus = null;
-	 
-	 static Map<String,ParserFactory> factoriasFicheroEntrada = new HashMap<String,ParserFactory>();
+
+//	 static Map<String,FactoriaOptions> factoriasFicheroEntrada = new HashMap<String,FactoriaOptions>();
 	 
 	 static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
@@ -68,21 +66,25 @@ public class LoadConfiguration {
 			//Se comprueba si se inserto una opción para el fichero de entrada
 			if(opcionFicheroEntrada(cmd)) {
 				
-				Parser parser = null;
+				ParserConf parserConf = null;
+				ParserPlaces parserPlaces = null;
+				ParserOpt parserOpt = null;
 					
 				//Obtiene parser de ficheros de entrada especificado en las opciones
-				for(Option opt: cmd.getOptions())	
-					if(opcionesFicherosEntrada.contains(opt.getOpt()))
-						parser = factoriasFicheroEntrada.get(opt.getOpt()).crearParser();
-							
+				for(Option opt: cmd.getOptions()){
+					if(opcionesFicherosEntrada.contains(opt.getOpt())){
+//						parserConf = factoriasFicheroEntrada.get(opt.getOpt()).crearParser();
+					}
+				}
 				
-				
-				readCensus = new RCensus(args[0],parser);
+				//Funciona de momento para este en concreto
+				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/options.xls -x AdminSystem/conf.xls -x AdminSystem/places.xls -x 
+
 				
 				//Esto es para probar, queda por hacer cosas
-//				rOptions = new ROptions(args[0], new ParserOptXLS());
-//				rConf = new RConf(args[0], new ParserConfXLS());
-				rPlaces = new RPlaces(args[0], new ParserPlacesXLS());
+				rOptions = new ROptions(args[0], new ParserOptXLS());
+				rConf = new RConf(args[2], new ParserConfXLS());
+				rPlaces = new RPlaces(args[4], new ParserPlacesXLS());
 			}			
 			
 			else {
@@ -91,15 +93,12 @@ public class LoadConfiguration {
 			}
 			
 			
-			if(readCensus!=null)
-				readCensus.readCensus(); 
-			
-//			if(rOptions!= null){
-//				rOptions.leerDatos();
-//			}
-//			if(rConf != null){
-//				rConf.leerDatos();
-//			}
+			if(rOptions!= null){
+				rOptions.leerDatos();
+			}
+			if(rConf != null){
+				rConf.leerDatos();
+			}
 			if(rPlaces != null){
 				rPlaces.leerDatos();
 			}
@@ -147,7 +146,7 @@ public class LoadConfiguration {
 	private static void cargarFactorias() {
 		
 		//Factorias parsers
-		factoriasFicheroEntrada.put("x", new ParserXLSFactory());
+//		factoriasFicheroEntrada.put("x", new ParserXLSFactory());
 		
 		
 	}
