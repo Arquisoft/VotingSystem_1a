@@ -6,5 +6,4 @@ after_success:
 addons:
   sauce_connect:
     username: "carlvilla"
-    access_key:
-      secure: "GufYqLKTWMJaHUD6HCS2i++bCLqkh58Zdl5hob7zvC8aXugKy8N4ImiT6+6wuFm0caILZl4Yy95hjslWmWc3JbzKivKWw/KBrn2VrJYNZ5QKpmjQcQmU4i3kX8WmHzbrRZpgBOonHYE19i56o904iH2OQ5RyecgyAdYu+TuKZZYbUYr/4/LLqHGWg6qEjzQX/MPCKLPCvOeu7wEdm8B4Q6Zl3jutjfMM/EyTVV3smG8nD0zZ3N8r1MU/Ef60Aaq+MgwxoRPMB52aTrkCv74XF1dIKuASZsajQ3igTHkIihXX0O8qEm37/jpkmmxeBPG5JvVi8tAlQikCThXqK24BU9S2KytOdt2T9Y+7fI9tm6likbd8ykoF3jisHeFal2ZLvATMZlCQCbKF9sjnpnGRqUzjLOkFLWte/DzqJ13C4phH68/ALTWsWlKNg720UC1xxSLIXZ4/gdqDXxMqVaJTR4OSnKiS7cJZNaf3HeySbCIGbFEHvFbL0mmUGWn8FydU+MsczDVM/8ubWU8jzkbHbyczDGAZF9liuCPwJAIEnCrRCQHODIuqj0Lyjs/ndNzlRGtsCk/a3s6Rdy2EmV7B3oq9CWMp5XGd3gvPRpdKTUltRb+vA4j358QOIwP9BJ8cLwuYGJi4xdaIEIwKehww46ipqPX4JZgIZtS6maKDfik="
+    access_key: "0233acf3-4700-42f6-90e9-761227147d49"
