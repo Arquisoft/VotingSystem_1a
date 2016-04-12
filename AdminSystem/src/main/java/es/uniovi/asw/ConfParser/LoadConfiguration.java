@@ -20,7 +20,6 @@ import es.uniovi.asw.ConfParser.factoria.FactoriaParserOption;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserPlaces;
 import es.uniovi.asw.DBVote.Jpa;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
-import es.uniovi.asw.countVoteParser.RVotes;
 
 /**
  * Main application
@@ -29,8 +28,6 @@ import es.uniovi.asw.countVoteParser.RVotes;
  *
  */
 public class LoadConfiguration {
-
-//	 static Map<String,FactoriaOptions> factoriasFicheroEntrada = new HashMap<String,FactoriaOptions>();
 	
 	static Map<String, ParserOpt> factoriaOptions = new HashMap<>();
 	static Map<String, ParserPlaces> factoriaPlaces = new HashMap<>();
@@ -38,12 +35,9 @@ public class LoadConfiguration {
 	
 	 static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
-	 //Esto se añade en votingSystem
 	 ROptions rOptions = null;
 	 RConf rConf = null;
 	 RPlaces rPlaces = null;
-	 
-	 RVotes rVotes = null;
 	 
 	public static void main(String... args) {
 		
@@ -75,13 +69,7 @@ public class LoadConfiguration {
 				ParserPlaces parserPlaces = null;
 				ParserOpt parserOpt = null;
 					
-//				//Obtiene parser de ficheros de entrada especificado en las opciones
-//				for(Option opt: cmd.getOptions()){
-//					if(opcionesFicherosEntrada.contains(opt.getOpt())){
-////						parserConf = factoriasFicheroEntrada.get(opt.getOpt()).crearParser();
-//					}
-//				}
-				
+//				//Obtiene parser de ficheros de entrada especificado en las opciones				
 				String option = cmd.getOptions()[0].getOpt();
 				if (opcionesFicherosEntrada.contains(option)) {
 					parserConf = factoriaConf.get(option);
@@ -101,38 +89,29 @@ public class LoadConfiguration {
 				//Funciona de momento para este en concreto
 				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/conf.xls -x AdminSystem/options.xls -x AdminSystem/places.xls -x
 
-				//Si quieres usar la linea de arriba debes descomentar estas 3 lineas y comentar la de rVotes
-				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/options.xls -x
-				
-				//Esto es para probar, queda por hacer cosas
 				rConf = new RConf(args[0], parserConf);
 				rOptions = new ROptions(args[2], parserOpt);
 				rPlaces = new RPlaces(args[4], parserPlaces);
-//				
-//				rVotes = new RVotes(args[0], new ParserVotesXLS());
 			}			
 			
 			else {
 			    System.out.println("Opciones no válidas, puedes utilizar"
 			    		+ " la opción -h para apreder a utilizar el programa");
 			}
-			
-			
-			if(rOptions!= null){
-				rOptions.leerDatos();
-			}
-			if(rConf != null){
-				rConf.leerDatos();
-			}
-			if(rPlaces != null){
-				rPlaces.leerDatos();
-			}
-			
-			if(rVotes != null){
-				rVotes.leerDatos();
-			}
-			
-			InsertConfP.insertConfR();
+
+				if (rOptions != null && rConf != null && rPlaces != null) {
+
+					rOptions.leerDatos();
+					rConf.leerDatos();
+					rPlaces.leerDatos();
+					try {
+						InsertConfP.insertConfR();
+					} catch (Exception e) {
+						System.out.println("Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
+					}
+				}
+
+//			System.out.println("Error en la hora de inicio o fin");
 			
 			}else{
 				
@@ -155,10 +134,11 @@ public class LoadConfiguration {
 				
 				System.out.println("Datos leidos de xls:");
 
-				System.out.println("  java -jar target/adminSystem-0.0.1.jar "
-						+ "lugares.xls opcionesVoto.xls configuracion.xls -x");
-				
-				
+				System.out.println("java -jar AdminSystem/target/adminSystem-0.0.1.jar "
+						+ "AdminSystem/conf.xls -x "
+						+ "AdminSystem/options.xls -x "
+						+ "AdminSystem/places.xls -x");
+
 				System.out.println("------------------------------------------"
 						+ "----------------------------");
 				

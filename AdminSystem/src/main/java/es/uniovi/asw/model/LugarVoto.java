@@ -10,6 +10,10 @@ import javax.persistence.Table;
 @Table(name="TPlaces")
 public class LugarVoto implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private long id;
 	private String nombre;
