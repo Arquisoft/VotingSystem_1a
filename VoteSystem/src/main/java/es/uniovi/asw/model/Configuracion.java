@@ -3,9 +3,13 @@ package es.uniovi.asw.model;
 import java.sql.Time;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "TConfig")
 public class Configuracion {
 
 	@Id
