@@ -29,14 +29,14 @@ public class ParserPlacesXLS implements ParserPlaces{
 			e.printStackTrace();
 		}
 		
-		Sheet censos = wB.getSheet(0);
-		for (int i = 1; i < censos.getRows(); i++) {
+		Sheet hoja = wB.getSheet(0);
+		for (int i = 1; i < hoja.getRows(); i++) {
 			Map<String, String> lugar = new HashMap<>();
-			lugar.put("id", censos.getCell(0, i).getContents());
-			lugar.put("nombre", censos.getCell(1, i).getContents());
-			lugar.put("contrasena", censos.getCell(2, i).getContents());
-			lugar.put("ciudad", censos.getCell(3, i).getContents());
-			lugar.put("pais", censos.getCell(4, i).getContents());
+			lugar.put("id", hoja.getCell(0, i).getContents());
+			lugar.put("nombre", hoja.getCell(1, i).getContents());
+			lugar.put("contrasena", hoja.getCell(2, i).getContents());
+			lugar.put("ciudad", hoja.getCell(3, i).getContents());
+			lugar.put("pais", hoja.getCell(4, i).getContents());
 			lugares.add(lugar);
 		}
 		

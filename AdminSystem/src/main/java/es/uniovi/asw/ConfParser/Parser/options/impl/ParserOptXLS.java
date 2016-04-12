@@ -27,11 +27,11 @@ public class ParserOptXLS implements ParserOpt{
 			e.printStackTrace();
 		}
 		
-		Sheet censos = wB.getSheet(0);
+		Sheet hoja = wB.getSheet(0);
 	
 				
-		for(int i=1;i<censos.getRows();i++){
-			opciones.add(censos.getCell(0,i).getContents());
+		for(int i=1;i<hoja.getRows();i++){
+			opciones.add(hoja.getCell(0,i).getContents());
 		}
 		
 		return opciones;

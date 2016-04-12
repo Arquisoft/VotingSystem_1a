@@ -27,11 +27,11 @@ public class ParserConfXLS implements ParserConf{
 			e.printStackTrace();
 		}
 		
-		Sheet censos = wB.getSheet(0);
+		Sheet hoja = wB.getSheet(0);
 
-		configuracion.put("fecha", censos.getCell(0, 1).getContents());
-		configuracion.put("inicio", censos.getCell(1, 1).getContents());
-		configuracion.put("fin", censos.getCell(2, 1).getContents());
+		configuracion.put("fecha", hoja.getCell(0, 1).getContents());
+		configuracion.put("inicio", hoja.getCell(1, 1).getContents());
+		configuracion.put("fin", hoja.getCell(2, 1).getContents());
 		
 		return configuracion;
 	}

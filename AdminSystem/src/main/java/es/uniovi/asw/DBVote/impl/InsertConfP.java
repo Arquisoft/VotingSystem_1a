@@ -63,10 +63,12 @@ public class InsertConfP {
 				trx.begin();
 				em.persist(conf);
 				for (int i = 0; i < lugares.size(); i++) {
-					em.persist(lugares.get(i));
+					if(lugares.get(i).getNombre() != "" && lugares.get(i).getNombre() != null)
+						em.persist(lugares.get(i));
 				}
 				for (int i = 0; i < opciones.size(); i++) {
-					em.persist(opciones.get(i));
+					if(opciones.get(i).getNombre() != "" && opciones.get(i).getNombre() != null )
+						em.persist(opciones.get(i));
 				}
 
 				trx.commit();
