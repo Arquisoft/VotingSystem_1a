@@ -7,9 +7,20 @@
 
 	<ui:define name="titulo">Votacion</ui:define>
 
+	<p:dataTable var="partido" value="#{voto.votos}">
+		<p:column headerText="Partidos">
+			<h:outputText value="#{partido.nombre}" />
+		</p:column>
+
+		<p:column headerText="Voto">
+			<p:commandButton value="Votar" id="botonVotar"
+				actionListener="#{voto.votar(partido)}"></p:commandButton>
+		</p:column>
 
 
-	
+	</p:dataTable>
+
+
 
 
 </ui:composition>
