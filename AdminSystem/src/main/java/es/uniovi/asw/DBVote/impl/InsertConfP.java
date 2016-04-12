@@ -44,6 +44,9 @@ public class InsertConfP {
 	}
 
 
+	/**
+	 * Almacena toda la informacion de configuracion , junto con los lugares de voto y las opciones de voto en la BD
+	 */
 	public static void insertConfR(){
 		//Esto almacena TODO en la BD
 		
