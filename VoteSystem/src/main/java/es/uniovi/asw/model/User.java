@@ -1,5 +1,6 @@
 package es.uniovi.asw.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,10 +13,21 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Column(name="NAME")
 	private String name;
+	
+	
+	@Column(name="NIF")
 	private String nif;
+	
+	@Column(name="EMAIL")
 	private String email;
+	
+	@Column(name="CODIGOMESA")
 	private int codigoMesa;
+	
+	@Column(name="Contraseña")
 	private String password;
 
 	public User() {

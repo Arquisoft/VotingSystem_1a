@@ -18,11 +18,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.context.ServletContextAware;
 
 @SpringBootApplication
-@EnableJpaRepositories
-@ComponentScan
-@Configuration
-@EnableTransactionManagement
-@EnableAutoConfiguration
 public class Application extends SpringBootServletInitializer implements ServletContextAware {
 
     public static void main(String[] args) {
