@@ -33,7 +33,6 @@ public class Application extends SpringBootServletInitializer implements Servlet
         
     }
 
-
     @Bean
     public ServletRegistrationBean servletRegistrationBean(ApplicationContext context) {
         ServletRegistrationBean jsfServlet = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
