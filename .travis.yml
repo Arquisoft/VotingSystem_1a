@@ -2,8 +2,11 @@ language: java
 jdk:
 - oraclejdk8
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 #give xvfb some time to start
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
+env:
+  global:
+    secure: P0kFU3eBbAV1TeHUWGm9Akpf7Bwj9w/P5K3xRB5fFBK8xztNtJU7QXfpdJlnirfh7t4dBLJAvYVYxINU50X8yp6fDvZJc6Npb+VCajOdWNfN+CQLE5ZQUrsyf0Ke1UndDWk1RqOA/jVpNOi7h6cHEeBXWSmYUOYLQUONU9vWJ2lDhQ//gKUglVxxguQmi4phIQCJ8oMFRhhq2I2rsbAk6zTGYRumcroxf1QCmjaMJybtCAJzsn2JFZHPL3eB/abCrEGVQY1bj6ycYjXGPcof72pMKSgGKu2ExnYFAdLU9m7q++NusAegQnHoINYgk2EDbetaHINwZ/3VPcSq684yBDrGqiO8tfh4l6nLVSaER9ilYo6wxoYI3i/uDPsEMNWpvKWiTmrRii8mAUDQSMT8WwUUnOggfeaRCIM5S+eP3PnvHhwsSbgKjYp3fUZG3bu32Q6u2Se53VbXnqNs0PnC2zU6GUMMJIltlZIkanOJRduwG2ecAzoByjuJ/ZA1hP+VsH1tGhw/KfsqVZKnLEuqS2LMgNG1AanSKPrYLS+sbOvfSEUYR2V2Lie+okH1/cXLljjY/eRdzppHikmGCCCKuJP5sWbPwqCOcKAivGdIsrM+d1dTYr5keLT8VSQRi/CYplVy9af7C+7P0mq8gjdmNaRrIYJ7kgerHGGw70hxqio=
