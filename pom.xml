@@ -28,6 +28,8 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        
+    
     </build>
 
     <dependencies>
@@ -40,4 +42,7 @@
         </dependency>
 	
     </dependencies>
+    
+
+    
 </project>

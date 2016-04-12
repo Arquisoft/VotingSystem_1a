@@ -17,7 +17,7 @@ public class ControllerLogin {
 	public RedirectView localRedirect() {
 	  	LOG.info("Launching Application");
 	    RedirectView redirectView = new RedirectView();
-	    redirectView.setUrl("./login.xhtml");
+	    redirectView.setUrl("/login.xhtml");
 	    return redirectView;
 	}
   

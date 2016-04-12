@@ -85,6 +85,7 @@
 			<artifactId>json-path</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
@@ -151,6 +152,8 @@
 	</properties>
 
 
+
+
 	<build>
 		<plugins>
 			<plugin>
@@ -191,6 +194,12 @@
 				</executions>
 			</plugin>
 		</plugins>
+		     <resources>
+        <resource>
+            <directory>src/main/webapp</directory>
+        </resource> 
+    </resources>
+    
 	</build>
 
 	<reporting>
@@ -241,7 +250,7 @@
 
 		</plugins>
 	</reporting>
-
+	
 
 	<repositories>
 		<repository>
