@@ -27,5 +27,7 @@ public class RVotes {
 			System.out.println(recuento.get("lugar") + " " + recuento.get("opcion") + " " + recuento.get("numero"));
 			
 		}
+		//Lo guarda en la BD a traves de InsertConfP
+		
 	}
 }

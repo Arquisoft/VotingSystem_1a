@@ -1,10 +1,13 @@
 package es.uniovi.asw.ConfParser;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
+import es.uniovi.asw.DBVote.impl.InsertConfP;
+import es.uniovi.asw.model.LugarVoto;
 
 
 public class RPlaces {
@@ -19,6 +22,7 @@ public class RPlaces {
 	}
 	
 	public void leerDatos(){
+		List<LugarVoto> lugaresVotos = new ArrayList<LugarVoto>();
 		//Recibe una lista o un map de strings
 		List<Map<String, String>> lugares = parser.leerDatos(fichero);
 		//Los formatea correctamente
@@ -28,5 +32,6 @@ public class RPlaces {
 			
 		}
 		//Lo guarda en la BD a traves de InsertConfP
+		InsertConfP.setLugares(lugaresVotos);
 	}
 }

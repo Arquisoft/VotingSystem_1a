@@ -13,18 +13,14 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 import es.uniovi.asw.ConfParser.Parser.conf.ParserConf;
-import es.uniovi.asw.ConfParser.Parser.conf.impl.ParserConfXLS;
 import es.uniovi.asw.ConfParser.Parser.options.ParserOpt;
-import es.uniovi.asw.ConfParser.Parser.options.impl.ParserOptXLS;
 import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
-import es.uniovi.asw.ConfParser.Parser.places.impl.ParserPlacesXLS;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserConf;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserOption;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserPlaces;
 import es.uniovi.asw.DBVote.Jpa;
+import es.uniovi.asw.DBVote.impl.InsertConfP;
 import es.uniovi.asw.countVoteParser.RVotes;
-import es.uniovi.asw.countVoteParser.parser.ParserVotes;
-import es.uniovi.asw.countVoteParser.parser.impl.ParserVotesXLS;
 
 /**
  * Main application
@@ -135,6 +131,9 @@ public class LoadConfiguration {
 			if(rVotes != null){
 				rVotes.leerDatos();
 			}
+			
+			InsertConfP.insertConfR();
+			
 			}else{
 				
 				System.out.println("------------------------------------------"
