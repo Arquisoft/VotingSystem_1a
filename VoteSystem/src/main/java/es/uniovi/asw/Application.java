@@ -5,17 +5,14 @@ import javax.faces.webapp.FacesServlet;
 import javax.servlet.ServletContext;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.context.ServletContextAware;
+
+import com.sun.faces.config.ConfigureListener;
 
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer implements ServletContextAware {
@@ -30,6 +27,7 @@ public class Application extends SpringBootServletInitializer implements Servlet
         servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
         servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "true");
         servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
+        servletContext.addListener(new ConfigureListener());
         
     }
 
