@@ -8,13 +8,12 @@ import java.net.URL;
 
 public class SampleTest {
 
+  public static final String USERNAME = "carlvilla";
+  public static final String ACCESS_KEY = "0233acf3-4700-42f6-90e9-761227147d49";
+  public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
 
   public static void main(String[] args) throws Exception {
 
-	  String sauceUser = System.getenv("SAUCE_USERNAME");
-	  String saucePassword = System.getenv("SAUCE_ACCESS_KEY");
-	  String URL = "http://" + sauceUser + ":" + saucePassword + "@ondemand.saucelabs.com:80/wd/hub";
-	  
     DesiredCapabilities caps = DesiredCapabilities.chrome();
     caps.setCapability("platform", "Windows 10");
     caps.setCapability("version", "43.0");
