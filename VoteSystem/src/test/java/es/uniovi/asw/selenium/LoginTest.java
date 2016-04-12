@@ -1,22 +1,15 @@
 package es.uniovi.asw.selenium;
 
-import static org.junit.Assert.fail;
-
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
- 
 import java.net.URL;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -30,7 +23,7 @@ import es.uniovi.asw.selenium.utils.SeleniumUtils;
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 public class LoginTest {
-  
+ /* 
   WebDriver driver;
   URL saucelabs;
   
@@ -70,6 +63,6 @@ public class LoginTest {
     
     driver.quit();
   }
-
+*/
 
 }
