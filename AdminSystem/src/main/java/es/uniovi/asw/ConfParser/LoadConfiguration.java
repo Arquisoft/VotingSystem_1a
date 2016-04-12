@@ -1,7 +1,9 @@
 package es.uniovi.asw.ConfParser;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -16,8 +18,12 @@ import es.uniovi.asw.ConfParser.Parser.options.ParserOpt;
 import es.uniovi.asw.ConfParser.Parser.options.impl.ParserOptXLS;
 import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
 import es.uniovi.asw.ConfParser.Parser.places.impl.ParserPlacesXLS;
+import es.uniovi.asw.ConfParser.factoria.FactoriaParserConf;
+import es.uniovi.asw.ConfParser.factoria.FactoriaParserOption;
+import es.uniovi.asw.ConfParser.factoria.FactoriaParserPlaces;
 import es.uniovi.asw.DBVote.Jpa;
 import es.uniovi.asw.countVoteParser.RVotes;
+import es.uniovi.asw.countVoteParser.parser.ParserVotes;
 import es.uniovi.asw.countVoteParser.parser.impl.ParserVotesXLS;
 
 /**
@@ -29,7 +35,11 @@ import es.uniovi.asw.countVoteParser.parser.impl.ParserVotesXLS;
 public class LoadConfiguration {
 
 //	 static Map<String,FactoriaOptions> factoriasFicheroEntrada = new HashMap<String,FactoriaOptions>();
-	 
+	
+	static Map<String, ParserOpt> factoriaOptions = new HashMap<>();
+	static Map<String, ParserPlaces> factoriaPlaces = new HashMap<>();
+	static Map<String, ParserConf> factoriaConf = new HashMap<>();
+	
 	 static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
 	 //Esto se añade en votingSystem
@@ -69,24 +79,41 @@ public class LoadConfiguration {
 				ParserPlaces parserPlaces = null;
 				ParserOpt parserOpt = null;
 					
-				//Obtiene parser de ficheros de entrada especificado en las opciones
-				for(Option opt: cmd.getOptions()){
-					if(opcionesFicherosEntrada.contains(opt.getOpt())){
-//						parserConf = factoriasFicheroEntrada.get(opt.getOpt()).crearParser();
-					}
+//				//Obtiene parser de ficheros de entrada especificado en las opciones
+//				for(Option opt: cmd.getOptions()){
+//					if(opcionesFicherosEntrada.contains(opt.getOpt())){
+////						parserConf = factoriasFicheroEntrada.get(opt.getOpt()).crearParser();
+//					}
+//				}
+				
+				String option = cmd.getOptions()[0].getOpt();
+				if (opcionesFicherosEntrada.contains(option)) {
+					parserConf = factoriaConf.get(option);
 				}
+				
+				option = cmd.getOptions()[1].getOpt();
+				if (opcionesFicherosEntrada.contains(option)) {
+					parserOpt = factoriaOptions.get(option);
+				}
+				
+				option = cmd.getOptions()[2].getOpt();
+				if (opcionesFicherosEntrada.contains(option)) {
+					parserPlaces = factoriaPlaces.get(option);
+				}
+				
 				
 				//Funciona de momento para este en concreto
 				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/options.xls -x AdminSystem/conf.xls -x AdminSystem/places.xls -x 
 
 				//Si quieres usar la linea de arriba debes descomentar estas 3 lineas y comentar la de rVotes
+				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/options.xls -x
 				
 				//Esto es para probar, queda por hacer cosas
-//				rOptions = new ROptions(args[0], new ParserOptXLS());
-//				rConf = new RConf(args[2], new ParserConfXLS());
-//				rPlaces = new RPlaces(args[4], new ParserPlacesXLS());
+				rConf = new RConf(args[0], parserConf);
+				rOptions = new ROptions(args[2], parserOpt);
+				rPlaces = new RPlaces(args[4], parserPlaces);
 //				
-				rVotes = new RVotes(args[0], new ParserVotesXLS());
+//				rVotes = new RVotes(args[0], new ParserVotesXLS());
 			}			
 			
 			else {
@@ -151,8 +178,11 @@ public class LoadConfiguration {
 	private static void cargarFactorias() {
 		
 		//Factorias parsers
-//		factoriasFicheroEntrada.put("x", new ParserXLSFactory());
+		factoriaOptions.put("x", FactoriaParserOption.crearParserXLS());
 		
+		factoriaConf.put("x",FactoriaParserConf.crearParserXLS());
+		
+		factoriaPlaces.put("x", FactoriaParserPlaces.crearParserXLS());
 		
 	}
 	
