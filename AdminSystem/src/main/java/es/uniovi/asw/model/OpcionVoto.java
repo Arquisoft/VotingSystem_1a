@@ -1,12 +1,14 @@
 package es.uniovi.asw.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TOptions")
-public class OpcionVoto {
+@Table(name="TOpciones")
+public class OpcionVoto implements Serializable{
 	
 	@Id
 	private String nombre;

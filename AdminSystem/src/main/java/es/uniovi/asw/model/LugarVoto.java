@@ -1,17 +1,19 @@
 package es.uniovi.asw.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TPlace")
-public class LugarVoto {
+@Table(name="TPlaces")
+public class LugarVoto implements Serializable{
 	
 	@Id
-	private long identificador;
+	private long id;
 	private String nombre;
-	private String password;
+	private String contraseña;
 	private String ciudad;
 	private String pais;
 	
@@ -19,53 +21,67 @@ public class LugarVoto {
 		
 	}
 
-	public LugarVoto(long identificador, String nombre, String password, String ciudad, String pais) {
-		this.identificador = identificador;
+	public LugarVoto(long id, String nombre, String contraseña, String ciudad, String pais) {
+		super();
+		this.id = id;
 		this.nombre = nombre;
-		this.password = password;
+		this.contraseña = contraseña;
 		this.ciudad = ciudad;
 		this.pais = pais;
 	}
 
+	public long getId() {
+		return id;
+	}
 
-	public long getIdentificador() {
-		return identificador;
+	public void setId(long id) {
+		this.id = id;
 	}
-	public void setIdentificador(long identificador) {
-		this.identificador = identificador;
-	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getPassword() {
-		return password;
+
+	public String getContraseña() {
+		return contraseña;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
+
 	public String getCiudad() {
 		return ciudad;
 	}
+
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
+
 	public String getPais() {
 		return pais;
 	}
+
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (identificador ^ (identificador >>> 32));
+		result = prime * result + ((ciudad == null) ? 0 : ciudad.hashCode());
+		result = prime * result + ((contraseña == null) ? 0 : contraseña.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((pais == null) ? 0 : pais.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -75,17 +91,36 @@ public class LugarVoto {
 		if (getClass() != obj.getClass())
 			return false;
 		LugarVoto other = (LugarVoto) obj;
-		if (identificador != other.identificador)
+		if (ciudad == null) {
+			if (other.ciudad != null)
+				return false;
+		} else if (!ciudad.equals(other.ciudad))
+			return false;
+		if (contraseña == null) {
+			if (other.contraseña != null)
+				return false;
+		} else if (!contraseña.equals(other.contraseña))
+			return false;
+		if (id != other.id)
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (pais == null) {
+			if (other.pais != null)
+				return false;
+		} else if (!pais.equals(other.pais))
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "LugarVoto [identificador=" + identificador + ", nombre=" + nombre + ", password=" + password
-				+ ", ciudad=" + ciudad + ", pais=" + pais + "]";
+		return "LugarVoto [id=" + id + ", nombre=" + nombre + ", contraseña=" + contraseña + ", ciudad=" + ciudad
+				+ ", pais=" + pais + "]";
 	}
-	
-	
 
-
+	
 }

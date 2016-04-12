@@ -1,5 +1,6 @@
 package es.uniovi.asw.model;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TConfiguration")
-public class Configuracion {
+public class Configuracion implements Serializable{
 
 	@Id 
 	@GeneratedValue

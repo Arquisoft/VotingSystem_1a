@@ -99,7 +99,7 @@ public class LoadConfiguration {
 				
 				
 				//Funciona de momento para este en concreto
-				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/options.xls -x AdminSystem/conf.xls -x AdminSystem/places.xls -x 
+				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/conf.xls -x AdminSystem/options.xls -x AdminSystem/places.xls -x
 
 				//Si quieres usar la linea de arriba debes descomentar estas 3 lineas y comentar la de rVotes
 				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/options.xls -x
