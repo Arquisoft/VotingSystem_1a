@@ -53,7 +53,7 @@ public class LoginTest {
 
   @Test
   public void loginTest() throws Exception {
-    driver.get(saucelabs + "/login.xhtml");
+	  driver.get("http://localhost:8080/");
     driver.findElement(By.id("form-login:name")).clear();
     driver.findElement(By.id("form-login:name")).sendKeys("1");
     driver.findElement(By.id("form-login:password")).clear();
@@ -65,9 +65,7 @@ public class LoginTest {
   }
 
 	
-	@Test
-	public void login(){
-		
-	}
 
+	
+	
 }
