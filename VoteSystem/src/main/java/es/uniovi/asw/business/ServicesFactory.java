@@ -4,6 +4,8 @@ public interface ServicesFactory {
 	
 	LoginService createLoginService();
 	
-	OptionVoteService createVoteService();
+	OptionVoteService createOptionVoteService();
+	
+	VoteService createVoteService();
 
 }

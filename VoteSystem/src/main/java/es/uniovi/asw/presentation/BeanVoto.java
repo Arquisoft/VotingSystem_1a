@@ -13,7 +13,9 @@ import org.springframework.web.jsf.FacesContextUtils;
 
 
 import es.uniovi.asw.business.impl.SimpleOptionVoteService;
+import es.uniovi.asw.business.impl.SimpleVoteService;
 import es.uniovi.asw.model.OpcionVoto;
+import es.uniovi.asw.model.Voto;
 
 @ManagedBean(name="voto")
 @SessionScoped
@@ -34,6 +36,13 @@ public class BeanVoto implements Serializable {
 
 
 	public String votar(OpcionVoto opcion) {
+		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+		SimpleVoteService vote = ctx.getBean(SimpleVoteService.class);
+		Voto v = vote.getVoteBy(opcion.getNombre());
+		if(v != null) 
+			vote.updateVote(opcion.getNombre());
+		else 
+			vote.insertVote(opcion.getNombre());
 		
 		return "principal";
 	}
