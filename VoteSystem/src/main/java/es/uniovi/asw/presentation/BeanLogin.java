@@ -43,7 +43,7 @@ public class BeanLogin implements Serializable {
 	public String verify() {		
 		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
-		
+	
 		UserLogin user = login.verify(dni, password);
 		if (user != null) {
 			putUserInSession(user);

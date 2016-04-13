@@ -32,7 +32,7 @@ public class LoginTest {
   public void setUp() throws Exception {
 			
 	  //http://apiwave.com/java/snippets/removal/org.openqa.selenium.remote.DesiredCapabilities?cursor=CrEBCg4KCHByaW9yaXR5EgIIGBKaAWoTc35maW5lLWJyYW5jaC04OTIyMXKCAQsSCkphdmFDb21taXQicnJzdHVkaW8vcnN0dWRpby8zZTI5YzIzYWVkYzNmODZkZGZhZTQ1ZTViYTA0OTQzMTUxMGIzMGUwL3NyYy5nd3QudGVzdC5vcmcucnN0dWRpby5zdHVkaW8uc2VsZW5pdW0uQm9vdFJTdHVkaW8uamF2YQwYACAA
-	/* 
+	 
 	  String sauceUser = System.getenv("SAUCE_USERNAME");
 	  String saucePassword = System.getenv("SAUCE_ACCESS_KEY");
 	  
@@ -49,20 +49,20 @@ public class LoginTest {
 	          } else {
 	              driver = new FirefoxDriver();
 	          }
-	 */         
+	        
   }
 
   @Test
   public void loginTest() throws Exception {
-/*	  driver.get("http://localhost:8080/");
+	  driver.get("http://localhost:8080/");
     driver.findElement(By.id("form-login:name")).clear();
-    driver.findElement(By.id("form-login:name")).sendKeys("1");
+    driver.findElement(By.id("form-login:name")).sendKeys("45443827R");
     driver.findElement(By.id("form-login:password")).clear();
-    driver.findElement(By.id("form-login:password")).sendKeys("123");
+    driver.findElement(By.id("form-login:password")).sendKeys("fcW3i1ciT8");
     driver.findElement(By.id("form-login:login")).click();
-    SeleniumUtils.textoPresentePagina(driver, "Página principal");
+    SeleniumUtils.EsperaCargaPagina(driver, "text", "Cerrar Sesion", 5);
     
-    driver.quit();*/
+    driver.quit();
   }
 
 	
