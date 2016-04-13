@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -15,7 +17,7 @@ import es.uniovi.asw.business.impl.SimpleLoginService;
 import es.uniovi.asw.model.UserLogin;
 
 @ManagedBean(name="login")
-@SessionScoped
+@RequestScoped
 public class BeanLogin implements Serializable {
 	private static final long serialVersionUID = 6L;
 	private String dni = "";
@@ -31,6 +33,12 @@ public class BeanLogin implements Serializable {
 	        System.out.println("BeanLogin PostConstruct");        
 	        this.result="";
 	    }
+	 
+	 @PreDestroy
+	 public void end(){
+		 System.out.println("BeanLogin PreDestroy");        
+	        this.result="";
+	 }
 
 	public String verify() {		
 		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
