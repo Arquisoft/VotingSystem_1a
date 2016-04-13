@@ -32,8 +32,8 @@ public class LoginTest {
   public void setUp() throws Exception {
 			
 	  //http://apiwave.com/java/snippets/removal/org.openqa.selenium.remote.DesiredCapabilities?cursor=CrEBCg4KCHByaW9yaXR5EgIIGBKaAWoTc35maW5lLWJyYW5jaC04OTIyMXKCAQsSCkphdmFDb21taXQicnJzdHVkaW8vcnN0dWRpby8zZTI5YzIzYWVkYzNmODZkZGZhZTQ1ZTViYTA0OTQzMTUxMGIzMGUwL3NyYy5nd3QudGVzdC5vcmcucnN0dWRpby5zdHVkaW8uc2VsZW5pdW0uQm9vdFJTdHVkaW8uamF2YQwYACAA
-	 
-	 /* String sauceUser = System.getenv("SAUCE_USERNAME");
+
+	  String sauceUser = System.getenv("SAUCE_USERNAME");
 	  String saucePassword = System.getenv("SAUCE_ACCESS_KEY");
 	  
 	          if (sauceUser != null && saucePassword != null && !sauceUser.isEmpty() && !saucePassword.isEmpty()) {
@@ -46,10 +46,10 @@ public class LoginTest {
 	              capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
 	  
 	              driver = new RemoteWebDriver(saucelabs, capabilities);
-	          } else {*/
+	          } else {
 	              driver = new FirefoxDriver();
-	    //      }
-	        
+	          }
+
   }
 
   @Test
@@ -59,8 +59,8 @@ public class LoginTest {
     driver.findElement(By.id("form-login:name")).sendKeys("45443827R");
     driver.findElement(By.id("form-login:password")).clear();
     driver.findElement(By.id("form-login:password")).sendKeys("fcW3i1ciT8");
-    driver.findElement(By.id("form-login:login")).click();
-    SeleniumUtils.EsperaCargaPagina(driver, "text", "Cerrar Sesion", 5);
+    driver.findElement(By.id("form-login:login")).click();    
+    SeleniumUtils.EsperaCargaPagina(driver, "text", "Cerrar Sesion", 10);
     
     driver.quit();
   }
