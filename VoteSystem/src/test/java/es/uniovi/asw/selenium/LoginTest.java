@@ -33,7 +33,7 @@ public class LoginTest {
 			
 	  //http://apiwave.com/java/snippets/removal/org.openqa.selenium.remote.DesiredCapabilities?cursor=CrEBCg4KCHByaW9yaXR5EgIIGBKaAWoTc35maW5lLWJyYW5jaC04OTIyMXKCAQsSCkphdmFDb21taXQicnJzdHVkaW8vcnN0dWRpby8zZTI5YzIzYWVkYzNmODZkZGZhZTQ1ZTViYTA0OTQzMTUxMGIzMGUwL3NyYy5nd3QudGVzdC5vcmcucnN0dWRpby5zdHVkaW8uc2VsZW5pdW0uQm9vdFJTdHVkaW8uamF2YQwYACAA
 	 
-	  String sauceUser = System.getenv("SAUCE_USERNAME");
+	 /* String sauceUser = System.getenv("SAUCE_USERNAME");
 	  String saucePassword = System.getenv("SAUCE_ACCESS_KEY");
 	  
 	          if (sauceUser != null && saucePassword != null && !sauceUser.isEmpty() && !saucePassword.isEmpty()) {
@@ -41,14 +41,14 @@ public class LoginTest {
 	  
 	              // https://saucelabs.com/docs/platforms
 	              DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-	              capabilities.setCapability("platform", "Windows 10");
+	              capabilities.setCapability("platform", "Windows 7");
 	              capabilities.setCapability("version", "21");
 	              capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
 	  
 	              driver = new RemoteWebDriver(saucelabs, capabilities);
-	          } else {
+	          } else {*/
 	              driver = new FirefoxDriver();
-	          }
+	    //      }
 	        
   }
 
