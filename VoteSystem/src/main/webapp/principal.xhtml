@@ -8,22 +8,24 @@
 	<ui:define name="titulo">Votacion</ui:define>
 
 	<ui:define name="cuerpo">
-		<p:dataTable id="tablaPartidos" var="partido" value="#{voto.votos}"
-			border="1">
 
-			<p:column headerText="Partidos">
-				<h:outputText value="#{partido.nombre}">
-				</h:outputText>
-			</p:column>
+		<p:panel header="Partidos Disponibles">
+			<p:dataTable id="tablaPartidos" var="partido" value="#{voto.votos}"
+				border="1">
 
-			<p:column headerText="Voto">
-				<p:commandButton value="Votar" id="botonVotar"
-					actionListener="#{voto.votar(partido)}"></p:commandButton>
-			</p:column>
+				<p:column headerText="Partidos">
+					<h:outputText value="#{partido.nombre}">
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Voto">
+					<p:commandButton value="Votar" id="botonVotar"
+						actionListener="#{voto.votar(partido)}"></p:commandButton>
+				</p:column>
 
 
-		</p:dataTable>
-
+			</p:dataTable>
+		</p:panel>
 
 	</ui:define>
 
