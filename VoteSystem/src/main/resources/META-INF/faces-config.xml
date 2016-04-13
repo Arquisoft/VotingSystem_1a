@@ -14,6 +14,15 @@
 	</managed-bean>
 	
 	<managed-bean>
+		<managed-bean-name>loginMesa</managed-bean-name>
+		<managed-bean-class>
+			es.uniovi.asw.presentation.BeanLoginMesa
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	
+	<managed-bean>
 		<managed-bean-name>voto</managed-bean-name>
 		<managed-bean-class>
 			es.uniovi.asw.presentation.BeanVoto

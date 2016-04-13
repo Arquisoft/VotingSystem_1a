@@ -6,43 +6,50 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.jsf.FacesContextUtils;
 
-import es.uniovi.asw.business.impl.SimpleLoginService;
-import es.uniovi.asw.model.UserLogin;
+import es.uniovi.asw.business.impl.SimpleLoginMesaService;
+import es.uniovi.asw.model.LugarVoto;
 
-@ManagedBean(name="login")
+@ManagedBean(name="loginMesa")
 @RequestScoped
-public class BeanLogin implements Serializable {
+public class BeanLoginMesa implements Serializable {
 	private static final long serialVersionUID = 6L;
-	private String dni = "";
+	private Long id;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	private String password = "";
 	private String result;
 
-	public BeanLogin() {
-		System.out.println("BeanLogin - No existia");
+	public BeanLoginMesa() {
+		System.out.println("BeanLoginMesa - No existia");
 	}
 	
 	 @PostConstruct
 	    public void init(){
-	        System.out.println("BeanLogin PostConstruct");        
+	        System.out.println("BeanLoginMesa PostConstruct");        
 	        this.result="";
 	    }
 
 	public String verify() {		
 		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
-		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
+		SimpleLoginMesaService login = ctx.getBean(SimpleLoginMesaService.class);
 		
-		UserLogin user = login.verify(dni, password);
-		if (user != null) {
-			putUserInSession(user);
-			return "principal";
+		LugarVoto mesa = login.verify(id, password);
+		if (mesa != null) {
+			putMesaInSession(mesa);
+			return "principalMesa";
 		}
-		setResult("Contraseña o usuario incorrecto");
+		setResult("Contraseña o identificador incorrecto");
 		return null;
 	}
 
@@ -51,19 +58,13 @@ public class BeanLogin implements Serializable {
 		return "login";
 	}
 	
-	private void putUserInSession(UserLogin user) {
+	private void putMesaInSession(LugarVoto mesa) {
 		Map<String, Object> session = FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap();
-		session.put("LOGGEDIN_USER", user);
+		session.put("LOGGEDIN_MESA", mesa);
 	}
 
-	public String getDni() {
-		return dni;
-	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
 
 	public String getPassword() {
 		return password;

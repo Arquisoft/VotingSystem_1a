@@ -34,24 +34,4 @@ public class Application extends SpringBootServletInitializer implements Servlet
         ServletRegistrationBean jsfServlet = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
         return jsfServlet;
     }
-    /* 
-    public class JsfServletRegistrationBean extends ServletRegistrationBean {
-
-        public JsfServletRegistrationBean() {
-            super();
-        }
-
-    
-  @Bean
-    public WebMvcConfigurerAdapter forwardToIndex(){
-    	return new WebMvcConfigurerAdapter(){
-    		@Override
-    		public void addViewControllers(ViewControllerRegistry registry){
-    			registry.addRedirectViewController("/", "/login.xhtml");			
-    			//registry.addViewController("/").setViewName("redirect:/principal.xhtml");
-    		}		
-    	};
-    }*/
-    
-
 }

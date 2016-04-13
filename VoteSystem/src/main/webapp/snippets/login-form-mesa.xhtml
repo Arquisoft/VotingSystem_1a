@@ -8,35 +8,34 @@
 	<h:form id="form-login">
 	<p:panelGrid id="Grid" columns="2" cellpadding="5">
 		
-		DNI:
+		ID:
 		<h:panelGroup>
-			<p:inputText id="name" value="#{login.dni}" required="true"
-				requiredMessage="DNI requerido" />
+			<p:inputText id="name" value="#{loginMesa.id}" required="true"
+				requiredMessage="ID requerido" />
 			<p:message for="name" />
 		</h:panelGroup>
   
 		Contraseña:
 		<h:panelGroup>
-			<p:password id="password" value="#{login.password}" required="true"
+			<p:password id="password" value="#{loginMesa.password}" required="true"
 				requiredMessage="Contraseña requerida" />
 			<p:message for="password" />
 		</h:panelGroup>
 
-		<h:outputText id="msgAlta" value="#{login.result}" />
+		<h:outputText id="msgAlta" value="#{loginMesa.result}" />
 
 		<p:commandButton value="Login"
-			action="#{login.verify}" actionListener="#{voto.opcionesVoto}" update="Grid" process="@form"
+			action="#{loginMesa.verify}" update="Grid" process="@form"
 			id="login">
 		</p:commandButton>
-			
+		
+
+		
 	</p:panelGrid>
-	
-			
-			
 	</h:form>
 	
 	<h:form>
-	<h:commandLink style="float:right" action="loginMesa.xhtml">Acceso Mesa Electoral</h:commandLink>
+			<p:commandLink action="login.xhtml" style="float:right">Acceso Votantes</p:commandLink>
 	</h:form>
 		</p:panel>
 </ui:composition>
