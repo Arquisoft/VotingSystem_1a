@@ -8,8 +8,21 @@
 	<ui:define name="titulo">Administración votación</ui:define>
 
 	<ui:define name="cuerpo">
-
-		
+	
+	<h2>DNI del votante</h2>
+	
+	<h:form>
+    <p:inputTextarea id="dni" value="#{mesa.dniUsuario}" rows="1" cols="10" counter="display" maxlength="9" 
+    counterTemplate="  {0} carácteres restantes" autoResize="true" />
+    <h:outputText id="display" />
+    
+    <p:commandButton value="Comprobar votante"
+			action="#{mesa.verifyUser}" update="growl dni" process="@form"
+			id="comprobar">
+		</p:commandButton>
+			
+		<p:growl id="growl" showDetail="true" sticky="true" />  
+	</h:form>
 
 	</ui:define>
 

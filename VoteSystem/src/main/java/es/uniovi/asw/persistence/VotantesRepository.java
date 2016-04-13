@@ -3,12 +3,11 @@ package es.uniovi.asw.persistence;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import es.uniovi.asw.model.LugarVoto;
-
+import es.uniovi.asw.model.Votante;
 
 @Repository
-public interface MesaRepository extends CrudRepository<LugarVoto, Long> { 
+public interface VotantesRepository extends CrudRepository<Votante, String> { 
 
-	   public LugarVoto findByid(Long id);
+	   public Votante findByDni(String dni);
 	   
 }

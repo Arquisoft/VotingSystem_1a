@@ -10,4 +10,5 @@ import es.uniovi.asw.model.User;
 public interface UserRepository extends CrudRepository<User, Long> { 
 
 	   public User findBynif(String nif);
+	   
 }

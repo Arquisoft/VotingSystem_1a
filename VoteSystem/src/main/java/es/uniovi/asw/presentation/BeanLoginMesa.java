@@ -32,6 +32,8 @@ public class BeanLoginMesa implements Serializable {
 
 	public BeanLoginMesa() {
 		System.out.println("BeanLoginMesa - No existia");
+		id=null;
+		result="";
 	}
 	
 	 @PostConstruct
@@ -55,7 +57,7 @@ public class BeanLoginMesa implements Serializable {
 
 	public String closeSession(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "login";
+		return "loginMesa";
 	}
 	
 	private void putMesaInSession(LugarVoto mesa) {
