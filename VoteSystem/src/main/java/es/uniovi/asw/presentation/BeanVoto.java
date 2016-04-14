@@ -4,11 +4,8 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.jsf.FacesContextUtils;
@@ -16,12 +13,10 @@ import org.springframework.web.jsf.FacesContextUtils;
 import es.uniovi.asw.business.impl.SimpleOptionVoteService;
 import es.uniovi.asw.business.impl.SimpleVoteService;
 import es.uniovi.asw.model.OpcionVoto;
-import es.uniovi.asw.model.User;
-import es.uniovi.asw.model.UserLogin;
 import es.uniovi.asw.model.Voto;
 
 @ManagedBean(name = "voto")
-@SessionScoped
+@RequestScoped
 public class BeanVoto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,8 +41,8 @@ public class BeanVoto implements Serializable {
 			else
 				vote.insertVote(opcion.getNombre());
 		
-
-		return "principal";
+			setVotado(true);
+		return null;
 	}
 
 	public void opcionesVoto() {
@@ -55,6 +50,16 @@ public class BeanVoto implements Serializable {
 		SimpleOptionVoteService vote = ctx.getBean(SimpleOptionVoteService.class);
 
 		votos = (OpcionVoto[]) vote.getAllVoteOptions().toArray(new OpcionVoto[0]);
+	}
+	
+	private boolean votado;
+	
+	public boolean isVotado() {
+		return votado;
+	}
+
+	public void setVotado(boolean votado) {
+		this.votado = votado;
 	}
 
 	public OpcionVoto[] getVotos() {
