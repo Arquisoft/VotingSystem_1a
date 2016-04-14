@@ -52,18 +52,27 @@ public class LoginTest {
   }
 
   @Test
-  public void userVoteTest() throws Exception {
+  public void userLoginTest() throws Exception {
 	  driver.get("http://localhost:8080/");
     driver.findElement(By.id("form-login:name")).clear();
     driver.findElement(By.id("form-login:name")).sendKeys("45443827R");
     driver.findElement(By.id("form-login:password")).clear();
     driver.findElement(By.id("form-login:password")).sendKeys("fcW3i1ciT8");
     driver.findElement(By.id("form-login:login")).click();    
-    SeleniumUtils.EsperaCargaPagina(driver, "text", "Cerrar Sesion", 10);
-    
-    
-    
-    
+    SeleniumUtils.EsperaCargaPagina(driver, "text", "Cerrar Sesion", 10);    
+    driver.quit();
+  }
+  
+  
+  @Test
+  public void failedUserLoginTest() throws Exception {
+	  driver.get("http://localhost:8080/");
+    driver.findElement(By.id("form-login:name")).clear();
+    driver.findElement(By.id("form-login:name")).sendKeys("45443827R");
+    driver.findElement(By.id("form-login:password")).clear();
+    driver.findElement(By.id("form-login:password")).sendKeys("erronea");
+    driver.findElement(By.id("form-login:login")).click();    
+    SeleniumUtils.EsperaCargaPagina(driver, "text", "Contraseña o usuario incorrecto", 10);    
     driver.quit();
   }
 

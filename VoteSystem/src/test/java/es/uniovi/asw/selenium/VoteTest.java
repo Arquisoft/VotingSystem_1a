@@ -50,12 +50,9 @@ public class VoteTest {
 	          }
 
   }
-
-  @Test
-  public void userVoteTest(){
-	  
-  }
   
+  
+
   
   @Test
   public void mesaVoteTest() throws Exception {
@@ -74,6 +71,36 @@ public class VoteTest {
 	    		+ "el votante con éxito", 10);
     
     driver.quit();
+  }
+  
+  
+  @Test
+  public void userVoteTest() throws Exception {
+	  driver.get("http://localhost:8080/");
+    driver.findElement(By.id("form-login:name")).clear();
+    driver.findElement(By.id("form-login:name")).sendKeys("54313432L");
+    driver.findElement(By.id("form-login:password")).clear();
+    driver.findElement(By.id("form-login:password")).sendKeys("SCHNihd6pR");
+    driver.findElement(By.id("form-login:login")).click();
+    SeleniumUtils.EsperaCargaPagina(driver, "id", "tablaPartidos:0:botonVotar", 10);
+    driver.findElement(By.id("tablaPartidos:0:botonVotar")).click();
+    driver.findElement(By.id("tablaPartidos:4:j_idt14")).click();
+    SeleniumUtils.EsperaCargaPagina(driver, "text", "Ya ha votado, no puede realizar mas votos", 10);
+    
+  }
+  
+  
+  
+  @Test
+  public void userVoteYetTest() throws Exception {
+	  driver.get("http://localhost:8080/");
+    driver.findElement(By.id("form-login:name")).clear();
+    driver.findElement(By.id("form-login:name")).sendKeys("34587263E");
+    driver.findElement(By.id("form-login:password")).clear();
+    driver.findElement(By.id("form-login:password")).sendKeys("jPzUf9mRlI");
+    driver.findElement(By.id("form-login:login")).click();
+    SeleniumUtils.EsperaCargaPagina(driver, "text", "Este usuario ya ha votado", 10);
+
   }
   
 
