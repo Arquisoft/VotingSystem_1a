@@ -9,5 +9,5 @@ import es.uniovi.asw.model.Votante;
 public interface VotantesRepository extends CrudRepository<Votante, String> { 
 
 	   public Votante findByDni(String dni);
-	   
+	
 }
