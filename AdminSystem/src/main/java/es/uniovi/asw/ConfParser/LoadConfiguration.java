@@ -71,9 +71,9 @@ public class LoadConfiguration {
 
 			if(!cmd.hasOption("h")){
 			
-			//Se comprueba si se inserto una opción para el fichero de entrada
-			if(opcionFicheroEntrada(cmd)) {
-				
+//			//Se comprueba si se inserto una opción para el fichero de entrada
+//			if(opcionFicheroEntrada(cmd)) {
+//				
 				String sistema = args[0];
 				
 				if(sistema.equals("conf")){
@@ -82,7 +82,7 @@ public class LoadConfiguration {
 				else if(sistema.equals("count")){
 					runCountVotesSystem(cmd, args);
 				}
-			}			
+						
 			
 			else {
 			    System.out.println("Opciones no válidas, puedes utilizar"

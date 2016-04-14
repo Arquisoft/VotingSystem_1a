@@ -15,6 +15,10 @@ import es.uniovi.asw.model.OpcionVoto;
 
 public class InsertConfP {
 
+	private static final String PLACES_DELETE = "delete from LugarVoto";
+	private static final String CONFIG_DELETE = "delete from Configuracion";
+	private static final String OPTIONS_DELETE ="delete from OpcionVoto";
+	
 	static Configuracion conf = null;
 	static List<LugarVoto> lugares = new ArrayList<>();
 	static List<OpcionVoto> opciones = new ArrayList<>();
@@ -61,6 +65,7 @@ public class InsertConfP {
 				em = emf.createEntityManager();
 				trx = em.getTransaction();
 				trx.begin();
+				vaciarBD(em);
 				em.persist(conf);
 				for (int i = 0; i < lugares.size(); i++) {
 					if(lugares.get(i).getNombre() != "" && lugares.get(i).getNombre() != null)
@@ -76,6 +81,7 @@ public class InsertConfP {
 				System.out.println("No se ha podido conectar con la base de datos");
 
 			} catch (RuntimeException bex) {
+				bex.printStackTrace();
 				trx.rollback();
 				System.out.println("Ha ocurrido un error al guardar los datos en la base de datos");
 				throw bex;
@@ -90,4 +96,15 @@ public class InsertConfP {
 			}
 		}
 	}
+
+	/**
+	 * Vacia la base de datos. Recibe un EntityManager para evitar reabrir la conexion
+	 * @param trx 
+	 */
+	private static void vaciarBD(EntityManager em) {
+		em.createQuery(PLACES_DELETE).executeUpdate();
+		em.createQuery(OPTIONS_DELETE).executeUpdate();
+		em.createQuery(CONFIG_DELETE).executeUpdate();
+	}
+
 }
