@@ -132,7 +132,7 @@ public class LoadConfiguration {
 		
 		
 		//Funciona de momento para este en concreto
-		//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/conf.xls -x AdminSystem/options.xls -x AdminSystem/places.xls -x
+		//java -jar AdminSystem/target/adminSystem-0.0.1.jar conf AdminSystem/conf.xls -x AdminSystem/options.xls -x AdminSystem/places.xls -x
 
 		rConf = new RConf(args[1], parserConf);
 		rOptions = new ROptions(args[3], parserOpt);
@@ -205,7 +205,7 @@ public class LoadConfiguration {
 		System.out.println("Datos leidos de xls:");
 
 		System.out.println("java -jar AdminSystem/target/adminSystem-0.0.1.jar "
-				+ "configuracion " 
+				+ "conf " 
 				+ "AdminSystem/conf.xls -x "
 				+ "AdminSystem/options.xls -x "
 				+ "AdminSystem/places.xls -x");
@@ -238,7 +238,7 @@ public class LoadConfiguration {
 		System.out.println("Datos leidos de xls:");
 
 		System.out.println("java -jar AdminSystem/target/adminSystem-0.0.1.jar "
-				+ "recuento " 
+				+ "count " 
 				+ "AdminSystem/votes.xls -x ");
 
 		System.out.println("------------------------------------------"
