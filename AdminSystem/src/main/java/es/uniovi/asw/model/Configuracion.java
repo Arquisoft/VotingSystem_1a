@@ -5,10 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TConfig")
+@IdClass(ConfId.class)
 public class Configuracion implements Serializable{
 
 	/**

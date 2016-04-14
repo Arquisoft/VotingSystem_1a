@@ -38,31 +38,26 @@ public class SimpleVoteService implements VoteService {
 	
 	@Override
 	public void updateVote(String opcion) {
-		
-		ExternalContext contexto = FacesContext.getCurrentInstance().getExternalContext();
-		HttpServletRequest request = (HttpServletRequest) contexto.getRequest();
-		HttpSession session = request.getSession();
-		UserLogin user = (UserLogin) session.getAttribute("LOGGEDIN_USER");
-		User u = this.user.findOne(user.getId());
-		
+		User u = this.user.findOne(getUser());
 		Voto v= vote.findByOptPlace(opcion, 0);
 		v.setNumero(v.getNumero()+1);
 		vote.save(v);
 		votante.save(new Votante(u.getNIF()));
-		
-		
 	}
-
-
+	
 	@Override
 	public void insertVote(String opcion) {
 		vote.save(new Voto(opcion,0,1));
+		User u = this.user.findOne(getUser());
+		votante.save(new Votante(u.getNIF()));
+	}
+	
+	private Long getUser() {
 		ExternalContext contexto = FacesContext.getCurrentInstance().getExternalContext();
 		HttpServletRequest request = (HttpServletRequest) contexto.getRequest();
 		HttpSession session = request.getSession();
 		UserLogin user = (UserLogin) session.getAttribute("LOGGEDIN_USER");
-		User u = this.user.findOne(user.getId());
-		votante.save(new Votante(u.getNIF()));
+		return user.getId();
 	}
 
 }

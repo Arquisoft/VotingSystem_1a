@@ -1,8 +1,7 @@
 package es.uniovi.asw.util;
 
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import es.uniovi.asw.ReportWriterConf.WreportP;
 import es.uniovi.asw.ReportWriterConf.WriteReport;
