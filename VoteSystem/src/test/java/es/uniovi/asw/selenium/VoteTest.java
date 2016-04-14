@@ -22,7 +22,7 @@ import es.uniovi.asw.selenium.utils.SeleniumUtils;
 @IntegrationTest
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-public class LoginTest {
+public class VoteTest {
 
   WebDriver driver;
   URL saucelabs;
@@ -52,21 +52,30 @@ public class LoginTest {
   }
 
   @Test
-  public void userVoteTest() throws Exception {
+  public void userVoteTest(){
+	  
+  }
+  
+  
+  @Test
+  public void mesaVoteTest() throws Exception {
 	  driver.get("http://localhost:8080/");
-    driver.findElement(By.id("form-login:name")).clear();
-    driver.findElement(By.id("form-login:name")).sendKeys("45443827R");
-    driver.findElement(By.id("form-login:password")).clear();
-    driver.findElement(By.id("form-login:password")).sendKeys("fcW3i1ciT8");
-    driver.findElement(By.id("form-login:login")).click();    
-    SeleniumUtils.EsperaCargaPagina(driver, "text", "Cerrar Sesion", 10);
-    
-    
-    
+	  driver.findElement(By.linkText("Acceso Mesa Electoral")).click();
+	    driver.findElement(By.id("form-login:name")).clear();
+	    driver.findElement(By.id("form-login:name")).sendKeys("1");
+	    driver.findElement(By.id("form-login:password")).clear();
+	    driver.findElement(By.id("form-login:password")).sendKeys("pas1");
+	    driver.findElement(By.id("form-login:login")).click();
+	    SeleniumUtils.EsperaCargaPagina(driver, "id", "dni", 10);
+	    driver.findElement(By.id("form-dni:dni")).clear();
+	    driver.findElement(By.id("form-dni:dni")).sendKeys("45443827R");
+	    driver.findElement(By.id("form-dni:comprobar")).click();
+	    SeleniumUtils.EsperaCargaPagina(driver, "text", "Se ha registrado "
+	    		+ "el votante con éxito", 10);
     
     driver.quit();
   }
-
+  
 
 	
 
