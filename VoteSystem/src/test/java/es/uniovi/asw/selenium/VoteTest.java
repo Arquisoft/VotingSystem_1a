@@ -50,6 +50,7 @@ public class VoteTest {
 	              capabilities.setCapability("platform", "OS X 10.11");
 	              capabilities.setCapability("version", "45");
 	              capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
+	              capabilities.setCapability("build", "build-1234");
 	  
 	              driver = new RemoteWebDriver(saucelabs, capabilities);
 	          } else {
@@ -80,7 +81,7 @@ public class VoteTest {
 	    if (sauceUser != null){
 	    	 if (sauceUser != null){
 	 		    SauceREST r = new SauceREST(sauceUser, saucePassword);
-	 		    r.jobPassed(System.getenv("TRAVIS_JOB_NUMBER"));
+	 		    r.jobPassed(System.getenv("build-1234"));
 	 		    
 	 	  }
 	    }
@@ -105,7 +106,7 @@ public class VoteTest {
     if (sauceUser != null){
    	 if (sauceUser != null){
 		    SauceREST r = new SauceREST(sauceUser, saucePassword);
-		    r.jobPassed(System.getenv("TRAVIS_JOB_NUMBER"));
+		    r.jobPassed(System.getenv("build-1234"));
 		    
 	  }
    }
@@ -129,7 +130,7 @@ public class VoteTest {
     if (sauceUser != null){
    	 if (sauceUser != null){
 		    SauceREST r = new SauceREST(sauceUser, saucePassword);
-		    r.jobPassed(System.getenv("TRAVIS_JOB_NUMBER"));
+		    r.jobPassed(System.getenv("build-1234"));
 		    
 	  }
    }
