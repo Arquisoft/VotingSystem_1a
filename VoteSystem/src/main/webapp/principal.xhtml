@@ -19,13 +19,23 @@
 				</p:column>
 
 				<p:column headerText="Voto" >
+					
 					<p:commandButton rendered="#{voto.votado == false}" value="Votar" id="botonVotar"
 						actionListener="#{voto.votar(partido)}" update="tablaPartidos">
-						</p:commandButton>
-						<h:outputText value="Ya ha votado, no puede realizar mas votos" rendered="#{voto.votado == true}">
-					</h:outputText>
+						<p:confirm header="Confirmation" message="¿Desea continuar?" icon="ui-icon-alert" />
+					</p:commandButton>
+					
+					 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+       	 			<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        			<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+   				 </p:confirmDialog>
+						
+				<h:outputText value="Ya ha votado, no puede realizar mas votos" rendered="#{voto.votado == true}">
+				</h:outputText>
 						
 				</p:column>
+				
+				
 
 
 			</p:dataTable>
