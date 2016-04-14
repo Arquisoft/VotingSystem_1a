@@ -12,8 +12,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.ServletContextAware;
 
-import com.sun.faces.config.ConfigureListener;
-
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer implements ServletContextAware {
 

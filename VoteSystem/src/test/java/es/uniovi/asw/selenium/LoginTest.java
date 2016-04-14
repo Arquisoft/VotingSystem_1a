@@ -12,7 +12,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -53,7 +52,7 @@ public class LoginTest {
   }
 
   @Test
-  public void loginTest() throws Exception {
+  public void userLoginTest() throws Exception {
 	  driver.get("http://localhost:8080/");
     driver.findElement(By.id("form-login:name")).clear();
     driver.findElement(By.id("form-login:name")).sendKeys("45443827R");
@@ -64,6 +63,19 @@ public class LoginTest {
     
     driver.quit();
   }
+  
+  @Test
+  public void mesaLoginTest() throws Exception {
+    driver.get("http://localhost:8080/");
+    driver.findElement(By.linkText("Acceso Mesa Electoral")).click();
+    driver.findElement(By.id("form-login:name")).clear();
+    driver.findElement(By.id("form-login:name")).sendKeys("1");
+    driver.findElement(By.id("form-login:password")).clear();
+    driver.findElement(By.id("form-login:password")).sendKeys("pas1");
+    driver.findElement(By.id("form-login:login")).click();
+    SeleniumUtils.EsperaCargaPagina(driver, "text", "DNI del votante", 10);
+  }
+
 
 	
 
