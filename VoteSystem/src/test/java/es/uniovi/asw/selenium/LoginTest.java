@@ -27,19 +27,24 @@ public class LoginTest {
   WebDriver driver;
   URL saucelabs;
   
+  String sauceUser;
+  String saucePassword;
+  
+  DesiredCapabilities capabilities;
+  
   @Before
   public void setUp() throws Exception {
 			
 	  //http://apiwave.com/java/snippets/removal/org.openqa.selenium.remote.DesiredCapabilities?cursor=CrEBCg4KCHByaW9yaXR5EgIIGBKaAWoTc35maW5lLWJyYW5jaC04OTIyMXKCAQsSCkphdmFDb21taXQicnJzdHVkaW8vcnN0dWRpby8zZTI5YzIzYWVkYzNmODZkZGZhZTQ1ZTViYTA0OTQzMTUxMGIzMGUwL3NyYy5nd3QudGVzdC5vcmcucnN0dWRpby5zdHVkaW8uc2VsZW5pdW0uQm9vdFJTdHVkaW8uamF2YQwYACAA
 
-	  String sauceUser = System.getenv("SAUCE_USERNAME");
-	  String saucePassword = System.getenv("SAUCE_ACCESS_KEY");
+	  sauceUser = System.getenv("SAUCE_USERNAME");
+	  saucePassword = System.getenv("SAUCE_ACCESS_KEY");
 	  
 	          if (sauceUser != null && saucePassword != null && !sauceUser.isEmpty() && !saucePassword.isEmpty()) {
 	              saucelabs = new URL("http://" + sauceUser + ":" + saucePassword + "@ondemand.saucelabs.com/wd/hub");
 	  
 	              // https://saucelabs.com/docs/platforms
-	              DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+	              capabilities = DesiredCapabilities.firefox();
 	              capabilities.setCapability("platform", "OS X 10.11");
 	              capabilities.setCapability("version", "45");
 	              capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
@@ -60,6 +65,10 @@ public class LoginTest {
     driver.findElement(By.id("form-login:password")).sendKeys("fcW3i1ciT8");
     driver.findElement(By.id("form-login:login")).click();    
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Cerrar Sesion", 10);    
+    
+    if (sauceUser != null)
+    	capabilities.setCapability("passed", true);
+    
     driver.quit();
   }
   
@@ -73,6 +82,10 @@ public class LoginTest {
     driver.findElement(By.id("form-login:password")).sendKeys("erronea");
     driver.findElement(By.id("form-login:login")).click();    
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Contraseña o usuario incorrecto", 10);    
+    
+    if (sauceUser != null)
+    	capabilities.setCapability("passed", true);
+    
     driver.quit();
   }
 

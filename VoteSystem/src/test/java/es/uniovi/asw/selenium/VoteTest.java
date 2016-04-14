@@ -27,19 +27,24 @@ public class VoteTest {
   WebDriver driver;
   URL saucelabs;
   
+  String sauceUser;
+  String saucePassword;
+  
+  DesiredCapabilities capabilities;
+  
   @Before
   public void setUp() throws Exception {
 			
 	  //http://apiwave.com/java/snippets/removal/org.openqa.selenium.remote.DesiredCapabilities?cursor=CrEBCg4KCHByaW9yaXR5EgIIGBKaAWoTc35maW5lLWJyYW5jaC04OTIyMXKCAQsSCkphdmFDb21taXQicnJzdHVkaW8vcnN0dWRpby8zZTI5YzIzYWVkYzNmODZkZGZhZTQ1ZTViYTA0OTQzMTUxMGIzMGUwL3NyYy5nd3QudGVzdC5vcmcucnN0dWRpby5zdHVkaW8uc2VsZW5pdW0uQm9vdFJTdHVkaW8uamF2YQwYACAA
 
-	  String sauceUser = System.getenv("SAUCE_USERNAME");
-	  String saucePassword = System.getenv("SAUCE_ACCESS_KEY");
+	   sauceUser = System.getenv("SAUCE_USERNAME");
+	   saucePassword = System.getenv("SAUCE_ACCESS_KEY");
 	  
 	          if (sauceUser != null && saucePassword != null && !sauceUser.isEmpty() && !saucePassword.isEmpty()) {
 	              saucelabs = new URL("http://" + sauceUser + ":" + saucePassword + "@ondemand.saucelabs.com/wd/hub");
 	  
 	              // https://saucelabs.com/docs/platforms
-	              DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+	              capabilities = DesiredCapabilities.firefox();
 	              capabilities.setCapability("platform", "OS X 10.11");
 	              capabilities.setCapability("version", "45");
 	              capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
@@ -69,6 +74,10 @@ public class VoteTest {
 	    driver.findElement(By.id("form-dni:comprobar")).click();
 	    SeleniumUtils.EsperaCargaPagina(driver, "text", "Se ha registrado "
 	    		+ "el votante con éxito", 10);
+	    
+	    if (sauceUser != null)
+	    	capabilities.setCapability("passed", true);
+	    
 	    driver.quit();
   }
   
@@ -85,7 +94,12 @@ public class VoteTest {
     driver.findElement(By.id("tablaPartidos:0:botonVotar")).click();
     driver.findElement(By.id("tablaPartidos:4:j_idt14")).click();
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Ya ha votado, no puede realizar mas votos", 10);
+    
+    if (sauceUser != null)
+    	capabilities.setCapability("passed", true);
+    
     driver.quit();
+   
   }
   
   
@@ -99,6 +113,10 @@ public class VoteTest {
     driver.findElement(By.id("form-login:password")).sendKeys("jPzUf9mRlI");
     driver.findElement(By.id("form-login:login")).click();
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Este usuario ya ha votado", 10);
+    
+    if (sauceUser != null)
+    	capabilities.setCapability("passed", true);
+    
     driver.quit();
   }
   
