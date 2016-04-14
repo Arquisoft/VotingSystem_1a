@@ -20,6 +20,10 @@ import es.uniovi.asw.ConfParser.factoria.FactoriaParserOption;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserPlaces;
 import es.uniovi.asw.DBVote.Jpa;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
+import es.uniovi.asw.DBVote.impl.InsertVoteP;
+import es.uniovi.asw.countVoteParser.RVotes;
+import es.uniovi.asw.countVoteParser.factoria.FactoriaParserVotes;
+import es.uniovi.asw.countVoteParser.parser.ParserVotes;
 
 /**
  * Main application
@@ -32,12 +36,15 @@ public class LoadConfiguration {
 	static Map<String, ParserOpt> factoriaOptions = new HashMap<>();
 	static Map<String, ParserPlaces> factoriaPlaces = new HashMap<>();
 	static Map<String, ParserConf> factoriaConf = new HashMap<>();
+	static Map<String, ParserVotes> factoriaVotes = new HashMap<>();
 	
 	 static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
 	 ROptions rOptions = null;
 	 RConf rConf = null;
 	 RPlaces rPlaces = null;
+	 
+	 RVotes rVote = null;
 	 
 	public static void main(String... args) {
 		
@@ -50,6 +57,8 @@ public class LoadConfiguration {
 
 	void run(String... args) {		
 		Options options = new Options();
+		options.addOption("conf", false, "configuration");
+		options.addOption("count", false, "configuration");
 		options.addOption("x", false, "add xls file");
 		options.addOption("h", false, "help");
 		
@@ -65,82 +74,24 @@ public class LoadConfiguration {
 			//Se comprueba si se inserto una opción para el fichero de entrada
 			if(opcionFicheroEntrada(cmd)) {
 				
-				ParserConf parserConf = null;
-				ParserPlaces parserPlaces = null;
-				ParserOpt parserOpt = null;
-					
-//				//Obtiene parser de ficheros de entrada especificado en las opciones				
-				String option = cmd.getOptions()[0].getOpt();
-				if (opcionesFicherosEntrada.contains(option)) {
-					parserConf = factoriaConf.get(option);
+				String sistema = args[0];
+				
+				if(sistema.equals("conf")){
+					runConfigSystem(cmd, args);
 				}
-				
-				option = cmd.getOptions()[1].getOpt();
-				if (opcionesFicherosEntrada.contains(option)) {
-					parserOpt = factoriaOptions.get(option);
+				else if(sistema.equals("count")){
+					runCountVotesSystem(cmd, args);
 				}
-				
-				option = cmd.getOptions()[2].getOpt();
-				if (opcionesFicherosEntrada.contains(option)) {
-					parserPlaces = factoriaPlaces.get(option);
-				}
-				
-				
-				//Funciona de momento para este en concreto
-				//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/conf.xls -x AdminSystem/options.xls -x AdminSystem/places.xls -x
-
-				rConf = new RConf(args[0], parserConf);
-				rOptions = new ROptions(args[2], parserOpt);
-				rPlaces = new RPlaces(args[4], parserPlaces);
 			}			
 			
 			else {
 			    System.out.println("Opciones no válidas, puedes utilizar"
 			    		+ " la opción -h para apreder a utilizar el programa");
 			}
-
-				if (rOptions != null && rConf != null && rPlaces != null) {
-
-					rOptions.leerDatos();
-					rConf.leerDatos();
-					rPlaces.leerDatos();
-					try {
-						InsertConfP.insertConfR();
-					} catch (Exception e) {
-						System.out.println("Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
-					}
-				}
-
-//			System.out.println("Error en la hora de inicio o fin");
-			
 			}else{
 				
-				System.out.println("------------------------------------------"
-						+ "----------------------------");
-				
-				System.out.println("Ayuda para programa AdminSystem:");
-				System.out.println("Para utilizar el programa debe de "
-						+ "especificar el formato de los ficheros de entrada ");
-				
-				System.out.println();
-				
-				System.out.println("Los formatos de ficheros de entrada "
-						+ "permitidos son:");
-				
-				System.out.println("  -x -> Archivos excel (Formato xls)");
-				
-				
-				System.out.println("Ejemplo: ");
-				
-				System.out.println("Datos leidos de xls:");
-
-				System.out.println("java -jar AdminSystem/target/adminSystem-0.0.1.jar "
-						+ "AdminSystem/conf.xls -x "
-						+ "AdminSystem/options.xls -x "
-						+ "AdminSystem/places.xls -x");
-
-				System.out.println("------------------------------------------"
-						+ "----------------------------");
+				ayudaConfSystem();
+				ayudaCountVotes();
 				
 			}
 			
@@ -152,8 +103,151 @@ public class LoadConfiguration {
 		Jpa.closeEntityManagerFactory();
 	
 	}
+
+	/**
+	 * Ejecuta toda la logica necesaria del systema de configuracion
+	 * @param cmd
+	 * @param args
+	 */
+	private void runConfigSystem(CommandLine cmd, String... args) {
+		ParserConf parserConf = null;
+		ParserPlaces parserPlaces = null;
+		ParserOpt parserOpt = null;
+		
+//				//Obtiene parser de ficheros de entrada especificado en las opciones				
+		String option = cmd.getOptions()[0].getOpt();
+		if (opcionesFicherosEntrada.contains(option)) {
+			parserConf = factoriaConf.get(option);
+		}
+		
+		option = cmd.getOptions()[1].getOpt();
+		if (opcionesFicherosEntrada.contains(option)) {
+			parserOpt = factoriaOptions.get(option);
+		}
+		
+		option = cmd.getOptions()[2].getOpt();
+		if (opcionesFicherosEntrada.contains(option)) {
+			parserPlaces = factoriaPlaces.get(option);
+		}
+		
+		
+		//Funciona de momento para este en concreto
+		//java -jar AdminSystem/target/adminSystem-0.0.1.jar AdminSystem/conf.xls -x AdminSystem/options.xls -x AdminSystem/places.xls -x
+
+		rConf = new RConf(args[1], parserConf);
+		rOptions = new ROptions(args[3], parserOpt);
+		rPlaces = new RPlaces(args[5], parserPlaces);
+		
+		if (rOptions != null && rConf != null && rPlaces != null) {
+
+			rOptions.leerDatos();
+			rConf.leerDatos();
+			rPlaces.leerDatos();
+			try {
+				InsertConfP.insertConfR();
+			} catch (Exception e) {
+				System.out.println("Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
+			}
+		}
+	}
+
+	/**
+	 * Ejecuta la logica necesario del sistema de recuento de votos
+	 * @param cmd
+	 * @param args
+	 */
+	private void runCountVotesSystem(CommandLine cmd, String... args){
+		ParserVotes parser = null;
+		
+//				//Obtiene parser de ficheros de entrada especificado en las opciones				
+		String option = cmd.getOptions()[0].getOpt();
+		if (opcionesFicherosEntrada.contains(option)) {
+			parser = factoriaVotes.get(option);
+		}
+				
+		//Funciona de momento para este en concreto
+		//java -jar AdminSystem/target/adminSystem-0.0.1.jar count AdminSystem/votes.xls -x 
+
+		rVote = new RVotes(args[1], parser);
+		
+		if (rVote != null) {
+			rVote.leerDatos();
+			try {
+				InsertVoteP.insertVoteR();
+			} catch (Exception e) {
+				System.out.println("Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
+			}
+		}
+		
+	}
 	
+	/**
+	 * Muestra la ayuda del sistema de configuracion
+	 */
+	private void ayudaConfSystem() {
+		System.out.println("------------------------------------------"
+				+ "----------------------------");
+		
+		System.out.println("Ayuda para configuracion del sistema:");
+		System.out.println("Para utilizar el programa debe de "
+				+ "especificar el formato de los ficheros de entrada ");
+		
+		System.out.println();
+		
+		System.out.println("Los formatos de ficheros de entrada "
+				+ "permitidos son:");
+		
+		System.out.println("  -x -> Archivos excel (Formato xls)");
+		
+		
+		System.out.println("Ejemplo: ");
+		
+		System.out.println("Datos leidos de xls:");
+
+		System.out.println("java -jar AdminSystem/target/adminSystem-0.0.1.jar "
+				+ "configuracion " 
+				+ "AdminSystem/conf.xls -x "
+				+ "AdminSystem/options.xls -x "
+				+ "AdminSystem/places.xls -x");
+
+		System.out.println("------------------------------------------"
+				+ "----------------------------");
+	}
 	
+	/**
+	 * Muestra la ayuda del sistema de recuento de votos
+	 */
+	private void ayudaCountVotes() {
+		System.out.println("------------------------------------------"
+				+ "----------------------------");
+		
+		System.out.println("Ayuda para recuento de votos:");
+		System.out.println("Para utilizar el programa debe de "
+				+ "especificar el formato de los ficheros de entrada ");
+		
+		System.out.println();
+		
+		System.out.println("Los formatos de ficheros de entrada "
+				+ "permitidos son:");
+		
+		System.out.println("  -x -> Archivos excel (Formato xls)");
+		
+		
+		System.out.println("Ejemplo: ");
+		
+		System.out.println("Datos leidos de xls:");
+
+		System.out.println("java -jar AdminSystem/target/adminSystem-0.0.1.jar "
+				+ "recuento " 
+				+ "AdminSystem/votes.xls -x ");
+
+		System.out.println("------------------------------------------"
+				+ "----------------------------");
+	}
+	
+	/**
+	 * Carga las factorias con los diferentes tipos de passwords en funcion de la opcion
+	 */
 	private static void cargarFactorias() {
 		
 		//Factorias parsers
@@ -162,6 +256,8 @@ public class LoadConfiguration {
 		factoriaConf.put("x",FactoriaParserConf.crearParserXLS());
 		
 		factoriaPlaces.put("x", FactoriaParserPlaces.crearParserXLS());
+		
+		factoriaVotes.put("x", FactoriaParserVotes.crearParserXLS());
 		
 	}
 	
