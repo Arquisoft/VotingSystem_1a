@@ -37,12 +37,24 @@ public class BeanLogin implements Serializable {
 		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
 		
+		boolean yaVoto = login.comprobarUsuario(dni);
+		
+		if(!yaVoto){
+			
 		UserLogin user = login.verify(dni, password);
 		if (user != null) {
 			putUserInSession(user);
 			return "principal";
 		}
+		
 		setResult("Contraseña o usuario incorrecto");
+		
+		}
+		
+		else{
+			setResult("Este usuario ya ha votado");
+		}
+		
 		return null;
 	}
 

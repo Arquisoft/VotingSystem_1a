@@ -6,13 +6,18 @@ import org.springframework.stereotype.Component;
 import es.uniovi.asw.business.LoginService;
 import es.uniovi.asw.model.User;
 import es.uniovi.asw.model.UserLogin;
+import es.uniovi.asw.model.Votante;
 import es.uniovi.asw.persistence.UserRepository;
+import es.uniovi.asw.persistence.VotantesRepository;
 
 @Component
 public class SimpleLoginService implements LoginService {
 	
 	 @Autowired
 	 private UserRepository userRep;
+	 
+	 @Autowired
+	 private VotantesRepository votanteRep;
 	 
 	@Override
 	public UserLogin verify(String login, String password) {
@@ -39,6 +44,22 @@ public class SimpleLoginService implements LoginService {
 			return true;
 		
 		return false;
+	}
+
+	/**
+	 * Devuelve true si el votante ya votó
+	 * 
+	 * @param dni
+	 * @return
+	 */
+	public boolean comprobarUsuario(String dni) {
+		Votante votante = votanteRep.findByDni(dni);
+		
+		if(votante==null){
+			return false;
+		}
+
+		return true;
 	}
 	
 
