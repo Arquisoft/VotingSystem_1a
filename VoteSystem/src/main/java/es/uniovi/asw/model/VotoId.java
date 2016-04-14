@@ -2,7 +2,7 @@ package es.uniovi.asw.model;
 
 import java.io.Serializable;
 
-class VotoId implements Serializable {
+public class VotoId implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	String opcion;

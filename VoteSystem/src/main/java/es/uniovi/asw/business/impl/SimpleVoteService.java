@@ -22,14 +22,18 @@ public class SimpleVoteService implements VoteService {
 	
 	@Override
 	public void updateVote(String opcion) {
-		vote.updateVote(opcion, 0);
+		
+		Voto v= vote.findByOptPlace(opcion, 0);
+		v.setNumero(v.getNumero()+1);
+		vote.save(v);
+		
 		
 	}
 
 
 	@Override
 	public void insertVote(String opcion) {
-		vote.insertVote(opcion,0);
+		vote.save(new Voto(opcion,0,1));
 		
 	}
 
