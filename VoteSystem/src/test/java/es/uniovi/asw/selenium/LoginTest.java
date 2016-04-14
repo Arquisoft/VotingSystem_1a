@@ -15,6 +15,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.saucelabs.saucerest.SauceREST;
+
 import es.uniovi.asw.Application;
 import es.uniovi.asw.selenium.utils.SeleniumUtils;
 
@@ -66,9 +68,15 @@ public class LoginTest {
     driver.findElement(By.id("form-login:login")).click();    
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Cerrar Sesion", 10);    
     
-    if (sauceUser != null)
-    	capabilities.setCapability("passed", true);
+    if (sauceUser != null){
+   	 if (sauceUser != null){
+		    SauceREST r = new SauceREST(sauceUser, saucePassword);
+		    r.jobPassed(System.getenv("TRAVIS_JOB_NUMBER"));
+		    
+	  }
+   }
     
+   
     driver.quit();
   }
   
@@ -83,8 +91,14 @@ public class LoginTest {
     driver.findElement(By.id("form-login:login")).click();    
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Contraseña o usuario incorrecto", 10);    
     
-    if (sauceUser != null)
-    	capabilities.setCapability("passed", true);
+    if (sauceUser != null){
+    	 if (sauceUser != null){
+ 		    SauceREST r = new SauceREST(sauceUser, saucePassword);
+ 		    r.jobPassed(System.getenv("TRAVIS_JOB_NUMBER"));
+ 		    
+ 	  }
+    }
+    	
     
     driver.quit();
   }
