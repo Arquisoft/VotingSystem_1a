@@ -67,18 +67,6 @@ public class BeanLoginMesa implements Serializable {
 		session.put("LOGGEDIN_MESA", mesa);
 	}
 	
-	
-	
-	public String prueba(){
-		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
-		SimpleMesaService login = ctx.getBean(SimpleMesaService.class);
-		
-		return login.getUsuario("54313432L").toString();
-		
-		
-	}
-
-
 
 	public String getPassword() {
 		return password;
