@@ -79,11 +79,9 @@ public class VoteTest {
 	    		+ "el votante con éxito", 10);
 	    
 	    if (sauceUser != null){
-	    	 if (sauceUser != null){
 	 		    SauceREST r = new SauceREST(sauceUser, saucePassword);
-	 		    r.jobPassed(System.getenv("build-1234"));
+	 		    r.jobPassed("build-1234");
 	 		    
-	 	  }
 	    }
 	    
 	    driver.quit();
@@ -104,11 +102,8 @@ public class VoteTest {
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Ya ha votado, no puede realizar mas votos", 10);
     
     if (sauceUser != null){
-   	 if (sauceUser != null){
 		    SauceREST r = new SauceREST(sauceUser, saucePassword);
-		    r.jobPassed(System.getenv("build-1234"));
-		    
-	  }
+		    r.jobPassed("build-1234");
    }
     
     driver.quit();
@@ -128,11 +123,8 @@ public class VoteTest {
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Este usuario ya ha votado", 10);
     
     if (sauceUser != null){
-   	 if (sauceUser != null){
 		    SauceREST r = new SauceREST(sauceUser, saucePassword);
 		    r.jobPassed(System.getenv("build-1234"));
-		    
-	  }
    }
     
     driver.quit();

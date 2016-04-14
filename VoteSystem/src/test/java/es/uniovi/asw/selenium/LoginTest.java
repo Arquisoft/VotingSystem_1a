@@ -49,7 +49,8 @@ public class LoginTest {
 	              capabilities = DesiredCapabilities.firefox();
 	              capabilities.setCapability("platform", "OS X 10.11");
 	              capabilities.setCapability("version", "45");
-	              capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
+	              capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));              
+	              capabilities.setCapability("build", "build-1234");
 	  
 	              driver = new RemoteWebDriver(saucelabs, capabilities);
 	          } else {
@@ -69,11 +70,9 @@ public class LoginTest {
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Cerrar Sesion", 10);    
     
     if (sauceUser != null){
-   	 if (sauceUser != null){
 		    SauceREST r = new SauceREST(sauceUser, saucePassword);
-		    r.jobPassed(System.getenv("TRAVIS_JOB_NUMBER"));
-		    
-	  }
+		    r.jobPassed("build-1234");
+		
    }
     
    
@@ -92,11 +91,9 @@ public class LoginTest {
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Contraseña o usuario incorrecto", 10);    
     
     if (sauceUser != null){
-    	 if (sauceUser != null){
  		    SauceREST r = new SauceREST(sauceUser, saucePassword);
- 		    r.jobPassed(System.getenv("TRAVIS_JOB_NUMBER"));
+ 		    r.jobPassed("build-1234");
  		    
- 	  }
     }
     	
     
