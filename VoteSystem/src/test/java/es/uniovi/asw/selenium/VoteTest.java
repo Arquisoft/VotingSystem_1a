@@ -69,8 +69,7 @@ public class VoteTest {
 	    driver.findElement(By.id("form-dni:comprobar")).click();
 	    SeleniumUtils.EsperaCargaPagina(driver, "text", "Se ha registrado "
 	    		+ "el votante con éxito", 10);
-    
-    driver.quit();
+	    driver.quit();
   }
   
   
@@ -86,7 +85,7 @@ public class VoteTest {
     driver.findElement(By.id("tablaPartidos:0:botonVotar")).click();
     driver.findElement(By.id("tablaPartidos:4:j_idt14")).click();
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Ya ha votado, no puede realizar mas votos", 10);
-    
+    driver.quit();
   }
   
   
@@ -100,7 +99,7 @@ public class VoteTest {
     driver.findElement(By.id("form-login:password")).sendKeys("jPzUf9mRlI");
     driver.findElement(By.id("form-login:login")).click();
     SeleniumUtils.EsperaCargaPagina(driver, "text", "Este usuario ya ha votado", 10);
-
+    driver.quit();
   }
   
 
