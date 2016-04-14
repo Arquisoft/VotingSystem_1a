@@ -144,7 +144,7 @@ public class LoadConfiguration {
 			rConf.leerDatos();
 			rPlaces.leerDatos();
 			try {
-				InsertConfP.insertConfR();
+				new InsertConfP().insertConfR();
 			} catch (Exception e) {
 				System.out.println("Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
 			}
@@ -173,7 +173,7 @@ public class LoadConfiguration {
 		if (rVote != null) {
 			rVote.leerDatos();
 			try {
-				InsertVoteP.insertVoteR();
+				new InsertVoteP().insertVoteR();
 			} catch (Exception e) {
 				System.out.println("Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
 			}

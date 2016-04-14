@@ -30,10 +30,10 @@ public class RPlaces {
 			System.out.println(lugar.get("id") + lugar.get("nombre") + lugar.get("contrasena") + lugar.get("ciudad")
 					+ lugar.get("pais"));
 			long id = Long.parseLong(lugar.get("id"));
-			String nombre = lugar.get("nombre");
-			String contraseña = lugar.get("contrasena");
-			String ciudad = lugar.get("ciudad");
-			String pais = lugar.get("pais");
+			String nombre = lugar.get("nombre").toUpperCase();
+			String contraseña = lugar.get("contrasena").toUpperCase();
+			String ciudad = lugar.get("ciudad").toUpperCase();
+			String pais = lugar.get("pais").toUpperCase();
 			lugaresVotos.add(new LugarVoto(id, nombre, contraseña, ciudad, pais));
 
 		}

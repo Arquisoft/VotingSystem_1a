@@ -29,7 +29,7 @@ public class ROptions {
 		if(!opciones.isEmpty()){
 			for (int i = 0; i < opciones.size(); i++) {
 				System.out.println(opciones.get(i));
-				opcionesVoto.add(new OpcionVoto(opciones.get(i)));
+				opcionesVoto.add(new OpcionVoto(opciones.get(i).toUpperCase()));
 			}
 		}
 		else{

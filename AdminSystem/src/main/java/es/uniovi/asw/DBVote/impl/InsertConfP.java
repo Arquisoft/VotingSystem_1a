@@ -8,12 +8,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 
+import es.uniovi.asw.DBVote.InsertConf;
 import es.uniovi.asw.DBVote.Jpa;
 import es.uniovi.asw.model.Configuracion;
 import es.uniovi.asw.model.LugarVoto;
 import es.uniovi.asw.model.OpcionVoto;
 
-public class InsertConfP {
+public class InsertConfP implements InsertConf{
 
 	private static final String PLACES_DELETE = "delete from LugarVoto";
 	private static final String CONFIG_DELETE = "delete from Configuracion";
@@ -53,7 +54,7 @@ public class InsertConfP {
 	 * 
 	 * @throws Exception
 	 */
-	public static void insertConfR() throws Exception {
+	public void insertConfR() throws Exception {
 		if (conf == null || lugares.isEmpty() || opciones.isEmpty()) {
 			throw new Exception();
 		} else {
