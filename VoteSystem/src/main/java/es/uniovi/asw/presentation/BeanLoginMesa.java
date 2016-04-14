@@ -12,6 +12,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.jsf.FacesContextUtils;
 
 import es.uniovi.asw.business.impl.SimpleLoginMesaService;
+import es.uniovi.asw.business.impl.SimpleMesaService;
 import es.uniovi.asw.model.LugarVoto;
 
 @ManagedBean(name="loginMesa")
@@ -64,6 +65,17 @@ public class BeanLoginMesa implements Serializable {
 		Map<String, Object> session = FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap();
 		session.put("LOGGEDIN_MESA", mesa);
+	}
+	
+	
+	
+	public String prueba(){
+		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+		SimpleMesaService login = ctx.getBean(SimpleMesaService.class);
+		
+		return login.getUsuario("54313432L").toString();
+		
+		
 	}
 
 
