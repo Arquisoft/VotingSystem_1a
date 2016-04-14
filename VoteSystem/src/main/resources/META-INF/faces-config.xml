@@ -10,8 +10,27 @@
 		<managed-bean-class>
 			es.uniovi.asw.presentation.BeanLogin
 		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>loginMesa</managed-bean-name>
+		<managed-bean-class>
+			es.uniovi.asw.presentation.BeanLoginMesa
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>mesa</managed-bean-name>
+		<managed-bean-class>
+			es.uniovi.asw.presentation.BeanMesa
+		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	
+	
+	
 	
 	<managed-bean>
 		<managed-bean-name>voto</managed-bean-name>
