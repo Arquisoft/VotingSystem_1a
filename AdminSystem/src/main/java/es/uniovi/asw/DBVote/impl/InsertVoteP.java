@@ -45,7 +45,7 @@ public class InsertVoteP implements InsertVote{
 
 				trx.commit();
 			} catch (PersistenceException e) {
-				System.out.println("Error en los datos");
+				System.out.println("Ha ocurrido un error. Hay una opcion que no existe, o un lugar que no existe");
 				e.printStackTrace();
 			} catch (RuntimeException bex) {
 				bex.printStackTrace();
