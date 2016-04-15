@@ -7,5 +7,7 @@ public interface ServicesFactory {
 	OptionVoteService createOptionVoteService();
 
 	VoteService createVoteService();
+	
+	ConfiguracionService createConfService();
 
 }

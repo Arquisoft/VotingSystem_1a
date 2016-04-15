@@ -1,37 +1,45 @@
 package es.uniovi.asw.model;
 
-import java.sql.Time;
+
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TConfig")
+@IdClass(Conf.class)
 public class Configuracion {
 
-	@Id
-	@GeneratedValue
-	private Long id;
-	private Date fecha;
-	private Time horaInicio;
-	private Time horaFin;
+	
+	@Id private Date fecha;
+	@Id @Column(name="HORAINICIO")
+	private int hora_Inicio;
+	@Id @Column(name="HORAFIN")
+	private int hora_Fin;
 
 	@Override
 	public String toString() {
-		return "Configuracion [id=" + id + ", fecha=" + fecha + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin
+		return "Configuracion [ fecha=" + fecha + ", horaInicio=" + hora_Inicio + ", horaFin=" + hora_Fin
 				+ "]";
 	}
+
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
+		result = prime * result + hora_Fin;
+		result = prime * result + hora_Inicio;
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -42,13 +50,19 @@ public class Configuracion {
 		if (getClass() != obj.getClass())
 			return false;
 		Configuracion other = (Configuracion) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (fecha == null) {
+			if (other.fecha != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!fecha.equals(other.fecha))
+			return false;
+		if (hora_Fin != other.hora_Fin)
+			return false;
+		if (hora_Inicio != other.hora_Inicio)
 			return false;
 		return true;
 	}
+
+
 
 	public Configuracion() {
 
@@ -62,20 +76,20 @@ public class Configuracion {
 		this.fecha = fecha;
 	}
 
-	public Time getHoraInicio() {
-		return horaInicio;
+	public int getHoraInicio() {
+		return hora_Inicio;
 	}
 
-	public void setHoraInicio(Time horaInicio) {
-		this.horaInicio = horaInicio;
+	public void setHoraInicio(int horaInicio) {
+		this.hora_Inicio = horaInicio;
 	}
 
-	public Time getHoraFin() {
-		return horaFin;
+	public int getHoraFin() {
+		return hora_Fin;
 	}
 
-	public void setHoraFin(Time horaFin) {
-		this.horaFin = horaFin;
+	public void setHoraFin(int horaFin) {
+		this.hora_Fin = horaFin;
 	}
 
 }
