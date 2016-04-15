@@ -43,7 +43,7 @@ public class RConf {
 				conf = new Configuracion(fecha, inicio, fin);
 			} catch (ParseException e) {
 				System.out.println("Error con la fecha: '" + configuracion.get("fecha") + "'");
-			}catch (NumberFormatException e) {
+			} catch (NumberFormatException e) {
 				System.out.println("Error en la hora de inicio o fin");
 			}
 		} else {

@@ -7,9 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TOpciones")
-public class OpcionVoto implements Serializable{
-	
+@Table(name = "TOpciones")
+public class OpcionVoto implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -24,11 +24,10 @@ public class OpcionVoto implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public OpcionVoto(){
-		
+
+	public OpcionVoto() {
+
 	}
-	
 
 	public OpcionVoto(String nombre) {
 		super();
@@ -64,8 +63,5 @@ public class OpcionVoto implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-
 
 }

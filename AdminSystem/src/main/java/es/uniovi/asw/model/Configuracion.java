@@ -11,29 +11,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TConfig")
 @IdClass(ConfId.class)
-public class Configuracion implements Serializable{
+public class Configuracion implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private Date fecha;
 	@Id
 	private int horaInicio;
 	@Id
 	private int horaFin;
-	
+
 	public Configuracion() {
-		
+
 	}
-	
+
 	public Configuracion(Date fecha, int horaInicio, int horaFin) {
 		this.fecha = fecha;
 		this.horaInicio = horaInicio;
 		this.horaFin = horaFin;
 	}
+
 	public Date getFecha() {
 		return fecha;
 	}
@@ -93,7 +94,5 @@ public class Configuracion implements Serializable{
 	public String toString() {
 		return "Configuracion [fecha=" + fecha + ", HoraInicio=" + horaInicio + ", HoraFin=" + horaFin + "]";
 	}
-
-	
 
 }

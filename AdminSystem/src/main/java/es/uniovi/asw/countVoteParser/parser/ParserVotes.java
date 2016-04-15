@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface ParserVotes {
-	
+
 	/**
-	 * Devuelve una lista de mapas. Cada mapa contiene el 'lugar', la 'opcion', y el 'numero' del recuento
+	 * Devuelve una lista de mapas. Cada mapa contiene el 'lugar', la 'opcion',
+	 * y el 'numero' del recuento
+	 * 
 	 * @param fichero
 	 * @return
 	 */

@@ -8,9 +8,9 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TVotes")
+@Table(name = "TVotes")
 @IdClass(VotoId.class)
-public class Voto implements Serializable{
+public class Voto implements Serializable {
 
 	/**
 	 * 
@@ -22,13 +22,11 @@ public class Voto implements Serializable{
 
 	@Id
 	private long lugar;
-	
+
 	private int numero;
-	
-	
+
 	public Voto() {
 	}
-
 
 	public Voto(String opcion, long lugar, int numero) {
 		super();
@@ -37,36 +35,29 @@ public class Voto implements Serializable{
 		this.numero = numero;
 	}
 
-
 	public String getOpcion() {
 		return opcion;
 	}
-
 
 	public void setOpcion(String opcion) {
 		this.opcion = opcion;
 	}
 
-
 	public long getLugar() {
 		return lugar;
 	}
-
 
 	public void setLugar(long lugar) {
 		this.lugar = lugar;
 	}
 
-
 	public int getNumero() {
 		return numero;
 	}
 
-
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -77,7 +68,6 @@ public class Voto implements Serializable{
 		result = prime * result + ((opcion == null) ? 0 : opcion.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -100,13 +90,9 @@ public class Voto implements Serializable{
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Voto [opcion=" + opcion + ", lugar=" + lugar + ", numero=" + numero + "]";
 	}
 
-
-	
-		
 }

@@ -1,14 +1,16 @@
 package es.uniovi.asw.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ConfId {
+public class ConfId implements Serializable {
 
-	 Date fecha;
-	 int horaInicio;
-	 int horaFin;
-	
-	 @Override
+	private static final long serialVersionUID = 1L;
+	Date fecha;
+	int horaInicio;
+	int horaFin;
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -17,6 +19,7 @@ public class ConfId {
 		result = prime * result + horaInicio;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -37,6 +40,5 @@ public class ConfId {
 			return false;
 		return true;
 	}
-	 
-	 
+
 }

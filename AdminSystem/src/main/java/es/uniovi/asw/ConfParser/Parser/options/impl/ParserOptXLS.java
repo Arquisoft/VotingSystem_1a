@@ -10,30 +10,29 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import es.uniovi.asw.ConfParser.Parser.options.ParserOpt;
 
-public class ParserOptXLS implements ParserOpt{
+public class ParserOptXLS implements ParserOpt {
 
 	@Override
 	public List<String> leerDatos(File fichero) {
-		
+
 		List<String> opciones = new ArrayList<>();
 		Workbook wB = null;
 
 		try {
 			wB = Workbook.getWorkbook(fichero);
-			
-		} catch (BiffException e) {		
+
+		} catch (BiffException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		Sheet hoja = wB.getSheet(0);
-	
-				
-		for(int i=1;i<hoja.getRows();i++){
-			opciones.add(hoja.getCell(0,i).getContents());
+
+		for (int i = 1; i < hoja.getRows(); i++) {
+			opciones.add(hoja.getCell(0, i).getContents());
 		}
-		
+
 		return opciones;
 	}
 

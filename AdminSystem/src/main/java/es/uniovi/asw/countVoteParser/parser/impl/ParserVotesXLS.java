@@ -12,23 +12,23 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import es.uniovi.asw.countVoteParser.parser.ParserVotes;
 
-public class ParserVotesXLS implements ParserVotes{
+public class ParserVotesXLS implements ParserVotes {
 
 	@Override
 	public List<Map<String, String>> leerDatos(File fichero) {
 		List<Map<String, String>> recuentos = new ArrayList<>();
-		
+
 		Workbook wB = null;
 
 		try {
 			wB = Workbook.getWorkbook(fichero);
-			
-		} catch (BiffException e) {		
+
+		} catch (BiffException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		Sheet censos = wB.getSheet(0);
 		for (int i = 1; i < censos.getRows(); i++) {
 			Map<String, String> recuento = new HashMap<>();
@@ -37,9 +37,8 @@ public class ParserVotesXLS implements ParserVotes{
 			recuento.put("numero", censos.getCell(2, i).getContents());
 			recuentos.add(recuento);
 		}
-		
+
 		return recuentos;
 	}
 
-	
 }
