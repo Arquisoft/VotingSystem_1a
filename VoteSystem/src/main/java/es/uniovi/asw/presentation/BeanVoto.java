@@ -3,6 +3,7 @@ package es.uniovi.asw.presentation;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -35,7 +36,7 @@ public class BeanVoto implements Serializable {
 		System.out.println("BeanVoto PostConstruct");
 
 	}
-
+	@SuppressWarnings( "deprecation" )
 	public String votar(OpcionVoto opcion) {
 		WebApplicationContext ctx = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleVoteService vote = ctx.getBean(SimpleVoteService.class);
@@ -44,12 +45,16 @@ public class BeanVoto implements Serializable {
 		SimpleConfiguracionService config = ctx1.getBean(SimpleConfiguracionService.class);
 
 		Configuracion c = config.getConf();
-		Date date = getFecha(c.getFecha());
+		String s = c.getFecha().toString();
+		String[] trozos = s.split(" ");//divido el timestamp en la fecha y la hora
+		s=trozos[0];//cojo la fecha que necesito
 		Voto v = vote.getVoteBy(opcion.getNombre());
-		Date actual = new Date();
+		Timestamp actual = new Timestamp(new Date().getTime());
+		trozos=actual.toString().split(" ");
+		String act  = trozos[0];
 
-		if (date.compareTo(actual) == 0 && actual.getTime() >= c.getHoraInicio() 
-				&& actual.getTime() <= c.getHoraFin()) {
+		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() 
+				&& actual.getHours() <= c.getHoraFin()) {
 			if (v != null)
 				vote.updateVote(opcion.getNombre());
 			else
@@ -90,14 +95,13 @@ public class BeanVoto implements Serializable {
 	}
 
 	private Date getFecha(Date date) {
-		String s = date.toString();
-		String[] trozos = s.split(" ");
+	
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		Date inicioFormateado = null;
 		try {
-			inicioFormateado = new Date(formato.parse(trozos[0]).getTime());
+			inicioFormateado = new Date(formato.parse(date.toString()).getTime());
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return inicioFormateado;
