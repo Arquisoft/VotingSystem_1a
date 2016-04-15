@@ -35,13 +35,13 @@ public class BeanVoto implements Serializable {
 		WebApplicationContext ctx = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleVoteService vote = ctx.getBean(SimpleVoteService.class);
 		Voto v = vote.getVoteBy(opcion.getNombre());
-		
-			if (v != null)
-				vote.updateVote(opcion.getNombre());
-			else
-				vote.insertVote(opcion.getNombre());
-		
-			setVotado(true);
+
+		if (v != null)
+			vote.updateVote(opcion.getNombre());
+		else
+			vote.insertVote(opcion.getNombre());
+
+		setVotado(true);
 		return null;
 	}
 
@@ -51,9 +51,9 @@ public class BeanVoto implements Serializable {
 
 		votos = (OpcionVoto[]) vote.getAllVoteOptions().toArray(new OpcionVoto[0]);
 	}
-	
+
 	private boolean votado;
-	
+
 	public boolean isVotado() {
 		return votado;
 	}

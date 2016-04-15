@@ -18,8 +18,7 @@ public class Configuracion {
 	private Date fecha;
 	private Time horaInicio;
 	private Time horaFin;
-	
-	
+
 	@Override
 	public String toString() {
 		return "Configuracion [id=" + id + ", fecha=" + fecha + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin
@@ -51,29 +50,32 @@ public class Configuracion {
 		return true;
 	}
 
-	public Configuracion(){
+	public Configuracion() {
 
-	}	
-	
+	}
+
 	public Date getFecha() {
 		return fecha;
 	}
+
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
 	public Time getHoraInicio() {
 		return horaInicio;
 	}
+
 	public void setHoraInicio(Time horaInicio) {
 		this.horaInicio = horaInicio;
 	}
+
 	public Time getHoraFin() {
 		return horaFin;
 	}
+
 	public void setHoraFin(Time horaFin) {
 		this.horaFin = horaFin;
 	}
-	
-	
 
 }

@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import es.uniovi.asw.model.Votante;
 
 @Repository
-public interface VotantesRepository extends CrudRepository<Votante, String> { 
+public interface VotantesRepository extends CrudRepository<Votante, String> {
 
-	   public Votante findByDni(String dni);
-	
+	public Votante findByDni(String dni);
+
 }

@@ -5,10 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import es.uniovi.asw.model.LugarVoto;
 
-
 @Repository
-public interface MesaRepository extends CrudRepository<LugarVoto, Long> { 
+public interface MesaRepository extends CrudRepository<LugarVoto, Long> {
 
-	   public LugarVoto findByid(Long id);
-	   
+	public LugarVoto findByid(Long id);
+
 }

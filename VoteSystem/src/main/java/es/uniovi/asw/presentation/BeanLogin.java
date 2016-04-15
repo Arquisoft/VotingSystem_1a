@@ -14,7 +14,7 @@ import org.springframework.web.jsf.FacesContextUtils;
 import es.uniovi.asw.business.impl.SimpleLoginService;
 import es.uniovi.asw.model.UserLogin;
 
-@ManagedBean(name="login")
+@ManagedBean(name = "login")
 @RequestScoped
 public class BeanLogin implements Serializable {
 	private static final long serialVersionUID = 6L;
@@ -25,46 +25,45 @@ public class BeanLogin implements Serializable {
 	public BeanLogin() {
 		System.out.println("BeanLogin - No existia");
 	}
-	
-	 @PostConstruct
-	    public void init(){
-	        System.out.println("BeanLogin PostConstruct");        
-	        this.result="";
-	    }
 
-	public String verify() {		
-		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+	@PostConstruct
+	public void init() {
+		System.out.println("BeanLogin PostConstruct");
+		this.result = "";
+	}
+
+	public String verify() {
+		WebApplicationContext ctx = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
-		
+
 		boolean yaVoto = login.comprobarUsuario(dni);
-		
-		if(!yaVoto){
-			
-		UserLogin user = login.verify(dni, password);
-		if (user != null) {
-			putUserInSession(user);
-			return "principal";
+
+		if (!yaVoto) {
+
+			UserLogin user = login.verify(dni, password);
+			if (user != null) {
+				putUserInSession(user);
+				return "principal";
+			}
+
+			setResult("Contraseña o usuario incorrecto");
+
 		}
-		
-		setResult("Contraseña o usuario incorrecto");
-		
-		}
-		
-		else{
+
+		else {
 			setResult("Este usuario ya ha votado");
 		}
-		
+
 		return null;
 	}
 
-	public String closeSession(){
+	public String closeSession() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "login";
 	}
-	
+
 	private void putUserInSession(UserLogin user) {
-		Map<String, Object> session = FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap();
+		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		session.put("LOGGEDIN_USER", user);
 	}
 

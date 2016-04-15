@@ -3,14 +3,12 @@ package es.uniovi.asw.model;
 import java.io.Serializable;
 
 public class VotoId implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	String opcion;
-	 long lugar;
-	
-	 
-	 
-	 @Override
+	long lugar;
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -18,6 +16,7 @@ public class VotoId implements Serializable {
 		result = prime * result + ((opcion == null) ? 0 : opcion.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -36,7 +35,5 @@ public class VotoId implements Serializable {
 			return false;
 		return true;
 	}
-	 
-	 
 
 }
