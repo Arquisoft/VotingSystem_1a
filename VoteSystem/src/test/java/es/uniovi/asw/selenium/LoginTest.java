@@ -50,7 +50,7 @@ public class LoginTest {
 			capabilities.setCapability("platform", "OS X 10.11");
 			capabilities.setCapability("version", "45");
 			capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
-			capabilities.setCapability("build", "Test Login");
+			capabilities.setCapability("name", "Test Login");
 
 			driver = new RemoteWebDriver(saucelabs, capabilities);
 		} else {

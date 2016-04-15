@@ -53,7 +53,7 @@ public class VoteTest {
 			capabilities.setCapability("platform", "OS X 10.11");
 			capabilities.setCapability("version", "45");
 			capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
-			capabilities.setCapability("build", "Test Vote");
+			capabilities.setCapability("name", "Test Vote");
 			driver = new RemoteWebDriver(saucelabs, capabilities);
 		} else {
 			driver = new FirefoxDriver();
