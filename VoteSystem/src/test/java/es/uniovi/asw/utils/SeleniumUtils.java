@@ -1,4 +1,4 @@
-package es.uniovi.asw.selenium.utils;
+package es.uniovi.asw.utils;
 
 
 import java.util.List;
@@ -13,6 +13,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumUtils {
+	
+		public static WebDriver driver;
+		
+		public static void setDriver(WebDriver driverAux){
+			driver = driverAux;
+		}
 	
 	    //Mueve el ratón a la opción de menú submenu(desplegable). Evento hover
 	    //y clicka la opcion opcionclick
@@ -67,6 +73,14 @@ public class SeleniumUtils {
 		//como para elementos que estan ocultos y se hace visibles
 		static public List<WebElement> EsperaCargaPagina(WebDriver driver, String criterio, String id, int timeout)
 		{
+			String busqueda;
+			if (criterio.equals("id")) busqueda = "//*[contains(@id,'" + id + "')]";
+			else if (criterio.equals("class")) busqueda = "//*[contains(@class,'" + id + "')]";
+			else busqueda = "//*[contains(text(),'" + id + "')]";
+			return EsperaCargaPaginaxpath(driver, busqueda, timeout);
+		}
+
+		public static List<WebElement> EsperaCargaPaginaSteps( String criterio, String id, int timeout) {
 			String busqueda;
 			if (criterio.equals("id")) busqueda = "//*[contains(@id,'" + id + "')]";
 			else if (criterio.equals("class")) busqueda = "//*[contains(@class,'" + id + "')]";

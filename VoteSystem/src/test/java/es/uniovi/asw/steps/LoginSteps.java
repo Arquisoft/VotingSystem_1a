@@ -1,77 +1,35 @@
 package es.uniovi.asw.steps;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.openqa.selenium.WebElement;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.util.Assert;
-import org.springframework.web.context.WebApplicationContext;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import es.uniovi.asw.Application;
-import es.uniovi.asw.selenium.utils.SeleniumUtils;
+import es.uniovi.asw.utils.SeleniumUtils;
 
-@ContextConfiguration(classes=Application.class, loader=SpringApplicationContextLoader.class)
+@ContextConfiguration(classes = Application.class, loader = SpringApplicationContextLoader.class)
 @IntegrationTest
 @WebAppConfiguration
 public class LoginSteps {
-	
-	  @Autowired
-	  protected WebApplicationContext context;
 
-	  protected MockMvc mvc;
-	  protected MvcResult result;
-	  
-	  @Value("${local.server.port}")
-	  protected int port;
-	  
-	  
-	  WebDriver driver;
+	GeneralSteps gs = new GeneralSteps();
 
-	
-
-	  @Given("^I'm a user and on the /login\\.xhtml page$")
-	  public void i_m_a_user_and_on_the_login_xhtml_page() throws Throwable {
-		  driver = new FirefoxDriver();
-		 driver.get("localhost:8080");
-	  }
-
-	@Then("^I fill the DNI field$")
-	public void i_fill_the_DNI_field() throws Throwable {
-		 SeleniumUtils.EsperaCargaPagina(driver, "id", "form-login:name", 10);
-		 driver.findElement(By.id("form-login:name")).sendKeys("45443827R");
+	@Given("^I'm a user and on the /login\\.xhtml page$")
+	public void i_m_a_user_and_on_the_login_xhtml_page() throws Throwable {
+		gs.establecerDriver();
+		SeleniumUtils.driver.get("localhost:8080");
 	}
 
-	@Then("^I fill the Password field$")
-	public void i_fill_the_Password_field() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-		driver.findElement(By.id("form-login:password")).sendKeys("fcW3i1ciT8");
+	@Then("^I fill the User DNI field writing \"([^\"]*)\"$")
+	public void i_fill_the_User_DNI_field_writing(String arg1) throws Throwable {
+		List<WebElement> dni = SeleniumUtils.EsperaCargaPaginaSteps("id", "form-login:name", 3);
+		dni.get(0).sendKeys("45443827R");
 	}
 
-	@Then("^I click the login button$")
-	public void i_click_the_login_button() throws Throwable {
-		driver.findElement(By.id("form-login:login")).click();       
-	}
-
-	@Then("^I receive the string \"([^\"]*)\"$")
-	public void i_receive_the_string(String arg1) throws Throwable {
-		SeleniumUtils.EsperaCargaPagina(driver, "text", arg1, 10);
-	}
-	
 }
