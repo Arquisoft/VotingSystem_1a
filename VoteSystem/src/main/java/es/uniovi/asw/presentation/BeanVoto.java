@@ -54,9 +54,13 @@ public class BeanVoto implements Serializable {
 				vote.updateVote(opcion.getNombre());
 			else
 				vote.insertVote(opcion.getNombre());
+			setResult("El usuario ya ha votado");
+			setVotado(true);
+		} else {
+			setVotado(true);
+			setResult("Esta fuera de plazo de votacion");
 		}
 
-		setVotado(true);
 		return null;
 	}
 
@@ -67,14 +71,14 @@ public class BeanVoto implements Serializable {
 		votos = (OpcionVoto[]) vote.getAllVoteOptions().toArray(new OpcionVoto[0]);
 	}
 
-	private boolean votado;
+	private String result;
 
-	public boolean isVotado() {
-		return votado;
+	public String getResult() {
+		return result;
 	}
 
-	public void setVotado(boolean votado) {
-		this.votado = votado;
+	public void setResult(String result) {
+		this.result = result;
 	}
 
 	public OpcionVoto[] getVotos() {
@@ -84,6 +88,16 @@ public class BeanVoto implements Serializable {
 	public void setVotos(OpcionVoto[] votos) {
 		this.votos = votos;
 	}
+
+	public boolean isVotado() {
+		return votado;
+	}
+
+	public void setVotado(boolean votado) {
+		this.votado = votado;
+	}
+
+	private boolean votado;
 
 	private String getFecha(String date) {
 		String[] trozos = date.split(" ");// divido el timestamp en la fecha y

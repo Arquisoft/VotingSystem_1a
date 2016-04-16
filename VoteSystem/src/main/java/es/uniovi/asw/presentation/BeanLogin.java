@@ -1,6 +1,8 @@
 package es.uniovi.asw.presentation;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -11,7 +13,9 @@ import javax.faces.context.FacesContext;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.jsf.FacesContextUtils;
 
+import es.uniovi.asw.business.impl.SimpleConfiguracionService;
 import es.uniovi.asw.business.impl.SimpleLoginService;
+import es.uniovi.asw.model.Configuracion;
 import es.uniovi.asw.model.UserLogin;
 
 @ManagedBean(name = "login")
@@ -32,27 +36,37 @@ public class BeanLogin implements Serializable {
 		this.result = "";
 	}
 
+	@SuppressWarnings("deprecation")
 	public String verify() {
 		WebApplicationContext ctx = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
 
-		boolean yaVoto = login.comprobarUsuario(dni);
+		WebApplicationContext ctx1 = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+		SimpleConfiguracionService config = ctx1.getBean(SimpleConfiguracionService.class);
 
-		if (!yaVoto) {
+		Configuracion c = config.getConf();
+		String s = getFecha(c.getFecha().toString());
+		Timestamp actual = new Timestamp(new Date().getTime());
+		String act = getFecha(actual.toString());
 
-			UserLogin user = login.verify(dni, password);
-			if (user != null) {
-				putUserInSession(user);
-				return "principal";
+		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() && actual.getHours() <= c.getHoraFin()) {
+			boolean yaVoto = login.comprobarUsuario(dni);
+			if (!yaVoto) {
+
+				UserLogin user = login.verify(dni, password);
+				if (user != null) {
+					putUserInSession(user);
+					return "principal";
+				}
+
+				setResult("Contraseña o usuario incorrecto");
 			}
 
-			setResult("Contraseña o usuario incorrecto");
-
-		}
-
-		else {
-			setResult("Este usuario ya ha votado");
-		}
+			else {
+				setResult("Este usuario ya ha votado");
+			}
+		} else
+			setResult("El periodo de votación a finalizado");
 
 		return null;
 	}
@@ -89,5 +103,13 @@ public class BeanLogin implements Serializable {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	private String getFecha(String date) {
+		String[] trozos = date.split(" ");// divido el timestamp en la fecha y
+											// la hora
+		date = trozos[0];// cojo la fecha que necesito
+		return date;
+
 	}
 }
