@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 
 import es.uniovi.asw.DBVote.InsertConf;
 import es.uniovi.asw.DBVote.Jpa;
@@ -77,8 +78,9 @@ public class InsertConfP implements InsertConf{
 					if(opciones.get(i).getNombre() != "" && opciones.get(i).getNombre() != null )
 						em.persist(opciones.get(i));
 				}
-
 				trx.commit();
+				
+				
 			} catch (PersistenceException e) {
 				System.out.println("No se ha podido conectar con la base de datos");
 
