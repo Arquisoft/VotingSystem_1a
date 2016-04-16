@@ -11,14 +11,21 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/")
 public class ControllerLogin {
 
-  private static final Logger LOG = LoggerFactory.getLogger(ControllerLogin.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ControllerLogin.class);
 
-  @RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public RedirectView localRedirect() {
+<<<<<<< HEAD
 	  	LOG.info("Launching Application");
 	    RedirectView redirectView = new RedirectView();
 	    redirectView.setUrl("/login.xhtml");
 	    return redirectView;
+=======
+		LOG.info("Launching Application");
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl("./login.xhtml");
+		return redirectView;
+>>>>>>> master
 	}
-  
+
 }

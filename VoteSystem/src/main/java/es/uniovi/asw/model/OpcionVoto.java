@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TOpciones")
+@Table(name = "TOpciones")
 public class OpcionVoto {
 
 	@Id
@@ -48,6 +48,5 @@ public class OpcionVoto {
 	public String toString() {
 		return "OpcionVoto [nombre=" + nombre + "]";
 	}
-	
-	
+
 }

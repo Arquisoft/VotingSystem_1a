@@ -9,7 +9,9 @@ public interface ParserPlaces {
 	/**
 	 * Devuelve una lista de mapas. Cada mapa contiene la informacion de cada
 	 * lugar donde se realiza la votacion
-	 * @param fichero con los lugares
+	 * 
+	 * @param fichero
+	 *            con los lugares
 	 * @return Lista de mapas con informacion de los lugares
 	 */
 	List<Map<String, String>> leerDatos(File fichero);

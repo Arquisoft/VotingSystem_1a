@@ -12,23 +12,23 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
 
-public class ParserPlacesXLS implements ParserPlaces{
+public class ParserPlacesXLS implements ParserPlaces {
 
 	@Override
 	public List<Map<String, String>> leerDatos(File fichero) {
 		List<Map<String, String>> lugares = new ArrayList<>();
-		
+
 		Workbook wB = null;
 
 		try {
 			wB = Workbook.getWorkbook(fichero);
-			
-		} catch (BiffException e) {		
+
+		} catch (BiffException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		Sheet hoja = wB.getSheet(0);
 		for (int i = 1; i < hoja.getRows(); i++) {
 			Map<String, String> lugar = new HashMap<>();
@@ -39,7 +39,7 @@ public class ParserPlacesXLS implements ParserPlaces{
 			lugar.put("pais", hoja.getCell(4, i).getContents());
 			lugares.add(lugar);
 		}
-		
+
 		return lugares;
 	}
 

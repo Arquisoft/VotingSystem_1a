@@ -3,39 +3,38 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
-<p:panel id="panelLogin" header="Iniciar Sesion">
-	<h:form id="form-login">
-	<p:panelGrid id="Grid" columns="2" cellpadding="5">
+
+	<p:panel id="panelLogin" header="Iniciar Sesion">
+		<h:form id="form-login">
+			<p:panelGrid id="Grid" columns="2" cellpadding="5">
 		
 		ID:
 		<h:panelGroup>
-			<p:inputText id="name" value="#{loginMesa.id}" required="true"
-				requiredMessage="ID requerido" />
-			<p:message for="name" />
-		</h:panelGroup>
+					<p:inputText id="name" value="#{loginMesa.id}" required="true"
+						requiredMessage="ID requerido" />
+					<p:message for="name" />
+				</h:panelGroup>
   
 		Contraseña:
 		<h:panelGroup>
-			<p:password id="password" value="#{loginMesa.password}" required="true"
-				requiredMessage="Contraseña requerida" />
-			<p:message for="password" />
-		</h:panelGroup>
+					<p:password id="password" value="#{loginMesa.password}"
+						required="true" requiredMessage="Contraseña requerida" />
+					<p:message for="password" />
+				</h:panelGroup>
 
-		<h:outputText id="msgAlta" value="#{loginMesa.result}" />
+				<h:outputText id="msgAlta" value="#{loginMesa.result}" />
 
-		<p:commandButton value="Login"
-			action="#{loginMesa.verify}" update="Grid" process="@form"
-			id="login">
-		</p:commandButton>
-		
+				<p:commandButton value="Login" action="#{loginMesa.verify}"
+					update="Grid" process="@form" id="login">
+				</p:commandButton>
 
-		
-	</p:panelGrid>
-	</h:form>
-	
-	<h:form>
+
+
+			</p:panelGrid>
+		</h:form>
+
+		<h:form>
 			<p:commandLink action="login.xhtml" style="float:right">Acceso Votantes</p:commandLink>
-	</h:form>
-		</p:panel>
+		</h:form>
+	</p:panel>
 </ui:composition>

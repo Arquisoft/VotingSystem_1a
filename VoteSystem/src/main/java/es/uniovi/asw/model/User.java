@@ -13,28 +13,27 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	@Column(name="NAME")
+
+	@Column(name = "NAME")
 	private String name;
-	
-	
-	@Column(name="NIF")
+
+	@Column(name = "NIF")
 	private String nif;
-	
-	@Column(name="EMAIL")
+
+	@Column(name = "EMAIL")
 	private String email;
-	
-	@Column(name="CODIGOMESA")
+
+	@Column(name = "CODIGOMESA")
 	private int codigoMesa;
-	
-	@Column(name="Contraseña")
+
+	@Column(name = "Contraseña")
 	private String password;
 
 	public User() {
 
 	}
 
-	public User(String name, String NIF, String email, int codigoMesa,String password) {
+	public User(String name, String NIF, String email, int codigoMesa, String password) {
 		this.setName(name);
 		this.setNIF(NIF);
 		this.setEmail(email);
@@ -105,10 +104,9 @@ public class User {
 				+ ", contraseña=" + password + "]";
 	}
 
-	public Long getId(){
+	public Long getId() {
 		return id;
 	}
-
 
 	public void setPassword(String password) {
 		this.password = password;
@@ -117,7 +115,5 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
-
-
 
 }

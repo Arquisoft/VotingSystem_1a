@@ -5,17 +5,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TVotantes")
+@Table(name = "TVotantes")
 public class Votante {
 
 	@Id
 	public String dni;
-	
-	public Votante(){
-		
+
+	public Votante() {
+
 	}
-	
-	public Votante(String dni){
+
+	public Votante(String dni) {
 		this.dni = dni;
 	}
 

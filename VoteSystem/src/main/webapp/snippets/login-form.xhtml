@@ -3,20 +3,21 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
-<p:panel id="panelLogin" header="Iniciar Sesion">
-	<h:form id="form-login">
-	<p:panelGrid id="Grid" columns="2" cellpadding="5">
+
+	<p:panel id="panelLogin" header="Iniciar Sesion">
+		<h:form id="form-login">
+			<p:panelGrid id="Grid" columns="2" cellpadding="5">
 		
 		DNI:
 		<h:panelGroup>
-			<p:inputText id="name" value="#{login.dni}" required="true"
-				requiredMessage="DNI requerido" />
-			<p:message for="name" />
-		</h:panelGroup>
+					<p:inputText id="name" value="#{login.dni}" required="true"
+						requiredMessage="DNI requerido" />
+					<p:message for="name" />
+				</h:panelGroup>
   
 		Contraseña:
 		<h:panelGroup>
+<<<<<<< HEAD
 			<p:password id="password" value="#{login.password}" required="true"
 				requiredMessage="Contraseña requerida" />
 			<p:message for="password" />
@@ -37,4 +38,28 @@
 	<h:commandLink style="float:right" action="loginMesa.xhtml">Acceso Mesa Electoral</h:commandLink>
 	</h:form>
 		</p:panel>
+=======
+					<p:password id="password" value="#{login.password}" required="true"
+						requiredMessage="Contraseña requerida" />
+					<p:message for="password" />
+				</h:panelGroup>
+
+				<h:outputText id="msgAlta" value="#{login.result}" />
+
+				<p:commandButton value="Login" action="#{login.verify}"
+					actionListener="#{voto.opcionesVoto}" update="Grid" process="@form"
+					id="login">
+				</p:commandButton>
+
+			</p:panelGrid>
+
+
+
+		</h:form>
+
+		<h:form>
+			<h:commandLink style="float:right" action="loginMesa.xhtml">Acceso Mesa Electoral</h:commandLink>
+		</h:form>
+	</p:panel>
+>>>>>>> master
 </ui:composition>

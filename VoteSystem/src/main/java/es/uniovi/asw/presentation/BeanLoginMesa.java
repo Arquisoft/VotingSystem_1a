@@ -15,11 +15,12 @@ import es.uniovi.asw.business.impl.SimpleLoginMesaService;
 import es.uniovi.asw.business.impl.SimpleMesaService;
 import es.uniovi.asw.model.LugarVoto;
 
-@ManagedBean(name="loginMesa")
+@ManagedBean(name = "loginMesa")
 @RequestScoped
 public class BeanLoginMesa implements Serializable {
 	private static final long serialVersionUID = 6L;
 	private Long id;
+
 	public Long getId() {
 		return id;
 	}
@@ -33,20 +34,20 @@ public class BeanLoginMesa implements Serializable {
 
 	public BeanLoginMesa() {
 		System.out.println("BeanLoginMesa - No existia");
-		id=null;
-		result="";
+		id = null;
+		result = "";
 	}
-	
-	 @PostConstruct
-	    public void init(){
-	        System.out.println("BeanLoginMesa PostConstruct");        
-	        this.result="";
-	    }
 
-	public String verify() {		
-		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+	@PostConstruct
+	public void init() {
+		System.out.println("BeanLoginMesa PostConstruct");
+		this.result = "";
+	}
+
+	public String verify() {
+		WebApplicationContext ctx = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleLoginMesaService login = ctx.getBean(SimpleLoginMesaService.class);
-		
+
 		LugarVoto mesa = login.verify(id, password);
 		if (mesa != null) {
 			putMesaInSession(mesa);
@@ -56,17 +57,19 @@ public class BeanLoginMesa implements Serializable {
 		return null;
 	}
 
-	public String closeSession(){
+	public String closeSession() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "loginMesa";
 	}
-	
+
 	private void putMesaInSession(LugarVoto mesa) {
-		Map<String, Object> session = FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap();
+		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		session.put("LOGGEDIN_MESA", mesa);
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> master
 
 	public String getPassword() {
 		return password;

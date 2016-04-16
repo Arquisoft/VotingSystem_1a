@@ -7,9 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TPlaces")
-public class LugarVoto implements Serializable{
-	
+@Table(name = "TPlaces")
+public class LugarVoto implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -20,9 +20,9 @@ public class LugarVoto implements Serializable{
 	private String contraseña;
 	private String ciudad;
 	private String pais;
-	
-	public LugarVoto(){
-		
+
+	public LugarVoto() {
+
 	}
 
 	public LugarVoto(long id, String nombre, String contraseña, String ciudad, String pais) {
@@ -126,5 +126,4 @@ public class LugarVoto implements Serializable{
 				+ ", pais=" + pais + "]";
 	}
 
-	
 }

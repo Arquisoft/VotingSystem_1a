@@ -1,5 +1,6 @@
 package es.uniovi.asw.business.impl;
 
+import es.uniovi.asw.business.ConfiguracionService;
 import es.uniovi.asw.business.LoginService;
 import es.uniovi.asw.business.OptionVoteService;
 import es.uniovi.asw.business.ServicesFactory;
@@ -21,6 +22,11 @@ public class SimpleServicesFactory implements ServicesFactory {
 	@Override
 	public VoteService createVoteService() {
 		return new SimpleVoteService();
+	}
+
+	@Override
+	public ConfiguracionService createConfService() {
+		return new SimpleConfiguracionService();
 	}
 
 

@@ -1,6 +1,5 @@
 package es.uniovi.asw.DBVote;
 
-
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
@@ -17,7 +16,6 @@ import org.xml.sax.SAXException;
 
 public class Jpa {
 
-	
 	private static EntityManagerFactory emf = null;
 	private static ThreadLocal<EntityManager> emThread = new ThreadLocal<EntityManager>();
 
@@ -39,16 +37,17 @@ public class Jpa {
 		return emf;
 	}
 
-	public static final void closeEntityManagerFactory(){
-		if(emf != null){
+	public static final void closeEntityManagerFactory() {
+		if (emf != null) {
 			emf.close();
 		}
 	}
+
 	private static String loadPersistentUnitName() {
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
- 
+
 			Document doc = db.parse(Jpa.class.getResourceAsStream("/META-INF/persistence.xml"));
 
 			doc.getDocumentElement().normalize();
@@ -64,6 +63,5 @@ public class Jpa {
 			throw new RuntimeException(e1);
 		}
 	}
-	
 
 }

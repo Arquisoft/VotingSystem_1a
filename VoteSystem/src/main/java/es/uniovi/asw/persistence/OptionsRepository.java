@@ -9,5 +9,5 @@ import es.uniovi.asw.model.OpcionVoto;
 @Repository
 public interface OptionsRepository extends CrudRepository<OpcionVoto, String> {
 
-	   public List<OpcionVoto> findAll();
+	public List<OpcionVoto> findAll();
 }

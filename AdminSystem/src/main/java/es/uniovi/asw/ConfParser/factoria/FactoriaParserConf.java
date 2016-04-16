@@ -5,7 +5,7 @@ import es.uniovi.asw.ConfParser.Parser.conf.impl.ParserConfXLS;
 
 public class FactoriaParserConf {
 
-	public static ParserConf crearParserXLS(){
+	public static ParserConf crearParserXLS() {
 		return new ParserConfXLS();
 	}
 }

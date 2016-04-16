@@ -32,22 +32,22 @@ import es.uniovi.asw.countVoteParser.parser.ParserVotes;
  *
  */
 public class LoadConfiguration {
-	
+
 	static Map<String, ParserOpt> factoriaOptions = new HashMap<>();
 	static Map<String, ParserPlaces> factoriaPlaces = new HashMap<>();
 	static Map<String, ParserConf> factoriaConf = new HashMap<>();
 	static Map<String, ParserVotes> factoriaVotes = new HashMap<>();
-	
-	 static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
-	 ROptions rOptions = null;
-	 RConf rConf = null;
-	 RPlaces rPlaces = null;
-	 
-	 RVotes rVote = null;
-	 
+	static List<String> opcionesFicherosEntrada = new LinkedList<String>();
+
+	ROptions rOptions = null;
+	RConf rConf = null;
+	RPlaces rPlaces = null;
+
+	RVotes rVote = null;
+
 	public static void main(String... args) {
-		
+
 		cargarFactorias();
 		cargarOpciones();
 		LoadConfiguration runner = new LoadConfiguration();
@@ -55,57 +55,55 @@ public class LoadConfiguration {
 
 	}
 
-	void run(String... args) {		
+	void run(String... args) {
 		Options options = new Options();
 		options.addOption("conf", false, "configuration");
 		options.addOption("count", false, "configuration");
 		options.addOption("x", false, "add xls file");
 		options.addOption("h", false, "help");
-		
+
 		CommandLineParser cLParser = new DefaultParser();
 		CommandLine cmd = null;
-		
+
 		try {
-			
+
 			cmd = cLParser.parse(options, args);
 
-			if(!cmd.hasOption("h")){
-			
-//			//Se comprueba si se inserto una opción para el fichero de entrada
-//			if(opcionFicheroEntrada(cmd)) {
-//				
+			if (!cmd.hasOption("h")) {
+
+				// //Se comprueba si se inserto una opción para el fichero de
+				// entrada
+				// if(opcionFicheroEntrada(cmd)) {
+				//
 				String sistema = args[0];
-				
-				if(sistema.equals("conf")){
+
+				if (sistema.equals("conf")) {
 					runConfigSystem(cmd, args);
-				}
-				else if(sistema.equals("count")){
+				} else if (sistema.equals("count")) {
 					runCountVotesSystem(cmd, args);
 				}
-						
-			
-			else {
-			    System.out.println("Opciones no válidas, puedes utilizar"
-			    		+ " la opción -h para apreder a utilizar el programa");
-			}
-			}else{
-				
+
+				else {
+					System.out.println("Opciones no válidas, puedes utilizar"
+							+ " la opción -h para apreder a utilizar el programa");
+				}
+			} else {
+
 				ayudaConfSystem();
 				ayudaCountVotes();
-				
+
 			}
-			
-		
-					
+
 		} catch (ParseException e) {
-//			e.printStackTrace();
+			// e.printStackTrace();
 		}
 		Jpa.closeEntityManagerFactory();
-	
+
 	}
 
 	/**
 	 * Ejecuta toda la logica necesaria del systema de configuracion
+	 * 
 	 * @param cmd
 	 * @param args
 	 */
@@ -113,31 +111,32 @@ public class LoadConfiguration {
 		ParserConf parserConf = null;
 		ParserPlaces parserPlaces = null;
 		ParserOpt parserOpt = null;
-		
-//				//Obtiene parser de ficheros de entrada especificado en las opciones				
+
+		// //Obtiene parser de ficheros de entrada especificado en las opciones
 		String option = cmd.getOptions()[0].getOpt();
 		if (opcionesFicherosEntrada.contains(option)) {
 			parserConf = factoriaConf.get(option);
 		}
-		
+
 		option = cmd.getOptions()[1].getOpt();
 		if (opcionesFicherosEntrada.contains(option)) {
 			parserOpt = factoriaOptions.get(option);
 		}
-		
+
 		option = cmd.getOptions()[2].getOpt();
 		if (opcionesFicherosEntrada.contains(option)) {
 			parserPlaces = factoriaPlaces.get(option);
 		}
-		
-		
-		//Funciona de momento para este en concreto
-		//java -jar AdminSystem/target/adminSystem-0.0.1.jar conf AdminSystem/conf.xls -x AdminSystem/options.xls -x AdminSystem/places.xls -x
+
+		// Funciona de momento para este en concreto
+		// java -jar AdminSystem/target/adminSystem-0.0.1.jar conf
+		// AdminSystem/conf.xls -x AdminSystem/options.xls -x
+		// AdminSystem/places.xls -x
 
 		rConf = new RConf(args[1], parserConf);
 		rOptions = new ROptions(args[3], parserOpt);
 		rPlaces = new RPlaces(args[5], parserPlaces);
-		
+
 		if (rOptions != null && rConf != null && rPlaces != null) {
 
 			rOptions.leerDatos();
@@ -146,152 +145,139 @@ public class LoadConfiguration {
 			try {
 				new InsertConfP().insertConfR();
 			} catch (Exception e) {
-				System.out.println("Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
+				System.out.println(
+						"Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
 			}
 		}
 	}
 
 	/**
 	 * Ejecuta la logica necesario del sistema de recuento de votos
+	 * 
 	 * @param cmd
 	 * @param args
 	 */
-	private void runCountVotesSystem(CommandLine cmd, String... args){
+	private void runCountVotesSystem(CommandLine cmd, String... args) {
 		ParserVotes parser = null;
-		
-//				//Obtiene parser de ficheros de entrada especificado en las opciones				
+
+		// //Obtiene parser de ficheros de entrada especificado en las opciones
 		String option = cmd.getOptions()[0].getOpt();
 		if (opcionesFicherosEntrada.contains(option)) {
 			parser = factoriaVotes.get(option);
 		}
-				
-		//Funciona de momento para este en concreto
-		//java -jar AdminSystem/target/adminSystem-0.0.1.jar count AdminSystem/votes.xls -x 
+
+		// Funciona de momento para este en concreto
+		// java -jar AdminSystem/target/adminSystem-0.0.1.jar count
+		// AdminSystem/votes.xls -x
 
 		rVote = new RVotes(args[1], parser);
-		
+
 		if (rVote != null) {
 			rVote.leerDatos();
 			try {
 				new InsertVoteP().insertVoteR();
 			} catch (Exception e) {
-				System.out.println("Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
+				System.out.println(
+						"Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
 			}
 		}
-		
+
 	}
-	
+
 	/**
 	 * Muestra la ayuda del sistema de configuracion
 	 */
 	private void ayudaConfSystem() {
-		System.out.println("------------------------------------------"
-				+ "----------------------------");
-		
+		System.out.println("------------------------------------------" + "----------------------------");
+
 		System.out.println("Ayuda para configuracion del sistema:");
-		System.out.println("Para utilizar el programa debe de "
-				+ "especificar el formato de los ficheros de entrada ");
-		
+		System.out.println("Para utilizar el programa debe de " + "especificar el formato de los ficheros de entrada ");
+
 		System.out.println();
-		
-		System.out.println("Los formatos de ficheros de entrada "
-				+ "permitidos son:");
-		
+
+		System.out.println("Los formatos de ficheros de entrada " + "permitidos son:");
+
 		System.out.println("  -x -> Archivos excel (Formato xls)");
-		
-		
+
 		System.out.println("Ejemplo: ");
-		
+
 		System.out.println("Datos leidos de xls:");
 
-		System.out.println("java -jar AdminSystem/target/adminSystem-0.0.1.jar "
-				+ "conf " 
-				+ "AdminSystem/conf.xls -x "
-				+ "AdminSystem/options.xls -x "
-				+ "AdminSystem/places.xls -x");
+		System.out.println("java -jar AdminSystem/target/adminSystem-0.0.1.jar " + "conf " + "AdminSystem/conf.xls -x "
+				+ "AdminSystem/options.xls -x " + "AdminSystem/places.xls -x");
 
-		System.out.println("------------------------------------------"
-				+ "----------------------------");
+		System.out.println("------------------------------------------" + "----------------------------");
 	}
-	
+
 	/**
 	 * Muestra la ayuda del sistema de recuento de votos
 	 */
 	private void ayudaCountVotes() {
-		System.out.println("------------------------------------------"
-				+ "----------------------------");
-		
+		System.out.println("------------------------------------------" + "----------------------------");
+
 		System.out.println("Ayuda para recuento de votos:");
-		System.out.println("Para utilizar el programa debe de "
-				+ "especificar el formato de los ficheros de entrada ");
-		
+		System.out.println("Para utilizar el programa debe de " + "especificar el formato de los ficheros de entrada ");
+
 		System.out.println();
-		
-		System.out.println("Los formatos de ficheros de entrada "
-				+ "permitidos son:");
-		
+
+		System.out.println("Los formatos de ficheros de entrada " + "permitidos son:");
+
 		System.out.println("  -x -> Archivos excel (Formato xls)");
-		
-		
+
 		System.out.println("Ejemplo: ");
-		
+
 		System.out.println("Datos leidos de xls:");
 
-		System.out.println("java -jar AdminSystem/target/adminSystem-0.0.1.jar "
-				+ "count " 
-				+ "AdminSystem/votes.xls -x ");
+		System.out.println(
+				"java -jar AdminSystem/target/adminSystem-0.0.1.jar " + "count " + "AdminSystem/votes.xls -x ");
 
-		System.out.println("------------------------------------------"
-				+ "----------------------------");
+		System.out.println("------------------------------------------" + "----------------------------");
 	}
-	
+
 	/**
-	 * Carga las factorias con los diferentes tipos de passwords en funcion de la opcion
+	 * Carga las factorias con los diferentes tipos de passwords en funcion de
+	 * la opcion
 	 */
 	private static void cargarFactorias() {
-		
-		//Factorias parsers
+
+		// Factorias parsers
 		factoriaOptions.put("x", FactoriaParserOption.crearParserXLS());
-		
-		factoriaConf.put("x",FactoriaParserConf.crearParserXLS());
-		
+
+		factoriaConf.put("x", FactoriaParserConf.crearParserXLS());
+
 		factoriaPlaces.put("x", FactoriaParserPlaces.crearParserXLS());
-		
+
 		factoriaVotes.put("x", FactoriaParserVotes.crearParserXLS());
-		
+
 	}
-	
 
 	/**
 	 * Guarda en colecciones las opciones disponibles
 	 * 
 	 */
 	private static void cargarOpciones() {
-		//Opciones de ficheros entrada
+		// Opciones de ficheros entrada
 		opcionesFicherosEntrada.add("x");
-		
+
 	}
 
 	/**
-	 * Comprueba si alguna de las opciones es para describir el 
-	 * fichero de entrada
+	 * Comprueba si alguna de las opciones es para describir el fichero de
+	 * entrada
+	 * 
 	 * @param cmd
 	 * @return
 	 */
-	public boolean opcionFicheroEntrada(CommandLine cmd){
-		
-		for(Option option: cmd.getOptions()){
-			if(opcionesFicherosEntrada.contains(option.getOpt())){
+	public boolean opcionFicheroEntrada(CommandLine cmd) {
+
+		for (Option option : cmd.getOptions()) {
+			if (opcionesFicherosEntrada.contains(option.getOpt())) {
 				return true;
 			}
-		}		
-		
-		return false;
-		
-		
-	}
-	
+		}
 
-	
-	
+		return false;
+
+	}
+
 }

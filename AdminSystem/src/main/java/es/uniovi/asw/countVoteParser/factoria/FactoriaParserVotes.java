@@ -8,6 +8,5 @@ public class FactoriaParserVotes {
 	public static ParserVotes crearParserXLS() {
 		return new ParserVotesXLS();
 	}
-	
 
 }
