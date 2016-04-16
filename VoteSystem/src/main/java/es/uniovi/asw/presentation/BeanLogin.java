@@ -51,12 +51,13 @@ public class BeanLogin implements Serializable {
 
 		WebApplicationContext ctx1 = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleConfiguracionService config = ctx1.getBean(SimpleConfiguracionService.class);
-/*
+
 		Configuracion c = config.getConf();
 		String s = getFecha(c.getFecha().toString());
 		Timestamp actual = new Timestamp(new Date().getTime());
 		String act = getFecha(actual.toString());
-*/
+		
+		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() && actual.getHours() <= c.getHoraFin()) {
 			boolean yaVoto = login.comprobarUsuario(dni);
 			if (!yaVoto) {
 
@@ -68,6 +69,7 @@ public class BeanLogin implements Serializable {
 
 				setResult("Contraseña o usuario incorrecto");
 			}
+		}
 
 			else {
 				setResult("Este usuario ya ha votado");

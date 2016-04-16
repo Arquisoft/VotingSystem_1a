@@ -22,13 +22,13 @@ public class LoginSteps {
 
 	@Given("^I'm a user and on the /login\\.xhtml page$")
 	public void i_m_a_user_and_on_the_login_xhtml_page() throws Throwable {
-		gs.establecerDriver();
+		gs.establecerDriver("Login Test");
 		SeleniumUtils.driver.get("localhost:8080");
 	}
 
 	@Then("^I fill the User DNI field writing \"([^\"]*)\"$")
 	public void i_fill_the_User_DNI_field_writing(String arg1) throws Throwable {
-		List<WebElement> dni = SeleniumUtils.EsperaCargaPaginaSteps("id", "form-login:name", 3);
+		List<WebElement> dni = SeleniumUtils.EsperaCargaPaginaSteps("id", "form-login:name", 10);
 		dni.get(0).sendKeys("45443827R");
 	}
 

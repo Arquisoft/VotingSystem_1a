@@ -41,7 +41,7 @@ public class GeneralSteps {
 
 	WebDriver driver;
 
-	protected void establecerDriver() {
+	protected void establecerDriver(String test) {
 		// http://apiwave.com/java/snippets/removal/org.openqa.selenium.remote.DesiredCapabilities?cursor=CrEBCg4KCHByaW9yaXR5EgIIGBKaAWoTc35maW5lLWJyYW5jaC04OTIyMXKCAQsSCkphdmFDb21taXQicnJzdHVkaW8vcnN0dWRpby8zZTI5YzIzYWVkYzNmODZkZGZhZTQ1ZTViYTA0OTQzMTUxMGIzMGUwL3NyYy5nd3QudGVzdC5vcmcucnN0dWRpby5zdHVkaW8uc2VsZW5pdW0uQm9vdFJTdHVkaW8uamF2YQwYACAA
 
 		sauceUser = System.getenv("SAUCE_USERNAME");
@@ -62,7 +62,7 @@ public class GeneralSteps {
 			capabilities.setCapability("platform", "OS X 10.11");
 			capabilities.setCapability("version", "45");
 			capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
-			capabilities.setCapability("name", "Test Vote");
+			capabilities.setCapability("name", test);
 			driver = new RemoteWebDriver(saucelabs, capabilities);
 		} else {
 			driver = new FirefoxDriver();
@@ -77,7 +77,7 @@ public class GeneralSteps {
 
 	@Then("^I fill the Password field writing \"([^\"]*)\"$")
 	public void i_fill_the_Password_field_writing(String arg1) throws Throwable {
-		List<WebElement> pass = SeleniumUtils.EsperaCargaPaginaSteps("id","form-login:password", 5);
+		List<WebElement> pass = SeleniumUtils.EsperaCargaPaginaSteps("id","form-login:password", 10);
 		pass.get(0).sendKeys(arg1);
 		
 	}
@@ -85,7 +85,7 @@ public class GeneralSteps {
 
 	@Then("^I receive the string \"([^\"]*)\"$")
 	public void i_receive_the_string(String arg1) throws Throwable {
-		SeleniumUtils.EsperaCargaPaginaSteps("text", arg1, 5);
+		SeleniumUtils.EsperaCargaPaginaSteps("text", arg1, 10);
 	}
 
 	@Then("^I close the browser$")
@@ -93,18 +93,23 @@ public class GeneralSteps {
 		
 		if (StepsUtil.getSauceUser() != null) {
 			SauceREST r = new SauceREST(StepsUtil.getSauceUser(),StepsUtil.getSaucePassword());
-			String sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+			String sessionId = (((RemoteWebDriver) SeleniumUtils.driver).getSessionId()).toString();
 			r.jobPassed(sessionId);
 
 		}
-		SeleniumUtils.driver.quit();
+		
+		if(driver!=null){
+			driver.quit();
+		}
 	}
 	
 	@Then("^I click the login button$")
 	public void i_click_the_User_login_button() throws Throwable {
-		List<WebElement> login = SeleniumUtils.EsperaCargaPaginaSteps("id","form-login:login", 5);
+		List<WebElement> login = SeleniumUtils.EsperaCargaPaginaSteps("id","form-login:login", 10);
 		login.get(0).click();  
 	}
+
+
 
 
 }

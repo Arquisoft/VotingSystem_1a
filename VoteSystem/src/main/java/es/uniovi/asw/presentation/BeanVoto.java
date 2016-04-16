@@ -39,10 +39,9 @@ public class BeanVoto implements Serializable {
 	public String votar(OpcionVoto opcion) {
 	WebApplicationContext ctx = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleVoteService vote = ctx.getBean(SimpleVoteService.class);
-		Voto v = vote.getVoteBy(opcion.getNombre());
 
 		WebApplicationContext ctx1 = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
-		/*SimpleConfiguracionService config = ctx1.getBean(SimpleConfiguracionService.class);
+		SimpleConfiguracionService config = ctx1.getBean(SimpleConfiguracionService.class);
 
 		Configuracion c = config.getConf();
 		String s = getFecha(c.getFecha().toString());
@@ -50,17 +49,17 @@ public class BeanVoto implements Serializable {
 		Timestamp actual = new Timestamp(new Date().getTime());
 		String act = getFecha(actual.toString());
 
-		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() && actual.getHours() <= c.getHoraFin()) {*/
+		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() && actual.getHours() <= c.getHoraFin()) {
 			if (v != null)
 				vote.updateVote(opcion.getNombre());
 			else
 				vote.insertVote(opcion.getNombre());
 			setResult("Ya ha votado, no puede realizar mas votos");
 			setVotado(true);
-	/*	}else {
+		}else {
 			setVotado(true);
 			setResult("Esta fuera de plazo de votacion");
-		}*/
+		}
 
 		return null;
 	}

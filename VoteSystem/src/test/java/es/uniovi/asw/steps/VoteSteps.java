@@ -12,7 +12,7 @@ public class VoteSteps {
 	
 	@Given("^I'm a user and I have logged in$")
 	public void i_m_a_user_and_I_have_logged_in() throws Throwable {
-		 gs.establecerDriver();
+		 gs.establecerDriver("Vote Test");
 		 gs.driver.get("localhost:8080");
 		 SeleniumUtils.EsperaCargaPagina(gs.driver, "id", "form-login:name", 10);
 		 gs.driver.findElement(By.id("form-login:name")).sendKeys("45443827R");

@@ -21,7 +21,7 @@ public class MesaLoginSteps{
 	
 	@Given("^I'm a member of the polling station and on the /loginMesa\\.xhtml page$")
 	public void i_m_a_member_of_the_polling_station_and_on_the_loginMesa_xhtml_page() throws Throwable {
-		gs.establecerDriver();
+		gs.establecerDriver("Mesa login Test");
 		gs.driver.get("localhost:8080");
 		gs.driver.findElement(By.linkText("Acceso Mesa Electoral")).click();
 	}
