@@ -28,18 +28,18 @@ public class AdminSystemTest {
 		
 		
 	}
-//	/**
-//	 * Comprueba que la configuracion introducida sea la correcta
-//	 * @throws Exception 
-//	 */
-//	@Test
-//	public void testConfiguracion(){
-//		//Entrada
-//		String[] args = {"conf","conf.xls","-x","options.xls","-x","places.xls","-x"};
-//		
-//		//Llamar al main
-////		LoadConfiguration.main(args);
-//		
+	/**
+	 * Comprueba que la configuracion introducida sea la correcta
+	 * @throws Exception 
+	 */
+	@Test
+	public void testConfiguracion(){
+		//Entrada
+		String[] args = {"conf","conf.xls","-x","options.xls","-x","places.xls","-x"};
+		
+		//Llamar al main
+		LoadConfiguration.main(args);
+		
 //		//Comprobar que los datos introducidos son correctos
 //		EntityManagerFactory emf = Jpa.getEmf();
 //		EntityManager em = emf.createEntityManager();
@@ -52,7 +52,7 @@ public class AdminSystemTest {
 //		for (int i = 0; i < votos.size(); i++) {
 //			Assert.assertEquals(votos.get(i).getNombre(), votosBD.get(i).getNombre());
 //		}
-//		
-//	}
+		
+	}
 
 }
