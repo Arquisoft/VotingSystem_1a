@@ -8,7 +8,10 @@
 	<persistence-unit name="AdminSystem" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-		
+		<class>es.uniovi.asw.model.Voto</class>
+		<class>es.uniovi.asw.model.LugarVoto</class>
+		<class>es.uniovi.asw.model.OpcionVoto</class>
+		<class>es.uniovi.asw.model.Configuracion</class>
 		
 		<properties>
 			
