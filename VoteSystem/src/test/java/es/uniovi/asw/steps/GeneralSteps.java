@@ -77,7 +77,7 @@ public class GeneralSteps {
 
 	@Then("^I fill the Password field writing \"([^\"]*)\"$")
 	public void i_fill_the_Password_field_writing(String arg1) throws Throwable {
-		List<WebElement> pass = SeleniumUtils.EsperaCargaPaginaSteps("id","form-login:password", 10);
+		List<WebElement> pass = SeleniumUtils.EsperaCargaPaginaSteps("id","form-login:password", 5);
 		pass.get(0).sendKeys(arg1);
 		
 	}
@@ -85,7 +85,7 @@ public class GeneralSteps {
 
 	@Then("^I receive the string \"([^\"]*)\"$")
 	public void i_receive_the_string(String arg1) throws Throwable {
-		SeleniumUtils.EsperaCargaPaginaSteps("text", arg1, 10);
+		SeleniumUtils.EsperaCargaPaginaSteps("text", arg1, 5);
 	}
 
 	@Then("^I close the browser$")
@@ -102,7 +102,7 @@ public class GeneralSteps {
 	
 	@Then("^I click the login button$")
 	public void i_click_the_User_login_button() throws Throwable {
-		List<WebElement> login = SeleniumUtils.EsperaCargaPaginaSteps("id","form-login:login", 10);
+		List<WebElement> login = SeleniumUtils.EsperaCargaPaginaSteps("id","form-login:login", 5);
 		login.get(0).click();  
 	}
 

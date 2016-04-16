@@ -66,10 +66,6 @@ public class BeanLoginMesa implements Serializable {
 		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		session.put("LOGGEDIN_MESA", mesa);
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> master
 
 	public String getPassword() {
 		return password;

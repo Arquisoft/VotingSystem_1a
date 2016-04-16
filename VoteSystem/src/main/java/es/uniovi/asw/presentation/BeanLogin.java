@@ -30,7 +30,7 @@ public class BeanLogin implements Serializable {
 	public BeanLogin() {
 		System.out.println("BeanLogin - No existia");
 	}
-<<<<<<< HEAD
+
 	
 	 @PostConstruct
 	    public void init(){
@@ -46,29 +46,17 @@ public class BeanLogin implements Serializable {
 
 	public String verify() {		
 		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
-=======
 
-	@PostConstruct
-	public void init() {
-		System.out.println("BeanLogin PostConstruct");
-		this.result = "";
-	}
-
-	@SuppressWarnings("deprecation")
-	public String verify() {
-		WebApplicationContext ctx = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
->>>>>>> master
 		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
 
 		WebApplicationContext ctx1 = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleConfiguracionService config = ctx1.getBean(SimpleConfiguracionService.class);
-
+/*
 		Configuracion c = config.getConf();
 		String s = getFecha(c.getFecha().toString());
 		Timestamp actual = new Timestamp(new Date().getTime());
 		String act = getFecha(actual.toString());
-
-		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() && actual.getHours() <= c.getHoraFin()) {
+*/
 			boolean yaVoto = login.comprobarUsuario(dni);
 			if (!yaVoto) {
 
@@ -84,8 +72,7 @@ public class BeanLogin implements Serializable {
 			else {
 				setResult("Este usuario ya ha votado");
 			}
-		} else
-			setResult("El periodo de votación a finalizado");
+	
 
 		return null;
 	}

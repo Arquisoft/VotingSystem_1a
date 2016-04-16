@@ -18,7 +18,6 @@ public class Application extends SpringBootServletInitializer implements Servlet
 		SpringApplication.run(Application.class);
 	}
 
-<<<<<<< HEAD
     @Override
     public void setServletContext(ServletContext servletContext) {
         servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
@@ -33,19 +32,5 @@ public class Application extends SpringBootServletInitializer implements Servlet
         ServletRegistrationBean jsfServlet = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
         return jsfServlet;
     }
-=======
-	@Override
-	public void setServletContext(ServletContext servletContext) {
-		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-		servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "true");
-		servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
 
-	}
-
-	@Bean
-	public ServletRegistrationBean servletRegistrationBean(ApplicationContext context) {
-		ServletRegistrationBean jsfServlet = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
-		return jsfServlet;
-	}
->>>>>>> master
 }

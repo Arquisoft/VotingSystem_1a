@@ -17,28 +17,6 @@
   
 		Contraseña:
 		<h:panelGroup>
-<<<<<<< HEAD
-			<p:password id="password" value="#{login.password}" required="true"
-				requiredMessage="Contraseña requerida" />
-			<p:message for="password" />
-		</h:panelGroup>
-
-		<h:outputText id="msgAlta" value="#{login.result}" />
-
-		<p:commandButton value="Login"
-			action="#{login.verify}" actionListener="#{voto.opcionesVoto}" update="Grid" process="@form"
-			id="login">
-		</p:commandButton>
-			
-	</p:panelGrid>
-						
-	</h:form>
-	
-	<h:form>
-	<h:commandLink style="float:right" action="loginMesa.xhtml">Acceso Mesa Electoral</h:commandLink>
-	</h:form>
-		</p:panel>
-=======
 					<p:password id="password" value="#{login.password}" required="true"
 						requiredMessage="Contraseña requerida" />
 					<p:message for="password" />
@@ -61,5 +39,4 @@
 			<h:commandLink style="float:right" action="loginMesa.xhtml">Acceso Mesa Electoral</h:commandLink>
 		</h:form>
 	</p:panel>
->>>>>>> master
 </ui:composition>

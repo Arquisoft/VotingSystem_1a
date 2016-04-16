@@ -15,17 +15,11 @@ public class ControllerLogin {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public RedirectView localRedirect() {
-<<<<<<< HEAD
 	  	LOG.info("Launching Application");
 	    RedirectView redirectView = new RedirectView();
 	    redirectView.setUrl("/login.xhtml");
 	    return redirectView;
-=======
-		LOG.info("Launching Application");
-		RedirectView redirectView = new RedirectView();
-		redirectView.setUrl("./login.xhtml");
-		return redirectView;
->>>>>>> master
+
 	}
 
 }
