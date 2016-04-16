@@ -4,5 +4,4 @@ Feature: Users Management
   	Then I fill the DNI field
   	And I fill the Password field
     And I click the login button
-    Then I receive status code of 200
-    And  I receive the string "Cerrar Sesion"
+    Then  I receive the string "Partidos Disponibles"
