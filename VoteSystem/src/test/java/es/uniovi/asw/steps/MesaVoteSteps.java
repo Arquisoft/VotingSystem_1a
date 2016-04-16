@@ -35,7 +35,7 @@ public class MesaVoteSteps {
 	@Then("^I fill the DNI field writing \"([^\"]*)\"$")
 	public void i_fill_the_User_DNI_field_writing(String arg1) throws Throwable {
 		List<WebElement> dni = SeleniumUtils.EsperaCargaPaginaSteps("id", "form-dni:dni", 3);
-		dni.get(0).sendKeys("45443827R");	
+		dni.get(0).sendKeys(arg1);	
 	}
 	
 	@Then("^I click the comprueba button$")
