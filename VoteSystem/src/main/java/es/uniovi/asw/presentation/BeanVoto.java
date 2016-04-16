@@ -1,8 +1,6 @@
 package es.uniovi.asw.presentation;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -36,7 +34,8 @@ public class BeanVoto implements Serializable {
 		System.out.println("BeanVoto PostConstruct");
 
 	}
-	@SuppressWarnings( "deprecation" )
+
+	@SuppressWarnings("deprecation")
 	public String votar(OpcionVoto opcion) {
 		WebApplicationContext ctx = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
 		SimpleVoteService vote = ctx.getBean(SimpleVoteService.class);
@@ -45,27 +44,19 @@ public class BeanVoto implements Serializable {
 		SimpleConfiguracionService config = ctx1.getBean(SimpleConfiguracionService.class);
 
 		Configuracion c = config.getConf();
-		String s = c.getFecha().toString();
-		String[] trozos = s.split(" ");//divido el timestamp en la fecha y la hora
-		s=trozos[0];//cojo la fecha que necesito
+		String s = getFecha(c.getFecha().toString());
 		Voto v = vote.getVoteBy(opcion.getNombre());
 		Timestamp actual = new Timestamp(new Date().getTime());
-		trozos=actual.toString().split(" ");
-		String act  = trozos[0];
+		String act = getFecha(actual.toString());
 
-		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() 
-				&& actual.getHours() <= c.getHoraFin()) {
+		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() && actual.getHours() <= c.getHoraFin()) {
 			if (v != null)
 				vote.updateVote(opcion.getNombre());
 			else
 				vote.insertVote(opcion.getNombre());
-
-		
 		}
-		
-		setVotado(true);
-			
 
+		setVotado(true);
 		return null;
 	}
 
@@ -94,17 +85,12 @@ public class BeanVoto implements Serializable {
 		this.votos = votos;
 	}
 
-	private Date getFecha(Date date) {
-	
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-		Date inicioFormateado = null;
-		try {
-			inicioFormateado = new Date(formato.parse(date.toString()).getTime());
-		} catch (ParseException e) {
-			
-			e.printStackTrace();
-		}
-		return inicioFormateado;
+	private String getFecha(String date) {
+		String[] trozos = date.split(" ");// divido el timestamp en la fecha y
+											// la hora
+		date = trozos[0];// cojo la fecha que necesito
+		return date;
+
 	}
 
 	private OpcionVoto[] votos;
