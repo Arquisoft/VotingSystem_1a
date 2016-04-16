@@ -19,6 +19,7 @@ public class InsertConfP implements InsertConf{
 	private static final String PLACES_DELETE = "delete from LugarVoto";
 	private static final String CONFIG_DELETE = "delete from Configuracion";
 	private static final String OPTIONS_DELETE ="delete from OpcionVoto";
+	private static final String VOTES_DELETE = "delete from Voto";
 	
 	static Configuracion conf = null;
 	static List<LugarVoto> lugares = new ArrayList<>();
@@ -103,9 +104,11 @@ public class InsertConfP implements InsertConf{
 	 * @param trx 
 	 */
 	private static void vaciarBD(EntityManager em) {
+		em.createQuery(VOTES_DELETE).executeUpdate();
 		em.createQuery(PLACES_DELETE).executeUpdate();
 		em.createQuery(OPTIONS_DELETE).executeUpdate();
 		em.createQuery(CONFIG_DELETE).executeUpdate();
+		
 	}
 
 }

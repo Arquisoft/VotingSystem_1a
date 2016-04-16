@@ -5,12 +5,10 @@
 	version="2.0">
 
  
-	<persistence-unit name="censuses" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="AdminSystem" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-			
-		<class>es.uniovi.asw.model.User</class>
-			
+		
 		
 		<properties>
 			
@@ -28,7 +26,7 @@
 	</persistence-unit>
 	
 	<!--  
-		<persistence-unit name="censuses" transaction-type="RESOURCE_LOCAL">
+		<persistence-unit name="AdminSystem" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
 		
