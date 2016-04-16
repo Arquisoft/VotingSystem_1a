@@ -71,18 +71,19 @@ public class LoadConfiguration {
 
 			if (!cmd.hasOption("h")) {
 
-				// //Se comprueba si se inserto una opción para el fichero de
-				// entrada
-				// if(opcionFicheroEntrada(cmd)) {
-				//
-				String sistema = args[0];
-
-				if (sistema.equals("conf")) {
-					runConfigSystem(cmd, args);
-				} else if (sistema.equals("count")) {
-					runCountVotesSystem(cmd, args);
+				if(args.length != 0){
+					String sistema = args[0];
+	
+					if (sistema.equals("conf")) {
+						runConfigSystem(cmd, args);
+					} else if (sistema.equals("count")) {
+						runCountVotesSystem(cmd, args);
+					}
+					else{
+						System.out.println("Opciones no válidas, puedes utilizar"
+								+ " la opción -h para apreder a utilizar el programa");
+					}
 				}
-
 				else {
 					System.out.println("Opciones no válidas, puedes utilizar"
 							+ " la opción -h para apreder a utilizar el programa");
