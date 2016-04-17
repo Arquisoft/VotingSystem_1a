@@ -7,6 +7,7 @@ import java.util.List;
 import es.uniovi.asw.ConfParser.Parser.options.ParserOpt;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
 import es.uniovi.asw.model.OpcionVoto;
+import es.uniovi.asw.util.AdminException;
 
 public class ROptions {
 
@@ -19,19 +20,16 @@ public class ROptions {
 		this.parser = parser;
 	}
 
-	public void leerDatos() {
+	public void leerDatos() throws AdminException {
 		List<OpcionVoto> opcionesVoto = new ArrayList<OpcionVoto>();
 		// Recibe una lista o un map de strings
 		List<String> opciones = parser.leerDatos(fichero);
 		// Los formatea correctamente
-		if (!opciones.isEmpty()) {
-			for (int i = 0; i < opciones.size(); i++) {
-				System.out.println(opciones.get(i));
-				opcionesVoto.add(new OpcionVoto(opciones.get(i).toUpperCase()));
-			}
-		} else {
-			System.out.println("Las opciones estan vacias");
+
+		for (int i = 0; i < opciones.size(); i++) {
+			opcionesVoto.add(new OpcionVoto(opciones.get(i).toUpperCase()));
 		}
+
 		// Lo guarda en la BD a traves de InsertConfP
 
 		InsertConfP.setOpciones(opcionesVoto);

@@ -24,6 +24,7 @@ import es.uniovi.asw.DBVote.impl.InsertVoteP;
 import es.uniovi.asw.countVoteParser.RVotes;
 import es.uniovi.asw.countVoteParser.factoria.FactoriaParserVotes;
 import es.uniovi.asw.countVoteParser.parser.ParserVotes;
+import es.uniovi.asw.util.AdminException;
 
 /**
  * Main application
@@ -46,7 +47,7 @@ public class LoadConfiguration {
 
 	RVotes rVote = null;
 
-	public static void main(String... args) {
+	public static void main(String... args) throws AdminException {
 
 		cargarFactorias();
 		cargarOpciones();
@@ -55,7 +56,7 @@ public class LoadConfiguration {
 
 	}
 
-	void run(String... args) {
+	void run(String... args) throws AdminException {
 		Options options = new Options();
 		options.addOption("conf", false, "configuration");
 		options.addOption("count", false, "configuration");
@@ -71,20 +72,18 @@ public class LoadConfiguration {
 
 			if (!cmd.hasOption("h")) {
 
-				if(args.length != 0){
+				if (args.length != 0) {
 					String sistema = args[0];
-	
+
 					if (sistema.equals("conf")) {
 						runConfigSystem(cmd, args);
 					} else if (sistema.equals("count")) {
 						runCountVotesSystem(cmd, args);
-					}
-					else{
+					} else {
 						System.out.println("Opciones no válidas, puedes utilizar"
 								+ " la opción -h para apreder a utilizar el programa");
 					}
-				}
-				else {
+				} else {
 					System.out.println("Opciones no válidas, puedes utilizar"
 							+ " la opción -h para apreder a utilizar el programa");
 				}
@@ -107,8 +106,9 @@ public class LoadConfiguration {
 	 * 
 	 * @param cmd
 	 * @param args
+	 * @throws AdminException
 	 */
-	private void runConfigSystem(CommandLine cmd, String... args) {
+	private void runConfigSystem(CommandLine cmd, String... args) throws AdminException {
 		ParserConf parserConf = null;
 		ParserPlaces parserPlaces = null;
 		ParserOpt parserOpt = null;
@@ -157,8 +157,9 @@ public class LoadConfiguration {
 	 * 
 	 * @param cmd
 	 * @param args
+	 * @throws AdminException
 	 */
-	private void runCountVotesSystem(CommandLine cmd, String... args) {
+	private void runCountVotesSystem(CommandLine cmd, String... args) throws AdminException {
 		ParserVotes parser = null;
 
 		// //Obtiene parser de ficheros de entrada especificado en las opciones

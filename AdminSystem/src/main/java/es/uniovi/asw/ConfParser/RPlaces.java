@@ -8,6 +8,7 @@ import java.util.Map;
 import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
 import es.uniovi.asw.model.LugarVoto;
+import es.uniovi.asw.util.AdminException;
 
 public class RPlaces {
 
@@ -16,24 +17,33 @@ public class RPlaces {
 
 	public RPlaces(String ruta, ParserPlaces parser) {
 		fichero = new File(ruta);
-
 		this.parser = parser;
 	}
 
-	public void leerDatos() {
+	public void leerDatos() throws AdminException {
+		long id = 0;
+		String nombre = "";
+		String contraseña = "";
+		String ciudad = "";
+		String pais = "";
+
 		List<LugarVoto> lugaresVotos = new ArrayList<LugarVoto>();
+
 		// Recibe una lista o un map de strings
 		List<Map<String, String>> lugares = parser.leerDatos(fichero);
+
 		// Los formatea correctamente
 		for (int i = 0; i < lugares.size(); i++) {
 			Map<String, String> lugar = lugares.get(i);
-			System.out.println(lugar.get("id") + lugar.get("nombre") + lugar.get("contrasena") + lugar.get("ciudad")
-					+ lugar.get("pais"));
-			long id = Long.parseLong(lugar.get("id"));
-			String nombre = lugar.get("nombre").toUpperCase();
-			String contraseña = lugar.get("contrasena").toUpperCase();
-			String ciudad = lugar.get("ciudad").toUpperCase();
-			String pais = lugar.get("pais").toUpperCase();
+			try {
+				id = Long.parseLong(lugar.get("id"));
+			} catch (Exception e) {
+				throw new AdminException("Error en el id: '" + lugar.get("id") + "'");
+			}
+			nombre = lugar.get("nombre").toUpperCase();
+			contraseña = lugar.get("contrasena").toUpperCase();
+			ciudad = lugar.get("ciudad").toUpperCase();
+			pais = lugar.get("pais").toUpperCase();
 			lugaresVotos.add(new LugarVoto(id, nombre, contraseña, ciudad, pais));
 
 		}

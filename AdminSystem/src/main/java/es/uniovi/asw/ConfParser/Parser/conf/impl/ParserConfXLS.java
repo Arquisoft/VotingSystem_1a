@@ -9,26 +9,28 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import es.uniovi.asw.ConfParser.Parser.conf.ParserConf;
+import es.uniovi.asw.util.AdminException;
 
 public class ParserConfXLS implements ParserConf {
 
 	@Override
-	public Map<String, String> leerDatos(File fichero) {
+	public Map<String, String> leerDatos(File fichero) throws AdminException {
 		Map<String, String> configuracion = new HashMap<>();
 
 		Workbook wB = null;
 
 		try {
 			wB = Workbook.getWorkbook(fichero);
-
 		} catch (BiffException e) {
-			e.printStackTrace();
+			throw new AdminException("El fichero no tiene la extension especificada ");
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new AdminException("El fichero no existe");
 		}
 
 		Sheet hoja = wB.getSheet(0);
-
+		if (hoja.getCell(0, 1).getContents() == "" && hoja.getCell(1, 1).getContents() == ""
+				&& hoja.getCell(2, 1).getContents() == "")
+			throw new AdminException("El fichero de opciones esta vacio");
 		configuracion.put("fecha", hoja.getCell(0, 1).getContents());
 		configuracion.put("inicio", hoja.getCell(1, 1).getContents());
 		configuracion.put("fin", hoja.getCell(2, 1).getContents());

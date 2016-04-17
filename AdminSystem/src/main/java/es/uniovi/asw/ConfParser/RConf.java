@@ -9,6 +9,7 @@ import java.util.Map;
 import es.uniovi.asw.ConfParser.Parser.conf.ParserConf;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
 import es.uniovi.asw.model.Configuracion;
+import es.uniovi.asw.util.AdminException;
 
 public class RConf {
 
@@ -21,34 +22,32 @@ public class RConf {
 		this.parser = parser;
 	}
 
-	public void leerDatos() {
+	public void leerDatos() throws AdminException {
 		Configuracion conf = new Configuracion();
 		// Recibe una lista o un map de strings
 		Map<String, String> configuracion = parser.leerDatos(fichero);
 		Date fecha = null;
 		int inicio = 0, fin = 0;
 		// Los formatea correctamente
-		if (!configuracion.isEmpty()) {
-			System.out.println(configuracion.get("fecha"));
-			System.out.println(configuracion.get("inicio"));
-			System.out.println(configuracion.get("fin"));
-			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-			try {
-				fecha = format.parse(configuracion.get("fecha"));
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-				inicio = Integer.parseInt(configuracion.get("inicio"));
-				fin = Integer.parseInt(configuracion.get("fin"));
+		try {
+			fecha = format.parse(configuracion.get("fecha"));
 
-				conf = new Configuracion(fecha, inicio, fin);
-			} catch (ParseException e) {
-				System.out.println("Error con la fecha: '" + configuracion.get("fecha") + "'");
-			} catch (NumberFormatException e) {
-				System.out.println("Error en la hora de inicio o fin");
+			inicio = Integer.parseInt(configuracion.get("inicio"));
+			fin = Integer.parseInt(configuracion.get("fin"));
+
+			if (fin <= inicio) {
+				throw new AdminException("La hora de inicio debe ser anterior a la final");
 			}
-		} else {
-			System.out.println("El fichero de configuracion esta vacio");
+			conf = new Configuracion(fecha, inicio, fin);
+		} catch (ParseException e) {
+			throw new AdminException("Error con la fecha: '" + configuracion.get("fecha") + "'");
+		} catch (NumberFormatException e) {
+			throw new AdminException("Error en la hora de inicio o fin");
 		}
+
 		// Lo guarda en la BD a traves de InsertConfP
 
 		InsertConfP.setConf(conf);

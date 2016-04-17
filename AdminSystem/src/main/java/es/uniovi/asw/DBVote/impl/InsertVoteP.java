@@ -12,12 +12,10 @@ import es.uniovi.asw.DBVote.InsertVote;
 import es.uniovi.asw.DBVote.Jpa;
 import es.uniovi.asw.model.Voto;
 
-public class InsertVoteP implements InsertVote{
-	
+public class InsertVoteP implements InsertVote {
+
 	private static List<Voto> votos = new ArrayList<>();
-	
-	
-	
+
 	public static List<Voto> getVotos() {
 		return votos;
 	}
@@ -26,7 +24,7 @@ public class InsertVoteP implements InsertVote{
 		InsertVoteP.votos = votos;
 	}
 
-	public void insertVoteR() throws Exception{
+	public void insertVoteR() throws Exception {
 		if (votos.isEmpty()) {
 			throw new Exception();
 		} else {
@@ -39,7 +37,7 @@ public class InsertVoteP implements InsertVote{
 				trx = em.getTransaction();
 				trx.begin();
 				for (int i = 0; i < votos.size(); i++) {
-					if(votos.get(i).getOpcion() != "" && votos.get(i).getOpcion() != null)
+					if (votos.get(i).getOpcion() != "" && votos.get(i).getOpcion() != null)
 						em.persist(votos.get(i));
 				}
 
