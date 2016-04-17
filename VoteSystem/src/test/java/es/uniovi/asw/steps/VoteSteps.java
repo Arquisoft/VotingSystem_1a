@@ -15,8 +15,8 @@ public class VoteSteps {
 		 gs.establecerDriver("Vote Test");
 		 gs.driver.get("localhost:8080");
 		 SeleniumUtils.EsperaCargaPagina(gs.driver, "id", "form-login:name", 12);
-		 gs.driver.findElement(By.id("form-login:name")).sendKeys("45443827R");
-		 gs.driver.findElement(By.id("form-login:password")).sendKeys("fcW3i1ciT8");
+		 gs.driver.findElement(By.id("form-login:name")).sendKeys("75443827R");
+		 gs.driver.findElement(By.id("form-login:password")).sendKeys("f6FVZov56c");
 		 gs.driver.findElement(By.id("form-login:login")).click();    
 	}
 
