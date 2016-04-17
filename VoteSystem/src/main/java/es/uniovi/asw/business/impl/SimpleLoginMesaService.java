@@ -9,39 +9,36 @@ import es.uniovi.asw.persistence.MesaRepository;
 
 @Component
 public class SimpleLoginMesaService implements LoginMesaService {
-	
-	 @Autowired
-	 private MesaRepository mesaRep;
-	 
+
+	@Autowired
+	private MesaRepository mesaRep;
+
 	public LugarVoto verify(Long id, String password) {
 		if (!validLogin(id, password))
 			return null;
 		return getLugarVoto(id);
 	}
 
-	private LugarVoto getLugarVoto(Long id){
-		//	UserWired dao = Factories.persistence.createUserWired();
+	private LugarVoto getLugarVoto(Long id) {
+		// UserWired dao = Factories.persistence.createUserWired();
 		LugarVoto lugar = mesaRep.findByid(id);
-		
+
 		return lugar;
 	}
-	
+
 	private boolean validLogin(Long id, String password) {
 		LugarVoto lugar = mesaRep.findByid(id);
-		
-		if(lugar==null)
+
+		if (lugar == null)
 			return false;
-		if(lugar.getContraseña().compareTo(password)==0){
-			//Ocultamos la contraseña
+		if (lugar.getContraseña().compareTo(password) == 0) {
+			// Ocultamos la contraseña
 			lugar.setContraseña("null");
 			return true;
-			
+
 		}
-		
+
 		return false;
 	}
 
-	
-
-		
 }

@@ -12,13 +12,13 @@ import es.uniovi.asw.persistence.VotantesRepository;
 
 @Component
 public class SimpleLoginService implements LoginService {
-	
-	 @Autowired
-	 private UserRepository userRep;
-	 
-	 @Autowired
-	 private VotantesRepository votanteRep;
-	 
+
+	@Autowired
+	private UserRepository userRep;
+
+	@Autowired
+	private VotantesRepository votanteRep;
+
 	@Override
 	public UserLogin verify(String login, String password) {
 		if (!validLogin(login, password))
@@ -26,25 +26,24 @@ public class SimpleLoginService implements LoginService {
 		return getUserLogin(login);
 	}
 
-	private UserLogin getUserLogin(String login){
-		//	UserWired dao = Factories.persistence.createUserWired();
-			
+	private UserLogin getUserLogin(String login) {
+		// UserWired dao = Factories.persistence.createUserWired();
+
 		User user = userRep.findBynif(login);
-		
-		UserLogin userLogin = new UserLogin(login, user.getName(),user.getId());
-		
+
+		UserLogin userLogin = new UserLogin(login, user.getName(), user.getId());
+
 		return userLogin;
 	}
-	
+
 	private boolean validLogin(String dni, String password) {
 		User user = userRep.findBynif(dni);
-		
-		if(user==null)
+
+		if (user == null)
 			return false;
-		if(user.getPassword().compareTo(password)==0)
+		if (user.getPassword().compareTo(password) == 0)
 			return true;
-		
-		
+
 		return false;
 	}
 
@@ -56,14 +55,12 @@ public class SimpleLoginService implements LoginService {
 	 */
 	public boolean comprobarUsuario(String dni) {
 		Votante votante = votanteRep.findByDni(dni);
-		
-		if(votante==null){
+
+		if (votante == null) {
 			return false;
 		}
 
 		return true;
 	}
-	
 
-		
 }

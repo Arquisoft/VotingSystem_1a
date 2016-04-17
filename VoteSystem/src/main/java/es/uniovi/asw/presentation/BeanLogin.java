@@ -31,33 +31,37 @@ public class BeanLogin implements Serializable {
 		System.out.println("BeanLogin - No existia");
 	}
 
-	
-	 @PostConstruct
-	    public void init(){
-	        System.out.println("BeanLogin PostConstruct");        
-	        this.result="";
-	    }
-	 
-	 @PreDestroy
-	 public void end(){
-		 System.out.println("BeanLogin PreDestroy");        
-	        this.result="";
-	 }
+	@PostConstruct
+	public void init() {
+		System.out.println("BeanLogin PostConstruct");
+		this.result = "";
+	}
 
-	public String verify() {		
-		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+	@PreDestroy
+	public void end() {
+		System.out.println("BeanLogin PreDestroy");
+		this.result = "";
+	}
+
+	@SuppressWarnings("deprecation")
+	public String verify() {
+		WebApplicationContext ctx = FacesContextUtils
+				.getWebApplicationContext(FacesContext.getCurrentInstance());
 
 		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
 
-		WebApplicationContext ctx1 = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
-		SimpleConfiguracionService config = ctx1.getBean(SimpleConfiguracionService.class);
+		WebApplicationContext ctx1 = FacesContextUtils
+				.getWebApplicationContext(FacesContext.getCurrentInstance());
+		SimpleConfiguracionService config = ctx1
+				.getBean(SimpleConfiguracionService.class);
 
 		Configuracion c = config.getConf();
 		String s = getFecha(c.getFecha().toString());
 		Timestamp actual = new Timestamp(new Date().getTime());
 		String act = getFecha(actual.toString());
-		
-		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() && actual.getHours() <= c.getHoraFin()) {
+
+		if (act.contains(s) && actual.getHours() >= c.getHoraInicio()
+				&& actual.getHours() <= c.getHoraFin()) {
 			boolean yaVoto = login.comprobarUsuario(dni);
 			if (!yaVoto) {
 
@@ -68,16 +72,12 @@ public class BeanLogin implements Serializable {
 				}
 
 				setResult("Contraseña o usuario incorrecto");
-			}
-			else {
+			} else {
 				setResult("Este usuario ya ha votado");
 			}
-			}else{
-				setResult("Actualmente no hay ninguna votaciones disponibles");
-			}
-
-			
-	
+		} else {
+			setResult("Actualmente no hay ninguna votaciones disponibles");
+		}
 
 		return null;
 	}
@@ -88,7 +88,8 @@ public class BeanLogin implements Serializable {
 	}
 
 	private void putUserInSession(UserLogin user) {
-		Map<String, Object> session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		Map<String, Object> session = FacesContext
+				.getCurrentInstance().getExternalContext().getSessionMap();
 		session.put("LOGGEDIN_USER", user);
 	}
 

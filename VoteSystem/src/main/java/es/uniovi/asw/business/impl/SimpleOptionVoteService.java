@@ -14,7 +14,7 @@ public class SimpleOptionVoteService implements OptionVoteService {
 
 	@Autowired
 	private OptionsRepository option;
-	
+
 	@Override
 	public List<OpcionVoto> getAllVoteOptions() {
 		List<OpcionVoto> lista = option.findAll();

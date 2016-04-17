@@ -1,7 +1,5 @@
 package es.uniovi.asw.business.impl;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,10 +12,10 @@ public class SimpleConfiguracionService implements ConfiguracionService {
 
 	@Autowired
 	private ConfigRepository config;
-	
+
 	@Override
 	public Configuracion getConf() {
-		while(config.findAll().iterator().next() != null) {
+		while (config.findAll().iterator().next() != null) {
 			return config.findAll().iterator().next();
 		}
 		return null;
