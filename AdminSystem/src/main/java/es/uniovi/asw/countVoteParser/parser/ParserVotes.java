@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import es.uniovi.asw.util.AdminException;
+
 public interface ParserVotes {
 
 	/**
@@ -12,7 +14,8 @@ public interface ParserVotes {
 	 * 
 	 * @param fichero
 	 * @return
+	 * @throws AdminException
 	 */
-	public List<Map<String, String>> leerDatos(File fichero);
+	public List<Map<String, String>> leerDatos(File fichero) throws AdminException;
 
 }

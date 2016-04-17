@@ -5,12 +5,13 @@
 	version="2.0">
 
  
-	<persistence-unit name="censuses" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="AdminSystem" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-			
-		<class>es.uniovi.asw.model.User</class>
-			
+		<class>es.uniovi.asw.model.Voto</class>
+		<class>es.uniovi.asw.model.LugarVoto</class>
+		<class>es.uniovi.asw.model.OpcionVoto</class>
+		<class>es.uniovi.asw.model.Configuracion</class>
 		
 		<properties>
 			
@@ -28,7 +29,7 @@
 	</persistence-unit>
 	
 	<!--  
-		<persistence-unit name="censuses" transaction-type="RESOURCE_LOCAL">
+		<persistence-unit name="AdminSystem" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
 		

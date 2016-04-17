@@ -18,12 +18,16 @@ import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserConf;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserOption;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserPlaces;
+import es.uniovi.asw.ConfParser.impl.RConf;
+import es.uniovi.asw.ConfParser.impl.ROptions;
+import es.uniovi.asw.ConfParser.impl.RPlaces;
 import es.uniovi.asw.DBVote.Jpa;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
 import es.uniovi.asw.DBVote.impl.InsertVoteP;
 import es.uniovi.asw.countVoteParser.RVotes;
 import es.uniovi.asw.countVoteParser.factoria.FactoriaParserVotes;
 import es.uniovi.asw.countVoteParser.parser.ParserVotes;
+import es.uniovi.asw.util.AdminException;
 
 /**
  * Main application
@@ -40,13 +44,13 @@ public class LoadConfiguration {
 
 	static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
-	ROptions rOptions = null;
-	RConf rConf = null;
-	RPlaces rPlaces = null;
+	es.uniovi.asw.ConfParser.Options rOptions = null;
+	Conf rConf = null;
+	Places rPlaces = null;
 
 	RVotes rVote = null;
 
-	public static void main(String... args) {
+	public static void main(String... args) throws AdminException {
 
 		cargarFactorias();
 		cargarOpciones();
@@ -55,7 +59,7 @@ public class LoadConfiguration {
 
 	}
 
-	void run(String... args) {
+	void run(String... args) throws AdminException {
 		Options options = new Options();
 		options.addOption("conf", false, "configuration");
 		options.addOption("count", false, "configuration");
@@ -71,19 +75,18 @@ public class LoadConfiguration {
 
 			if (!cmd.hasOption("h")) {
 
-				// //Se comprueba si se inserto una opción para el fichero de
-				// entrada
-				// if(opcionFicheroEntrada(cmd)) {
-				//
-				String sistema = args[0];
+				if (args.length != 0) {
+					String sistema = args[0];
 
-				if (sistema.equals("conf")) {
-					runConfigSystem(cmd, args);
-				} else if (sistema.equals("count")) {
-					runCountVotesSystem(cmd, args);
-				}
-
-				else {
+					if (sistema.equals("conf")) {
+						runConfigSystem(cmd, args);
+					} else if (sistema.equals("count")) {
+						runCountVotesSystem(cmd, args);
+					} else {
+						System.out.println("Opciones no válidas, puedes utilizar"
+								+ " la opción -h para apreder a utilizar el programa");
+					}
+				} else {
 					System.out.println("Opciones no válidas, puedes utilizar"
 							+ " la opción -h para apreder a utilizar el programa");
 				}
@@ -106,8 +109,9 @@ public class LoadConfiguration {
 	 * 
 	 * @param cmd
 	 * @param args
+	 * @throws AdminException
 	 */
-	private void runConfigSystem(CommandLine cmd, String... args) {
+	private void runConfigSystem(CommandLine cmd, String... args) throws AdminException {
 		ParserConf parserConf = null;
 		ParserPlaces parserPlaces = null;
 		ParserOpt parserOpt = null;
@@ -156,8 +160,9 @@ public class LoadConfiguration {
 	 * 
 	 * @param cmd
 	 * @param args
+	 * @throws AdminException
 	 */
-	private void runCountVotesSystem(CommandLine cmd, String... args) {
+	private void runCountVotesSystem(CommandLine cmd, String... args) throws AdminException {
 		ParserVotes parser = null;
 
 		// //Obtiene parser de ficheros de entrada especificado en las opciones

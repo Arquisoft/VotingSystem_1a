@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import es.uniovi.asw.util.AdminException;
+
 public interface ParserPlaces {
 
 	/**
@@ -13,6 +15,7 @@ public interface ParserPlaces {
 	 * @param fichero
 	 *            con los lugares
 	 * @return Lista de mapas con informacion de los lugares
+	 * @throws AdminException
 	 */
-	List<Map<String, String>> leerDatos(File fichero);
+	List<Map<String, String>> leerDatos(File fichero) throws AdminException;
 }
