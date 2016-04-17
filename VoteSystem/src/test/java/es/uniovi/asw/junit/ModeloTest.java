@@ -13,7 +13,7 @@ import es.uniovi.asw.model.User;
 import es.uniovi.asw.model.Votante;
 import es.uniovi.asw.model.Voto;
 
-public class TestsModelo {
+public class ModeloTest {
 
 	@Test
 	public void testConfiguracion() {
