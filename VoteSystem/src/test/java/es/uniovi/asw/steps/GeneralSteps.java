@@ -98,9 +98,7 @@ public class GeneralSteps {
 
 		}
 		
-		if(driver!=null){
-			driver.quit();
-		}
+		SeleniumUtils.driver.quit();
 	}
 	
 	@Then("^I click the login button$")
