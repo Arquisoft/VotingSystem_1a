@@ -10,6 +10,7 @@ public class Conf implements Serializable {
 	Date fecha;
 	int hora_Inicio;
 	int hora_Fin;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
