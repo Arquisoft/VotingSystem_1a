@@ -28,7 +28,7 @@ public class MesaLoginSteps{
 	
 	@Then("^I fill the ID field writing \"([^\"]*)\"$")
 	public void i_fill_the_ID_field_writing(String arg1) throws Throwable {
-		SeleniumUtils.EsperaCargaPagina(gs.driver, "id", "form-login:name", 10);
+		SeleniumUtils.EsperaCargaPagina(gs.driver, "id", "form-login:name", 12);
 		gs.driver.findElement(By.id("form-login:name")).sendKeys(String.valueOf(arg1));
 	}
 
