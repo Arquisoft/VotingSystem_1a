@@ -12,6 +12,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.jsf.FacesContextUtils;
 
 import es.uniovi.asw.business.impl.SimpleLoginMesaService;
+import es.uniovi.asw.business.impl.SimpleMesaService;
 import es.uniovi.asw.model.LugarVoto;
 
 @ManagedBean(name = "loginMesa")

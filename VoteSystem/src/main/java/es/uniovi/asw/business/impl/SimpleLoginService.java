@@ -28,6 +28,7 @@ public class SimpleLoginService implements LoginService {
 
 	private UserLogin getUserLogin(String login){
 		//	UserWired dao = Factories.persistence.createUserWired();
+			
 		User user = userRep.findBynif(login);
 		
 		UserLogin userLogin = new UserLogin(login, user.getName(),user.getId());
@@ -42,6 +43,7 @@ public class SimpleLoginService implements LoginService {
 			return false;
 		if(user.getPassword().compareTo(password)==0)
 			return true;
+		
 		
 		return false;
 	}

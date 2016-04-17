@@ -7,33 +7,32 @@
 
 	<ui:define name="titulo">Administración votación</ui:define>
 
-	<ui:define name="cuerpo">
+	<ui:define name="cuerpo">	
+	
+	<h2>DNI del votante</h2>
+	
+	<h:panelGrid id="Grid" columns="2" cellpadding="5">
+	
+	<h:form id="form-dni">
+	<h:panelGroup style="display:block; text-align:left">
+    <p:inputTextarea id="dni" value="#{mesa.dniUsuario}" rows="1" cols="10" counter="display" maxlength="9" 
+    counterTemplate="  {0} carácteres restantes" autoResize="true" />
+    <h:outputText id="display" />
+    
+    </h:panelGroup>
+    <h:panelGroup>
+    <p:commandButton value="Comprobar votante"
+			action="#{mesa.verifyUser}" update="growl dni" process="@form"
+			id="comprobar">
+		</p:commandButton>
+		
+	</h:panelGroup>
+			
+		<p:growl id="growl" showDetail="true" sticky="true" />  
+	
+	</h:form>
+	</h:panelGrid>
 
-
-		<h2>DNI del votante</h2>
-
-		<h:panelGrid id="Grid" columns="2" cellpadding="5">
-
-			<h:form>
-				<h:panelGroup style="display:block; text-align:left">
-					<p:inputTextarea id="dni" value="#{mesa.dniUsuario}" rows="1"
-						cols="10" counter="display" maxlength="9"
-						counterTemplate="  {0} carácteres restantes" autoResize="true" />
-					<h:outputText id="display" />
-
-				</h:panelGroup>
-				<h:panelGroup>
-					<p:commandButton value="Comprobar votante"
-						action="#{mesa.verifyUser}" update="growl dni" process="@form"
-						id="comprobar">
-					</p:commandButton>
-
-				</h:panelGroup>
-
-				<p:growl id="growl" showDetail="true" sticky="true" />
-
-			</h:form>
-		</h:panelGrid>
 	</ui:define>
 
 </ui:composition>

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -30,15 +31,22 @@ public class BeanLogin implements Serializable {
 		System.out.println("BeanLogin - No existia");
 	}
 
-	@PostConstruct
-	public void init() {
-		System.out.println("BeanLogin PostConstruct");
-		this.result = "";
-	}
+	
+	 @PostConstruct
+	    public void init(){
+	        System.out.println("BeanLogin PostConstruct");        
+	        this.result="";
+	    }
+	 
+	 @PreDestroy
+	 public void end(){
+		 System.out.println("BeanLogin PreDestroy");        
+	        this.result="";
+	 }
 
-	@SuppressWarnings("deprecation")
-	public String verify() {
-		WebApplicationContext ctx = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+	public String verify() {		
+		WebApplicationContext ctx =  FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
+
 		SimpleLoginService login = ctx.getBean(SimpleLoginService.class);
 
 		WebApplicationContext ctx1 = FacesContextUtils.getWebApplicationContext(FacesContext.getCurrentInstance());
@@ -48,7 +56,7 @@ public class BeanLogin implements Serializable {
 		String s = getFecha(c.getFecha().toString());
 		Timestamp actual = new Timestamp(new Date().getTime());
 		String act = getFecha(actual.toString());
-
+		
 		if (act.contains(s) && actual.getHours() >= c.getHoraInicio() && actual.getHours() <= c.getHoraFin()) {
 			boolean yaVoto = login.comprobarUsuario(dni);
 			if (!yaVoto) {
@@ -61,12 +69,12 @@ public class BeanLogin implements Serializable {
 
 				setResult("Contraseña o usuario incorrecto");
 			}
+		}
 
 			else {
 				setResult("Este usuario ya ha votado");
 			}
-		} else
-			setResult("El periodo de votación a finalizado");
+	
 
 		return null;
 	}
