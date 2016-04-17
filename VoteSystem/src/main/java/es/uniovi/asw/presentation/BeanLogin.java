@@ -69,11 +69,14 @@ public class BeanLogin implements Serializable {
 
 				setResult("Contraseña o usuario incorrecto");
 			}
-		}
-
 			else {
 				setResult("Este usuario ya ha votado");
 			}
+			}else{
+				setResult("Actualmente no hay ninguna votaciones disponibles");
+			}
+
+			
 	
 
 		return null;
