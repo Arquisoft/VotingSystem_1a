@@ -9,6 +9,19 @@ Sistema de votación que permite la administración de elecciones y que los usua
 
 ### AdminSystem
 
+Para ejecutar la aplicación utilizamos el comando <b>java -jar AdminSystem/target/adminSystem-0.0.1.jar </b> y una las siguientes opciones:
+* Si queremos añadir la configuración del sistema añadimos la opcion <b>conf</b> seguido de la ubicacion de los ficheros y el tipo de fichero que sean, en este orden.
+  * Fichero de configuracion de la votacion: Ej. <b>AdminSystem/conf.xls</b> , desde un .xls <b>-x</b>.
+  * Fichero de las opciones de voto: Ej. <b>AdminSystem/conf.xls</b> , desde un .xls <b>-x</b>.
+  * Fichero de los lugares donde se realiza la votación: Ej. <b>AdminSystem/conf.xls</b> , desde un .xls <b>-x</b>.
+
+Ejemplo completo: <b>java -jar AdminSystem/target/adminSystem-0.0.1.jar conf AdminSystem/conf.xls -x AdminSystem/options.xls -x AdminSystem/places.xls -x</b>
+
+* Si queremos añadir el recuento de votos al sistema añadimos la opcion <b>count</b> seguido de la ubicacion del fichero con los votos y el tipo de fichero que es.
+  * Fichero de recuento de votos: Ej. <b>AdminSystem/votes.xls</b> , desde un .xls <b>-x</b>.
+
+Ejemplo completo: <b>java -jar AdminSystem/target/adminSystem-0.0.1.jar count AdminSystem/votes.xls -x</b>
+
 
 ### VoteSystem
 
