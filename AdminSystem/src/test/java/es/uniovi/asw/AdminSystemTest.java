@@ -249,5 +249,34 @@ public class AdminSystemTest {
 			Assert.fail();
 		}
 	}
-
+	
+	/**
+	 * Test sin argumentos
+	 */
+	@Test
+	public void testSinArgumentos(){
+		String[] args = {};
+		try {
+			LoadConfiguration.main(args);
+		} catch (AdminException e) {
+			e.printStackTrace();
+			// No deberia dar error
+			Assert.fail();
+		}
+	}
+	
+	/**
+	 * Test de ayuda
+	 */
+	@Test
+	public void testAyuda(){
+		String[] args = {"-h"};
+		try {
+			LoadConfiguration.main(args);
+		} catch (AdminException e) {
+			e.printStackTrace();
+			// No deberia dar error
+			Assert.fail();
+		}
+	}
 }

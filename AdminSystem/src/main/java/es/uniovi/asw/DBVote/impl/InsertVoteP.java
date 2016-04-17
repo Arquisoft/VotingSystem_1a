@@ -16,10 +16,6 @@ public class InsertVoteP implements InsertVote {
 
 	private static List<Voto> votos = new ArrayList<>();
 
-	public static List<Voto> getVotos() {
-		return votos;
-	}
-
 	public static void setVotos(List<Voto> votos) {
 		InsertVoteP.votos = votos;
 	}

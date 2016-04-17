@@ -100,7 +100,8 @@ public class LoadConfiguration {
 		} catch (ParseException e) {
 			// e.printStackTrace();
 		}
-		Jpa.closeEntityManagerFactory();
+		if(!Jpa.getEmf().isOpen())
+			Jpa.closeEntityManagerFactory();
 
 	}
 

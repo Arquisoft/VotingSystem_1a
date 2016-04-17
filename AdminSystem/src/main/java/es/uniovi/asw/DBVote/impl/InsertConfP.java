@@ -26,24 +26,12 @@ public class InsertConfP implements InsertConf {
 	static List<LugarVoto> lugares = new ArrayList<>();
 	static List<OpcionVoto> opciones = new ArrayList<>();
 
-	public static Configuracion getConf() {
-		return conf;
-	}
-
 	public static void setConf(Configuracion conf) {
 		InsertConfP.conf = conf;
 	}
 
-	public static List<LugarVoto> getLugares() {
-		return lugares;
-	}
-
 	public static void setLugares(List<LugarVoto> lugares) {
 		InsertConfP.lugares = lugares;
-	}
-
-	public static List<OpcionVoto> getOpciones() {
-		return opciones;
 	}
 
 	public static void setOpciones(List<OpcionVoto> opciones) {
