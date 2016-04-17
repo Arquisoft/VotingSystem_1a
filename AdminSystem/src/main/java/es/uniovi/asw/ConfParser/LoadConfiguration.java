@@ -18,6 +18,9 @@ import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserConf;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserOption;
 import es.uniovi.asw.ConfParser.factoria.FactoriaParserPlaces;
+import es.uniovi.asw.ConfParser.impl.RConf;
+import es.uniovi.asw.ConfParser.impl.ROptions;
+import es.uniovi.asw.ConfParser.impl.RPlaces;
 import es.uniovi.asw.DBVote.Jpa;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
 import es.uniovi.asw.DBVote.impl.InsertVoteP;
@@ -41,9 +44,9 @@ public class LoadConfiguration {
 
 	static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
-	ROptions rOptions = null;
-	RConf rConf = null;
-	RPlaces rPlaces = null;
+	es.uniovi.asw.ConfParser.Options rOptions = null;
+	Conf rConf = null;
+	Places rPlaces = null;
 
 	RVotes rVote = null;
 

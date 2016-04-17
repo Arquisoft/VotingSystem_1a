@@ -1,15 +1,16 @@
-package es.uniovi.asw.ConfParser;
+package es.uniovi.asw.ConfParser.impl;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.uniovi.asw.ConfParser.Options;
 import es.uniovi.asw.ConfParser.Parser.options.ParserOpt;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
 import es.uniovi.asw.model.OpcionVoto;
 import es.uniovi.asw.util.AdminException;
 
-public class ROptions {
+public class ROptions implements Options{
 
 	File fichero;
 	ParserOpt parser;

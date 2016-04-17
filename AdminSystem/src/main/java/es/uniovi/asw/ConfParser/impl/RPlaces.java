@@ -1,16 +1,17 @@
-package es.uniovi.asw.ConfParser;
+package es.uniovi.asw.ConfParser.impl;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import es.uniovi.asw.ConfParser.Places;
 import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
 import es.uniovi.asw.model.LugarVoto;
 import es.uniovi.asw.util.AdminException;
 
-public class RPlaces {
+public class RPlaces implements Places{
 
 	File fichero;
 	ParserPlaces parser;

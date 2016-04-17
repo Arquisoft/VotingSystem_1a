@@ -1,4 +1,4 @@
-package es.uniovi.asw.ConfParser;
+package es.uniovi.asw.ConfParser.impl;
 
 import java.io.File;
 import java.text.ParseException;
@@ -6,12 +6,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import es.uniovi.asw.ConfParser.Conf;
 import es.uniovi.asw.ConfParser.Parser.conf.ParserConf;
 import es.uniovi.asw.DBVote.impl.InsertConfP;
 import es.uniovi.asw.model.Configuracion;
 import es.uniovi.asw.util.AdminException;
 
-public class RConf {
+public class RConf implements Conf{
 
 	File fichero;
 	ParserConf parser;
