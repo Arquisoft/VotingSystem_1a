@@ -1,4 +1,4 @@
-package es.uniovi.asw.confParserPrueba.Parser.places.impl;
+package es.uniovi.asw.confParser.Parser.places.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import es.uniovi.asw.confParserPrueba.Parser.places.ParserPlaces;
+import es.uniovi.asw.confParser.Parser.places.ParserPlaces;
 import es.uniovi.asw.util.AdminException;
 import jxl.Sheet;
 import jxl.Workbook;

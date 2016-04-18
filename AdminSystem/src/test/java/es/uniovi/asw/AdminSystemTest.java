@@ -3,7 +3,7 @@ package es.uniovi.asw;
 import org.junit.Assert;
 import org.junit.Test;
 
-import es.uniovi.asw.confParserPrueba.LoadConfiguration;
+import es.uniovi.asw.confParser.LoadConfiguration;
 import es.uniovi.asw.util.AdminException;
 
 public class AdminSystemTest {
@@ -20,7 +20,7 @@ public class AdminSystemTest {
 	public void testConfiguracion() {
 		String[] args = { "conf", "conf.xls", "-x", "options.xls", "-x", "places.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 		} catch (AdminException e) {
 			// No deberia entrar por aqui
 			Assert.fail();
@@ -34,7 +34,7 @@ public class AdminSystemTest {
 	public void testFicheroNoExisteConf1() {
 		String[] args = { "conf", "confNoexiste.xls", "-x", "options.xls", "-x", "places.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Si entra por aqui, es que no ha dado excepcion, por lo que falla
 			Assert.fail();
 		} catch (AdminException e) {
@@ -49,7 +49,7 @@ public class AdminSystemTest {
 	public void testFicheroNoExisteConf2() {
 		String[] args = { "conf", "conf.xls", "-x", "optionsNoExiste.xls", "-x", "places.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Si entra por aqui, es que no ha dado excepcion, por lo que falla
 			Assert.fail();
 		} catch (AdminException e) {
@@ -64,7 +64,7 @@ public class AdminSystemTest {
 	public void testFicheroNoExisteConf3() {
 		String[] args = { "conf", "conf.xls", "-x", "options.xls", "-x", "placesNoExiste.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Si entra por aqui, es que no ha dado excepcion, por lo que falla
 			Assert.fail();
 		} catch (AdminException e) {
@@ -79,7 +79,7 @@ public class AdminSystemTest {
 	public void testExtensionErroneaConf1() {
 		String[] args = { "conf", "conf.txt", "-x", "options.xls", "-x", "placesNoExiste.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Deberia dar error
 			Assert.fail();
 		} catch (AdminException e) {
@@ -94,7 +94,7 @@ public class AdminSystemTest {
 	public void testExtensionErroneaConf2() {
 		String[] args = { "conf", "conf.xls", "-x", "options.txt", "-x", "placesNoExiste.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Deberia dar error
 			Assert.fail();
 		} catch (AdminException e) {
@@ -109,7 +109,7 @@ public class AdminSystemTest {
 	public void testExtensionErroneaConf3() {
 		String[] args = { "conf", "conf.xls", "-x", "options.xls", "-x", "placesNoExiste.txt", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Deberia dar error
 			Assert.fail();
 		} catch (AdminException e) {
@@ -124,7 +124,7 @@ public class AdminSystemTest {
 	public void testFicheroConErroresConf1() {
 		String[] args = { "conf", "confErrores.xls", "-x", "options.xls", "-x", "places.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Deberia dar error
 			Assert.fail();
 		} catch (AdminException e) {
@@ -140,7 +140,7 @@ public class AdminSystemTest {
 	public void testFicheroConErroresConf2() {
 		String[] args = { "conf", "conf.xls", "-x", "options.xls", "-x", "placesErrores.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Deberia dar error
 			Assert.fail();
 		} catch (AdminException e) {
@@ -161,7 +161,7 @@ public class AdminSystemTest {
 	public void testRecuento() {
 		String[] args = { "count", "votes.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 		} catch (AdminException e) {
 			// No deberia entrar por aqui
 			Assert.fail();
@@ -175,7 +175,7 @@ public class AdminSystemTest {
 	public void testFicheroNoExiste() {
 		String[] args = { "count", "votesInexistentes.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Si entra por aqui, es que no ha dado excepcion, por lo que falla
 			Assert.fail();
 		} catch (AdminException e) {
@@ -190,7 +190,7 @@ public class AdminSystemTest {
 	public void testExtensionErronea() {
 		String[] args = { "count", "votes.txt", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Deberia dar error
 			Assert.fail();
 		} catch (AdminException e) {
@@ -205,7 +205,7 @@ public class AdminSystemTest {
 	public void testFicheroConErrores() {
 		String[] args = { "count", "votesConErrores.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// Deberia dar error
 			Assert.fail();
 		} catch (AdminException e) {
@@ -221,7 +221,7 @@ public class AdminSystemTest {
 	public void testLugaresNoExiste() {
 		String[] args = { "count", "votesLugaresNoexisten.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 			// El lugar 693 no existe, por lo que deberia fallar y no entrar por aqui
 			Assert.fail();
 		} catch (AdminException e) {
@@ -242,7 +242,7 @@ public class AdminSystemTest {
 	public void testOpcionNoExistente() {
 		String[] args = { "noexisto", "votes.xls", "-x" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 		} catch (AdminException e) {
 			// No deberia salir excepcion
 			e.printStackTrace();
@@ -257,7 +257,7 @@ public class AdminSystemTest {
 	public void testOpcionNoExiste() {
 		String[] args = { "count", "votes.xls", "-t" };
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 		} catch (AdminException e) {
 			e.printStackTrace();
 			// Esa extension no es adoptada aun por el sistema, por lo que no es
@@ -275,7 +275,7 @@ public class AdminSystemTest {
 	public void testSinArgumentos(){
 		String[] args = {};
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 		} catch (AdminException e) {
 			e.printStackTrace();
 			// No deberia dar error
@@ -290,7 +290,7 @@ public class AdminSystemTest {
 	public void testAyuda(){
 		String[] args = {"-h"};
 		try {
-			new LoadConfiguration().main(args);
+			LoadConfiguration.main(args);
 		} catch (AdminException e) {
 			e.printStackTrace();
 			// No deberia dar error

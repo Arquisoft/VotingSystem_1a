@@ -1,4 +1,4 @@
-package es.uniovi.asw.confParserPrueba.impl;
+package es.uniovi.asw.confParser.impl;
 
 import java.io.File;
 import java.text.ParseException;
@@ -6,8 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
-import es.uniovi.asw.confParserPrueba.Conf;
-import es.uniovi.asw.confParserPrueba.Parser.conf.ParserConf;
+import es.uniovi.asw.confParser.Conf;
+import es.uniovi.asw.confParser.Parser.conf.ParserConf;
 import es.uniovi.asw.dbVote.impl.InsertConfP;
 import es.uniovi.asw.model.Configuracion;
 import es.uniovi.asw.util.AdminException;
