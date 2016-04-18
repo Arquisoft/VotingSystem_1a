@@ -69,6 +69,7 @@ public class LoadConfiguration {
 		CommandLineParser cLParser = new DefaultParser();
 		CommandLine cmd = null;
 
+		//deberia funcionar
 		try {
 
 			cmd = cLParser.parse(options, args);
