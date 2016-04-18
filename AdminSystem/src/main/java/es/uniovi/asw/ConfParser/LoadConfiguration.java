@@ -1,4 +1,4 @@
-package es.uniovi.asw.ConfParser;
+package es.uniovi.asw.confParser;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -12,21 +12,21 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import es.uniovi.asw.ConfParser.Parser.conf.ParserConf;
-import es.uniovi.asw.ConfParser.Parser.options.ParserOpt;
-import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
-import es.uniovi.asw.ConfParser.factoria.FactoriaParserConf;
-import es.uniovi.asw.ConfParser.factoria.FactoriaParserOption;
-import es.uniovi.asw.ConfParser.factoria.FactoriaParserPlaces;
-import es.uniovi.asw.ConfParser.impl.RConf;
-import es.uniovi.asw.ConfParser.impl.ROptions;
-import es.uniovi.asw.ConfParser.impl.RPlaces;
-import es.uniovi.asw.DBVote.Jpa;
-import es.uniovi.asw.DBVote.impl.InsertConfP;
-import es.uniovi.asw.DBVote.impl.InsertVoteP;
+import es.uniovi.asw.confParser.Parser.conf.ParserConf;
+import es.uniovi.asw.confParser.Parser.options.ParserOpt;
+import es.uniovi.asw.confParser.Parser.places.ParserPlaces;
+import es.uniovi.asw.confParser.factoria.FactoriaParserConf;
+import es.uniovi.asw.confParser.factoria.FactoriaParserOption;
+import es.uniovi.asw.confParser.factoria.FactoriaParserPlaces;
+import es.uniovi.asw.confParser.impl.RConf;
+import es.uniovi.asw.confParser.impl.ROptions;
+import es.uniovi.asw.confParser.impl.RPlaces;
 import es.uniovi.asw.countVoteParser.RVotes;
 import es.uniovi.asw.countVoteParser.factoria.FactoriaParserVotes;
 import es.uniovi.asw.countVoteParser.parser.ParserVotes;
+import es.uniovi.asw.dbVote.Jpa;
+import es.uniovi.asw.dbVote.impl.InsertConfP;
+import es.uniovi.asw.dbVote.impl.InsertVoteP;
 import es.uniovi.asw.util.AdminException;
 
 /**
@@ -44,7 +44,7 @@ public class LoadConfiguration {
 
 	static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
-	es.uniovi.asw.ConfParser.Options rOptions = null;
+	es.uniovi.asw.confParser.Options rOptions = null;
 	Conf rConf = null;
 	Places rPlaces = null;
 
@@ -148,9 +148,8 @@ public class LoadConfiguration {
 			rPlaces.leerDatos();
 			try {
 				new InsertConfP().insertConfR();
-			} catch (Exception e) {
-				System.out.println(
-						"Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
+			} catch (AdminException e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -183,9 +182,8 @@ public class LoadConfiguration {
 			rVote.leerDatos();
 			try {
 				new InsertVoteP().insertVoteR();
-			} catch (Exception e) {
-				System.out.println(
-						"Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
+			} catch (AdminException e) {
+				e.printStackTrace();
 			}
 		}
 

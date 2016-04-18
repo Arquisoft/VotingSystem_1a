@@ -1,4 +1,4 @@
-package es.uniovi.asw.ConfParser.Parser.conf;
+package es.uniovi.asw.confParser.Parser.conf;
 
 import java.io.File;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package es.uniovi.asw.DBVote.impl;
+package es.uniovi.asw.dbVote.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +8,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 
-import es.uniovi.asw.DBVote.InsertConf;
-import es.uniovi.asw.DBVote.Jpa;
+import es.uniovi.asw.dbVote.InsertConf;
+import es.uniovi.asw.dbVote.Jpa;
 import es.uniovi.asw.model.Configuracion;
 import es.uniovi.asw.model.LugarVoto;
 import es.uniovi.asw.model.OpcionVoto;
+import es.uniovi.asw.util.AdminException;
 
 public class InsertConfP implements InsertConf {
 
@@ -43,15 +44,20 @@ public class InsertConfP implements InsertConf {
 	 * 
 	 * @throws Exception
 	 */
-	public void insertConfR() throws Exception {
+	public void insertConfR() throws AdminException {
 		if (conf == null || lugares.isEmpty() || opciones.isEmpty()) {
-			throw new Exception();
+			throw new AdminException("El fichero de votos esta vacio");
 		} else {
 			EntityManagerFactory emf = null;
 			EntityManager em = null;
 			EntityTransaction trx = null;
 			try {
-				emf = Jpa.getEmf();
+				try{
+					emf = Jpa.getEmf();
+					}
+					catch(Exception e){
+						throw new AdminException("Ha ocurrido un error al conectar a la base de datos");
+					}
 				em = emf.createEntityManager();
 				trx = em.getTransaction();
 				trx.begin();
@@ -68,13 +74,13 @@ public class InsertConfP implements InsertConf {
 				trx.commit();
 
 			} catch (PersistenceException e) {
-				System.out.println("No se ha podido conectar con la base de datos");
+				throw new AdminException("No se ha podido conectar con la base de datos");
 
 			} catch (RuntimeException bex) {
-				bex.printStackTrace();
+//				bex.printStackTrace();
 				trx.rollback();
-				System.out.println("Ha ocurrido un error al guardar los datos en la base de datos");
-				throw bex;
+				throw new AdminException("Ha ocurrido un error al guardar los datos en la base de datos");
+//				throw bex;
 
 			} finally {
 				if (em != null) {

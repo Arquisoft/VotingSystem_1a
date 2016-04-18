@@ -1,4 +1,4 @@
-package es.uniovi.asw.ConfParser.Parser.places;
+package es.uniovi.asw.confParser.Parser.places;
 
 import java.io.File;
 import java.util.List;

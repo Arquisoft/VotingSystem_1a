@@ -1,15 +1,15 @@
-package es.uniovi.asw.ConfParser.Parser.conf.impl;
+package es.uniovi.asw.confParser.Parser.conf.impl;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.uniovi.asw.confParser.Parser.conf.ParserConf;
+import es.uniovi.asw.util.AdminException;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-import es.uniovi.asw.ConfParser.Parser.conf.ParserConf;
-import es.uniovi.asw.util.AdminException;
 
 public class ParserConfXLS implements ParserConf {
 

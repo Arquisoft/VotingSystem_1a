@@ -1,7 +1,7 @@
-package es.uniovi.asw.ConfParser.factoria;
+package es.uniovi.asw.confParser.factoria;
 
-import es.uniovi.asw.ConfParser.Parser.conf.ParserConf;
-import es.uniovi.asw.ConfParser.Parser.conf.impl.ParserConfXLS;
+import es.uniovi.asw.confParser.Parser.conf.ParserConf;
+import es.uniovi.asw.confParser.Parser.conf.impl.ParserConfXLS;
 
 public class FactoriaParserConf {
 
