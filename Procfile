@@ -1,1 +1,2 @@
-web: cd VoteSystem/ java -Dserver.port=$PORT -jar target/VoteSystem-0.0.1.jar
+foreman start /VoteSystem
+web: java -Dserver.port=$PORT -jar target/VoteSystem-0.0.1.jar
