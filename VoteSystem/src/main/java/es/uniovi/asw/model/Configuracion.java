@@ -20,10 +20,7 @@ public class Configuracion {
 	private int hora_Inicio;
 	@Id @Column(name="HORAFIN")
 	private int hora_Fin;
-	
-	public Configuracion() {
 
-	}
 
 	@Override
 	public String toString() {
@@ -67,7 +64,10 @@ public class Configuracion {
 	}
 
 
+	
+	public Configuracion() {
 
+	}
 	
 
 	public Date getFecha() {
