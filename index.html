@@ -19,13 +19,49 @@
     </section>
 
     <section class="main-content">
-      <h3>
-<a id="voting-system" class="anchor" href="#voting-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Voting System</h3>
+      <h2>
+<a id="voting-system" class="anchor" href="#voting-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Voting System</h2>
 
+Sistema de votación que permite la administración de elecciones y que los usuarios puedan votar online. Este proyecto está divido en 2 módulos:
+
+<p><b>AdminSystem</b>: permite configurar los parámetros de las elecciones. Estos son las opciones de voto, fecha y localizaciones en los que se puede realizar la votación físicamente. También permite incorporar los votos obtenido en papel.</p>
+
+<p><b>VoteSystem</b>: aplicación web en la cual los usuarios podrán realizar las votaciones y donde los miembros de la mesa electoral podrán comunicar aquellos usuarios que realizan la votación en papel.</p>
+
+<h3>AdminSystem</h3>
+
+Para ejecutar la aplicación utilizamos el comando <b>java -jar AdminSystem/target/adminSystem-0.0.1.jar </b> y una las siguientes opciones:
+<ul> <li>Si queremos añadir la configuración del sistema añadimos la opcion <b>conf</b> seguido de la ubicacion de los ficheros y el tipo de fichero que sean, en este orden.</li>
+
+  <ul><li> Fichero de configuracion de la votacion: Ej. <b>AdminSystem/conf.xls</b> , desde un .xls <b>-x</b>.</li>
+   <li>Fichero de las opciones de voto: Ej. <b>AdminSystem/conf.xls</b> , desde un .xls <b>-x</b>. </li>
+  <li>Fichero de los lugares donde se realiza la votación: Ej. <b>AdminSystem/conf.xls</b> , desde un .xls <b>-x</b>.</li>
+</ul>
+</li>
+<p>Ejemplo completo: <b>java -jar AdminSystem/target/adminSystem-0.0.1.jar conf AdminSystem/conf.xls -x AdminSystem/options.xls -x AdminSystem/places.xls -x</b></p>
+
+<li>Si queremos añadir el recuento de votos al sistema añadimos la opcion <b>count</b> seguido de la ubicacion del fichero con los votos y el tipo de fichero que es.</li>
+  <ul>
+    <li>Fichero de recuento de votos: Ej. <b>AdminSystem/votes.xls</b> , desde un .xls <b>-x</b>.</li>
+  </ul>
+<p>Ejemplo completo: <b>java -jar AdminSystem/target/adminSystem-0.0.1.jar count AdminSystem/votes.xls -x</b></p>
+
+</ul>
+
+
+<h3>VoteSystem</h3>
+
+<p>Para ejecutar la aplicación utilizamos el comando <b>mvn spring-boot:run</b> en la carpeta VoteSystem del proyecto y nos dirigimos a la URI <a href="http://localhost:8080">http://localhost:8080</a> de un navegador. </p>
+
+<p>En el siguiente <a href="https://saucelabs.com/u/carlvilla?auth=0233acf3-4700-42f6-90e9-761227147d49">enlace</a> puede ver demos de la utilización de la aplicación. Estos demos son las ejecuciones de los tests realizados en la plataforma de pruebas automatizadas Sauce.</p>
+
+<h3>Base de datos</h3>
+
+La base de datos utilizada la puedes encontrar en el siguiente <a href= "https://www.dropbox.com/s/x0v8g983pde20cw/Base%20de%20datos%20%28hsqldb%29.zip?dl=0"> enlace </a>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/Arquisoft/VotingSystem_1a">Voting System 1a</a> is maintained by <a href="https://github.com/Arquisoft">Arquisoft</a>.</span>
-
+        <span> <b>Authors</b>: Pablo Blanco, Jairo Montes y <a href="https://github.com/carlvilla"> Carlos Villa</a></span>
       </footer>
 
     </section>
