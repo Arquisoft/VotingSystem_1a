@@ -21,7 +21,6 @@ public class Configuracion {
 	@Id @Column(name="HORAFIN")
 	private int hora_Fin;
 
-
 	@Override
 	public String toString() {
 		return "Configuracion [ fecha=" + fecha + ", horaInicio=" + hora_Inicio + ", horaFin=" + hora_Fin
@@ -66,6 +65,7 @@ public class Configuracion {
 
 	
 	public Configuracion() {
+
 
 	}
 	

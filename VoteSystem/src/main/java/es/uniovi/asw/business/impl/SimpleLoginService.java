@@ -44,6 +44,7 @@ public class SimpleLoginService implements LoginService {
 		if (user.getPassword().compareTo(password) == 0)
 			return true;
 
+
 		return false;
 
 	}
@@ -56,8 +57,12 @@ public class SimpleLoginService implements LoginService {
 	 */
 	public boolean comprobarUsuario(String dni) {
 		Votante votante = votanteRep.findByDni(dni);
-		return votante == null;
 
+		if (votante == null) {
+			return false;
+		}
+
+		return true;
 	}
 
 }
