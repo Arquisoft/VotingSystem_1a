@@ -41,6 +41,9 @@ La base de datos utilizada la puedes encontrar en el siguiente <a href= "https:/
 * Jairo Montes Presa
 * Carlos Villa Blanco
 
+## GitHub page
+
+http://arquisoft.github.io/VotingSystem_1a/
 
 
 
