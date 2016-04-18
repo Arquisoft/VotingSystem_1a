@@ -41,7 +41,10 @@ public class SimpleLoginService implements LoginService {
 
 		if (user == null)
 			return false;
-		return user.getPassword().compareTo(password) == 0;
+		if (user.getPassword().compareTo(password) == 0)
+			return true;
+
+		return false;
 
 	}
 

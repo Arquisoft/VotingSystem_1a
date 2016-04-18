@@ -26,7 +26,7 @@ public class MesaVoteSteps {
 		gs.establecerDriver("Mesa Vote Test");	
 		gs.driver.get("localhost:8080");
 		gs.driver.findElement(By.linkText("Acceso Mesa Electoral")).click();
-		SeleniumUtils.esperaCargaPaginaSteps("id", "form-login:name", 12);
+		SeleniumUtils.EsperaCargaPaginaSteps("id", "form-login:name", 12);
 		SeleniumUtils.driver.findElement(By.id("form-login:name")).sendKeys("1");
 		SeleniumUtils.driver.findElement(By.id("form-login:password")).sendKeys("pas1");
 		SeleniumUtils.driver.findElement(By.id("form-login:login")).click();
@@ -34,7 +34,7 @@ public class MesaVoteSteps {
 	
 	@Then("^I fill the DNI field writing \"([^\"]*)\"$")
 	public void i_fill_the_User_DNI_field_writing(String arg1) throws Throwable {
-		List<WebElement> dni = SeleniumUtils.esperaCargaPaginaSteps("id", "form-dni:dni", 12);
+		List<WebElement> dni = SeleniumUtils.EsperaCargaPaginaSteps("id", "form-dni:dni", 12);
 		dni.get(0).sendKeys(arg1);	
 	}
 	
