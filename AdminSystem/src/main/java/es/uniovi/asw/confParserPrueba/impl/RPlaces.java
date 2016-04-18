@@ -1,12 +1,12 @@
-package es.uniovi.asw.confParser.impl;
+package es.uniovi.asw.confParserPrueba.impl;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import es.uniovi.asw.confParser.Places;
-import es.uniovi.asw.confParser.Parser.places.ParserPlaces;
+import es.uniovi.asw.confParserPrueba.Places;
+import es.uniovi.asw.confParserPrueba.Parser.places.ParserPlaces;
 import es.uniovi.asw.dbVote.impl.InsertConfP;
 import es.uniovi.asw.model.LugarVoto;
 import es.uniovi.asw.util.AdminException;

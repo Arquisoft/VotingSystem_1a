@@ -1,4 +1,4 @@
-package es.uniovi.asw.confParser;
+package es.uniovi.asw.confParserPrueba;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -12,15 +12,15 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import es.uniovi.asw.confParser.Parser.conf.ParserConf;
-import es.uniovi.asw.confParser.Parser.options.ParserOpt;
-import es.uniovi.asw.confParser.Parser.places.ParserPlaces;
-import es.uniovi.asw.confParser.factoria.FactoriaParserConf;
-import es.uniovi.asw.confParser.factoria.FactoriaParserOption;
-import es.uniovi.asw.confParser.factoria.FactoriaParserPlaces;
-import es.uniovi.asw.confParser.impl.RConf;
-import es.uniovi.asw.confParser.impl.ROptions;
-import es.uniovi.asw.confParser.impl.RPlaces;
+import es.uniovi.asw.confParserPrueba.Parser.conf.ParserConf;
+import es.uniovi.asw.confParserPrueba.Parser.options.ParserOpt;
+import es.uniovi.asw.confParserPrueba.Parser.places.ParserPlaces;
+import es.uniovi.asw.confParserPrueba.factoria.FactoriaParserConf;
+import es.uniovi.asw.confParserPrueba.factoria.FactoriaParserOption;
+import es.uniovi.asw.confParserPrueba.factoria.FactoriaParserPlaces;
+import es.uniovi.asw.confParserPrueba.impl.RConf;
+import es.uniovi.asw.confParserPrueba.impl.ROptions;
+import es.uniovi.asw.confParserPrueba.impl.RPlaces;
 import es.uniovi.asw.countVoteParser.RVotes;
 import es.uniovi.asw.countVoteParser.factoria.FactoriaParserVotes;
 import es.uniovi.asw.countVoteParser.parser.ParserVotes;
@@ -44,13 +44,13 @@ public class LoadConfiguration {
 
 	static List<String> opcionesFicherosEntrada = new LinkedList<String>();
 
-	es.uniovi.asw.confParser.Options rOptions = null;
+	es.uniovi.asw.confParserPrueba.Options rOptions = null;
 	Conf rConf = null;
 	Places rPlaces = null;
 
 	RVotes rVote = null;
 
-	public static void main(String... args) throws AdminException {
+	public void main(String... args) throws AdminException {
 
 		cargarFactorias();
 		cargarOpciones();
@@ -66,6 +66,7 @@ public class LoadConfiguration {
 		options.addOption("x", false, "add xls file");
 		options.addOption("h", false, "help");
 
+		//Probar
 		CommandLineParser cLParser = new DefaultParser();
 		CommandLine cmd = null;
 

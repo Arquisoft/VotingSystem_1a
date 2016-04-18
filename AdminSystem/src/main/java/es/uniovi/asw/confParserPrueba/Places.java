@@ -1,8 +1,8 @@
-package es.uniovi.asw.confParser;
+package es.uniovi.asw.confParserPrueba;
 
 import es.uniovi.asw.util.AdminException;
 
-public interface Conf {
+public interface Places {
 
 	public void leerDatos() throws AdminException;
 }

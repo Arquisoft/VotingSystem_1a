@@ -1,11 +1,11 @@
-package es.uniovi.asw.confParser.Parser.options.impl;
+package es.uniovi.asw.confParserPrueba.Parser.options.impl;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.uniovi.asw.confParser.Parser.options.ParserOpt;
+import es.uniovi.asw.confParserPrueba.Parser.options.ParserOpt;
 import es.uniovi.asw.util.AdminException;
 import jxl.Sheet;
 import jxl.Workbook;
