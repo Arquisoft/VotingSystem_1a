@@ -26,7 +26,7 @@ public class User {
 	@Column(name = "CODIGOMESA")
 	private int codigoMesa;
 
-	@Column(name = "Contraseña")
+	@Column(name = "Password")
 	private String password;
 
 	public User() {
