@@ -213,6 +213,22 @@ public class AdminSystemTest {
 		}
 
 	}
+	
+	/**
+	 * Test de recuento con lugares que no existen
+	 */
+	@Test
+	public void testLugaresNoExiste() {
+		String[] args = { "count", "votesLugaresNoexisten.xls", "-x" };
+		try {
+			LoadConfiguration.main(args);
+			// El lugar 693 no existe, por lo que deberia fallar y no entrar por aqui
+			Assert.fail();
+		} catch (AdminException e) {
+			e.printStackTrace();
+			
+		}
+	}
 
 	// Test generales
 	// Test generales
@@ -249,6 +265,8 @@ public class AdminSystemTest {
 			Assert.fail();
 		}
 	}
+	
+	
 	
 	/**
 	 * Test sin argumentos

@@ -22,4 +22,8 @@
 		<query>select o from OpcionVoto o</query>
 	</named-query>
 	-->
+	<named-query name="Voto.FindByOpcionLugar">
+		<query>select v from Voto v where v.opcion = ?1 and v.lugar = ?2</query>
+	</named-query>
+	
 </entity-mappings>

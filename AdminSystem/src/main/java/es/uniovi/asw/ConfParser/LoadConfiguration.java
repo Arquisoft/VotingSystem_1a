@@ -100,8 +100,6 @@ public class LoadConfiguration {
 		} catch (ParseException e) {
 			// e.printStackTrace();
 		}
-		if(!Jpa.getEmf().isOpen())
-			Jpa.closeEntityManagerFactory();
 
 	}
 
@@ -154,6 +152,8 @@ public class LoadConfiguration {
 						"Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
 			}
 		}
+
+		Jpa.closeEntityManagerFactory();
 	}
 
 	/**
@@ -187,6 +187,8 @@ public class LoadConfiguration {
 						"Uno de los ficheros esta mal configurado, por lo que los datos no han sido guardados");
 			}
 		}
+
+		Jpa.closeEntityManagerFactory();
 
 	}
 

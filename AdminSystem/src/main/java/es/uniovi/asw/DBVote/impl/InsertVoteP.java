@@ -11,6 +11,7 @@ import javax.persistence.PersistenceException;
 import es.uniovi.asw.DBVote.InsertVote;
 import es.uniovi.asw.DBVote.Jpa;
 import es.uniovi.asw.model.Voto;
+import es.uniovi.asw.util.AdminException;
 
 public class InsertVoteP implements InsertVote {
 
@@ -20,9 +21,9 @@ public class InsertVoteP implements InsertVote {
 		InsertVoteP.votos = votos;
 	}
 
-	public void insertVoteR() throws Exception {
+	public void insertVoteR() throws AdminException {
 		if (votos.isEmpty()) {
-			throw new Exception();
+			throw new AdminException("El fichero de votos esta vacio");
 		} else {
 			EntityManagerFactory emf = null;
 			EntityManager em = null;
@@ -33,19 +34,27 @@ public class InsertVoteP implements InsertVote {
 				trx = em.getTransaction();
 				trx.begin();
 				for (int i = 0; i < votos.size(); i++) {
-					if (votos.get(i).getOpcion() != "" && votos.get(i).getOpcion() != null)
-						em.persist(votos.get(i));
+					if (votos.get(i).getOpcion() != "" && votos.get(i).getOpcion() != null){
+						Voto voto = votos.get(i);
+						
+						List<Voto> votosBD = em.createNamedQuery("Voto.FindByOpcionLugar",Voto.class).setParameter(1, voto.getOpcion()).setParameter(2, voto.getLugar()).getResultList();
+						if(!votosBD.isEmpty()){
+							Voto votoBD =votosBD.get(0); 
+							votoBD.setNumero(votoBD.getNumero() + voto.getNumero());
+						}
+						else{
+							em.persist(voto);
+						}
+					}
 				}
 
 				trx.commit();
 			} catch (PersistenceException e) {
-				System.out.println("Ha ocurrido un error. Hay una opcion que no existe, o un lugar que no existe");
-				e.printStackTrace();
+				throw new AdminException("Ha ocurrido un error. Hay una opcion que no existe, o un lugar que no existe");
 			} catch (RuntimeException bex) {
 				bex.printStackTrace();
 				trx.rollback();
-				System.out.println("Ha ocurrido un error al guardar los datos en la base de datos");
-				throw bex;
+				throw new AdminException("Ha ocurrido un error al guardar los datos en la base de datos");
 
 			} finally {
 				if (em != null) {
