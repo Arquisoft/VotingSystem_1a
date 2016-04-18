@@ -6,7 +6,7 @@ import java.util.List;
 
 import es.uniovi.asw.confParser.Options;
 import es.uniovi.asw.confParser.Parser.options.ParserOpt;
-import es.uniovi.asw.dbVote.impl.InsertConfP;
+import es.uniovi.asw.dbVotePetar.impl.InsertConfP;
 import es.uniovi.asw.model.OpcionVoto;
 import es.uniovi.asw.util.AdminException;
 

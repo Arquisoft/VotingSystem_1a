@@ -1,4 +1,4 @@
-package es.uniovi.asw.dbVote.impl;
+package es.uniovi.asw.dbVotePetar.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 
-import es.uniovi.asw.dbVote.InsertVote;
-import es.uniovi.asw.dbVote.Jpa;
+import es.uniovi.asw.dbVotePetar.InsertVote;
+import es.uniovi.asw.dbVotePetar.Jpa;
 import es.uniovi.asw.model.Voto;
 import es.uniovi.asw.util.AdminException;
 

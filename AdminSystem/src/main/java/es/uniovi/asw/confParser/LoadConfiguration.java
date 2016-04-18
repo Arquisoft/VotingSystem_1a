@@ -24,9 +24,9 @@ import es.uniovi.asw.confParser.impl.RPlaces;
 import es.uniovi.asw.countVoteParser.RVotes;
 import es.uniovi.asw.countVoteParser.factoria.FactoriaParserVotes;
 import es.uniovi.asw.countVoteParser.parser.ParserVotes;
-import es.uniovi.asw.dbVote.Jpa;
-import es.uniovi.asw.dbVote.impl.InsertConfP;
-import es.uniovi.asw.dbVote.impl.InsertVoteP;
+import es.uniovi.asw.dbVotePetar.Jpa;
+import es.uniovi.asw.dbVotePetar.impl.InsertConfP;
+import es.uniovi.asw.dbVotePetar.impl.InsertVoteP;
 import es.uniovi.asw.util.AdminException;
 
 /**

@@ -1,4 +1,4 @@
-package es.uniovi.asw.dbVote;
+package es.uniovi.asw.dbVotePetar;
 
 public interface InsertVote {
 
