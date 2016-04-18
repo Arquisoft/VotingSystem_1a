@@ -29,7 +29,12 @@ public class InsertVoteP implements InsertVote {
 			EntityManager em = null;
 			EntityTransaction trx = null;
 			try {
+				try{
 				emf = Jpa.getEmf();
+				}
+				catch(Exception e){
+					throw new AdminException("Ha ocurrido un error al conectar a la base de datos");
+				}
 				em = emf.createEntityManager();
 				trx = em.getTransaction();
 				trx.begin();
