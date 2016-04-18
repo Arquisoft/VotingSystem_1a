@@ -28,7 +28,7 @@ public class LoginSteps {
 
 	@Then("^I fill the User DNI field writing \"([^\"]*)\"$")
 	public void i_fill_the_User_DNI_field_writing(String arg1) throws Throwable {
-		List<WebElement> dni = SeleniumUtils.EsperaCargaPaginaSteps("id", "form-login:name", 12);
+		List<WebElement> dni = SeleniumUtils.esperaCargaPaginaSteps("id", "form-login:name", 12);
 		dni.get(0).sendKeys(arg1);
 	}
 

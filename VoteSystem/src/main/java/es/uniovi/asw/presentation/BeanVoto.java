@@ -24,6 +24,10 @@ import es.uniovi.asw.model.Voto;
 public class BeanVoto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private OpcionVoto[] votos;
+	private String result;
+	private boolean votado;
 
 	public BeanVoto() {
 		System.out.println("BeanVoto - No existia");
@@ -75,7 +79,7 @@ public class BeanVoto implements Serializable {
 		votos = (OpcionVoto[]) vote.getAllVoteOptions().toArray(new OpcionVoto[0]);
 	}
 
-	private String result;
+
 
 	public String getResult() {
 		return result;
@@ -101,7 +105,7 @@ public class BeanVoto implements Serializable {
 		this.votado = votado;
 	}
 
-	private boolean votado;
+
 
 	private String getFecha(String date) {
 		String[] trozos = date.split(" ");// divido el timestamp en la fecha y
@@ -111,5 +115,5 @@ public class BeanVoto implements Serializable {
 
 	}
 
-	private OpcionVoto[] votos;
+
 }

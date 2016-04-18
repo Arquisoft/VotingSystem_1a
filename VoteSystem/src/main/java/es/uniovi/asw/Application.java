@@ -18,19 +18,19 @@ public class Application extends SpringBootServletInitializer implements Servlet
 		SpringApplication.run(Application.class);
 	}
 
-    @Override
-    public void setServletContext(ServletContext servletContext) {
-        servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-        servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "true");
-        servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
-        servletContext.addListener(com.sun.faces.config.ConfigureListener.class);
-        
-    }
+	@Override
+	public void setServletContext(ServletContext servletContext) {
+		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
+		servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "true");
+		servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
+		servletContext.addListener(com.sun.faces.config.ConfigureListener.class);
 
-    @Bean
-    public ServletRegistrationBean servletRegistrationBean(ApplicationContext context) {
-        ServletRegistrationBean jsfServlet = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
-        return jsfServlet;
-    }
+	}
+
+	@Bean
+	public ServletRegistrationBean servletRegistrationBean(ApplicationContext context) {
+		ServletRegistrationBean jsfServlet = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
+		return jsfServlet;
+	}
 
 }
