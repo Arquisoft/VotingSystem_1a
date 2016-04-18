@@ -1,5 +1,7 @@
 package es.uniovi.asw.presentation;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -12,8 +14,12 @@ import es.uniovi.asw.model.LugarVoto;
 import es.uniovi.asw.model.User;
 
 @ManagedBean(name = "mesa")
-public class BeanMesa {
+public class BeanMesa implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String dniUsuario;
 
 	public String getDniUsuario() {

@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.ServletContextAware;
 
+
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer implements ServletContextAware {
 
@@ -24,7 +25,7 @@ public class Application extends SpringBootServletInitializer implements Servlet
 		servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "true");
 		servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
 		servletContext.addListener(com.sun.faces.config.ConfigureListener.class);
-
+		
 	}
 
 	@Bean
