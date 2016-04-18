@@ -57,7 +57,6 @@ public class InsertVoteP implements InsertVote {
 			} catch (PersistenceException e) {
 				throw new AdminException("Ha ocurrido un error. Hay una opcion que no existe, o un lugar que no existe");
 			} catch (RuntimeException bex) {
-				bex.printStackTrace();
 				trx.rollback();
 				throw new AdminException("Ha ocurrido un error al guardar los datos en la base de datos");
 

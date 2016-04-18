@@ -133,11 +133,6 @@ public class LoadConfiguration {
 			parserPlaces = factoriaPlaces.get(option);
 		}
 
-		// Funciona de momento para este en concreto
-		// java -jar AdminSystem/target/adminSystem-0.0.1.jar conf
-		// AdminSystem/conf.xls -x AdminSystem/options.xls -x
-		// AdminSystem/places.xls -x
-
 		rConf = new RConf(args[1], parserConf);
 		rOptions = new ROptions(args[3], parserOpt);
 		rPlaces = new RPlaces(args[5], parserPlaces);

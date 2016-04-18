@@ -18,12 +18,28 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testConfiguracion() {
-		String[] args = { "conf", "conf.xls", "-x", "options.xls", "-x", "places.xls", "-x" };
+		String[] args = { "conf", "src/test/resources/conf.xls", "-x", "src/test/resources/options.xls", "-x", "src/test/resources/places.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 		} catch (AdminException e) {
 			// No deberia entrar por aqui
 			Assert.fail();
+		}
+	}
+	
+	/**
+	 * Test de configuracion con fichero vacio
+	 * 
+	 */
+	@Test
+	public void testConfiguracionVacio() {
+		String[] args = { "conf", "src/test/resources/confVacio.xls", "-x", "src/test/resources/options.xls", "-x", "src/test/resources/places.xls", "-x" };
+		try {
+			LoadConfiguration.main(args);
+			//Da excepcion de fichero vacio, no deberia entrar aqui
+			Assert.fail();
+		} catch (AdminException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -32,7 +48,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testFicheroNoExisteConf1() {
-		String[] args = { "conf", "confNoexiste.xls", "-x", "options.xls", "-x", "places.xls", "-x" };
+		String[] args = { "conf", "src/test/resources/confNoexiste.xls", "-x", "src/test/resources/options.xls", "-x", "src/test/resources/places.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Si entra por aqui, es que no ha dado excepcion, por lo que falla
@@ -47,7 +63,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testFicheroNoExisteConf2() {
-		String[] args = { "conf", "conf.xls", "-x", "optionsNoExiste.xls", "-x", "places.xls", "-x" };
+		String[] args = { "conf", "src/test/resources/conf.xls", "-x", "src/test/resources/optionsNoExiste.xls", "-x", "src/test/resources/places.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Si entra por aqui, es que no ha dado excepcion, por lo que falla
@@ -62,7 +78,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testFicheroNoExisteConf3() {
-		String[] args = { "conf", "conf.xls", "-x", "options.xls", "-x", "placesNoExiste.xls", "-x" };
+		String[] args = { "conf", "src/test/resources/conf.xls", "-x", "src/test/resources/options.xls", "-x", "src/test/resources/placesNoExiste.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Si entra por aqui, es que no ha dado excepcion, por lo que falla
@@ -77,7 +93,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testExtensionErroneaConf1() {
-		String[] args = { "conf", "conf.txt", "-x", "options.xls", "-x", "placesNoExiste.xls", "-x" };
+		String[] args = { "conf", "src/test/resources/conf.txt", "-x", "src/test/resources/options.xls", "-x", "src/test/resources/placesNoExiste.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Deberia dar error
@@ -92,7 +108,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testExtensionErroneaConf2() {
-		String[] args = { "conf", "conf.xls", "-x", "options.txt", "-x", "placesNoExiste.xls", "-x" };
+		String[] args = { "conf", "src/test/resources/conf.xls", "-x", "src/test/resources/options.txt", "-x", "src/test/resources/placesNoExiste.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Deberia dar error
@@ -107,7 +123,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testExtensionErroneaConf3() {
-		String[] args = { "conf", "conf.xls", "-x", "options.xls", "-x", "placesNoExiste.txt", "-x" };
+		String[] args = { "conf", "src/test/resources/conf.xls", "-x", "src/test/resources/options.xls", "-x", "src/test/resources/placesNoExiste.txt", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Deberia dar error
@@ -122,7 +138,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testFicheroConErroresConf1() {
-		String[] args = { "conf", "confErrores.xls", "-x", "options.xls", "-x", "places.xls", "-x" };
+		String[] args = { "conf", "src/test/resources/confErrores.xls", "-x", "src/test/resources/options.xls", "-x", "src/test/resources/places.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Deberia dar error
@@ -138,7 +154,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testFicheroConErroresConf2() {
-		String[] args = { "conf", "conf.xls", "-x", "options.xls", "-x", "placesErrores.xls", "-x" };
+		String[] args = { "conf", "src/test/resources/conf.xls", "-x", "src/test/resources/options.xls", "-x", "src/test/resources/placesErrores.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Deberia dar error
@@ -159,7 +175,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testRecuento() {
-		String[] args = { "count", "votes.xls", "-x" };
+		String[] args = { "count", "src/test/resources/votes.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 		} catch (AdminException e) {
@@ -173,7 +189,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testFicheroNoExiste() {
-		String[] args = { "count", "votesInexistentes.xls", "-x" };
+		String[] args = { "count", "src/test/resources/votesInexistentes.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Si entra por aqui, es que no ha dado excepcion, por lo que falla
@@ -188,7 +204,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testExtensionErronea() {
-		String[] args = { "count", "votes.txt", "-x" };
+		String[] args = { "count", "src/test/resources/votes.txt", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Deberia dar error
@@ -203,7 +219,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testFicheroConErrores() {
-		String[] args = { "count", "votesConErrores.xls", "-x" };
+		String[] args = { "count", "src/test/resources/votesConErrores.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 			// Deberia dar error
@@ -219,13 +235,13 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testLugaresNoExiste() {
-		String[] args = { "count", "votesLugaresNoexisten.xls", "-x" };
+		String[] args = { "count", "src/test/resources/votesLugaresNoexisten.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
-			// El lugar 693 no existe, por lo que deberia fallar y no entrar por aqui
-			Assert.fail();
+			// El lugar 693 no existe, pero se recoge la excepcion y no entra por aqui
 		} catch (AdminException e) {
 			e.printStackTrace();
+			Assert.fail();
 			
 		}
 	}
@@ -240,7 +256,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testOpcionNoExistente() {
-		String[] args = { "noexisto", "votes.xls", "-x" };
+		String[] args = { "noexisto", "src/test/resources/votes.xls", "-x" };
 		try {
 			LoadConfiguration.main(args);
 		} catch (AdminException e) {
@@ -255,7 +271,7 @@ public class AdminSystemTest {
 	 */
 	@Test
 	public void testOpcionNoExiste() {
-		String[] args = { "count", "votes.xls", "-t" };
+		String[] args = { "count", "src/test/resources/votes.xls", "-t" };
 		try {
 			LoadConfiguration.main(args);
 		} catch (AdminException e) {

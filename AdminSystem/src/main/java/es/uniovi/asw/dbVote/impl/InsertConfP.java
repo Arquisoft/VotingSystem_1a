@@ -46,7 +46,7 @@ public class InsertConfP implements InsertConf {
 	 */
 	public void insertConfR() throws AdminException {
 		if (conf == null || lugares.isEmpty() || opciones.isEmpty()) {
-			throw new AdminException("El fichero de votos esta vacio");
+			throw new AdminException("Un fichero esta vacio");
 		} else {
 			EntityManagerFactory emf = null;
 			EntityManager em = null;
