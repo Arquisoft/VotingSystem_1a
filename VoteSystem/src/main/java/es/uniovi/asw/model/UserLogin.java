@@ -3,7 +3,12 @@ package es.uniovi.asw.model;
 import java.io.Serializable;
 
 public class UserLogin implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	static final long serialVersionUID = 1L;
+
+	private String login;
+	private String name;
+	private Long id;
 
 	public UserLogin(String login, String name, Long id) {
 		super();
@@ -11,10 +16,6 @@ public class UserLogin implements Serializable {
 		this.name = name;
 		this.setId(id);
 	}
-
-	private String login;
-	private String name;
-	private Long id;
 
 	public String getLogin() {
 		return login;

@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
-import javax.persistence.Query;
 
 import es.uniovi.asw.DBVote.InsertConf;
 import es.uniovi.asw.DBVote.Jpa;
