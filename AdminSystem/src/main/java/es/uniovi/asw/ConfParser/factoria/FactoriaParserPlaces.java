@@ -1,7 +1,7 @@
-package es.uniovi.asw.ConfParser.factoria;
+package es.uniovi.asw.confParser.factoria;
 
-import es.uniovi.asw.ConfParser.Parser.places.ParserPlaces;
-import es.uniovi.asw.ConfParser.Parser.places.impl.ParserPlacesXLS;
+import es.uniovi.asw.confParser.Parser.places.ParserPlaces;
+import es.uniovi.asw.confParser.Parser.places.impl.ParserPlacesXLS;
 
 public class FactoriaParserPlaces {
 

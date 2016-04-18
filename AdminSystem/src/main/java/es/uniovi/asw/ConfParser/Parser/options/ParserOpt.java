@@ -1,4 +1,4 @@
-package es.uniovi.asw.ConfParser.Parser.options;
+package es.uniovi.asw.confParser.Parser.options;
 
 import java.io.File;
 import java.util.List;

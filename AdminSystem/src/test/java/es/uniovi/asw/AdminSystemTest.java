@@ -3,7 +3,7 @@ package es.uniovi.asw;
 import org.junit.Assert;
 import org.junit.Test;
 
-import es.uniovi.asw.ConfParser.LoadConfiguration;
+import es.uniovi.asw.confParser.LoadConfiguration;
 import es.uniovi.asw.util.AdminException;
 
 public class AdminSystemTest {
