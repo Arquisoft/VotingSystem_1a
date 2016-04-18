@@ -8,7 +8,7 @@ import java.util.Map;
 
 import es.uniovi.asw.confParser.Conf;
 import es.uniovi.asw.confParser.Parser.conf.ParserConf;
-import es.uniovi.asw.dbVotePetar.impl.InsertConfP;
+import es.uniovi.asw.dbVote.impl.InsertConfP;
 import es.uniovi.asw.model.Configuracion;
 import es.uniovi.asw.util.AdminException;
 

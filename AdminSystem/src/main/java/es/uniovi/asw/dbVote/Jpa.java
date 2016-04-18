@@ -1,4 +1,4 @@
-package es.uniovi.asw.dbVotePetar;
+package es.uniovi.asw.dbVote;
 
 import java.io.IOException;
 

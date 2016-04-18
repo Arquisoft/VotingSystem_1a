@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import es.uniovi.asw.countVoteParser.parser.ParserVotes;
-import es.uniovi.asw.dbVotePetar.impl.InsertVoteP;
+import es.uniovi.asw.dbVote.impl.InsertVoteP;
 import es.uniovi.asw.model.Voto;
 import es.uniovi.asw.util.AdminException;
 
