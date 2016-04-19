@@ -32,6 +32,7 @@ En el siguiente <a href="https://saucelabs.com/u/carlvilla?auth=0233acf3-4700-42
 ### Base de datos
 
 La base de datos utilizada la puedes encontrar en el siguiente <a href= "https://www.dropbox.com/s/x0v8g983pde20cw/Base%20de%20datos%20%28hsqldb%29.zip?dl=0"> enlace </a>
+Para ejecutar la base de datos entramos en la carpeta data y ejecutamos el archivo <b>startup.bat</b>. Si queremos que datos contiene, podemos usar la aplicacion <b>RunManagerSwing.bat</b> y hacer consultas sql.
 
 
 ## Authors
