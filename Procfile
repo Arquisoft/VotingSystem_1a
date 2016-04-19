@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar VoteSystem/target/VoteSystem-0.0.1.jar
+web: cd VoteSystem; java -Dserver.port=$PORT -jar target/VoteSystem-0.0.1.jar
