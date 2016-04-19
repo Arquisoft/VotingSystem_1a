@@ -17,7 +17,7 @@ public class LugarVoto implements Serializable {
 	@Id
 	private long id;
 	private String nombre;
-	private String contraseña;
+	private String password;
 	private String ciudad;
 	private String pais;
 
@@ -29,7 +29,7 @@ public class LugarVoto implements Serializable {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.contraseña = contraseña;
+		this.password = contraseña;
 		this.ciudad = ciudad;
 		this.pais = pais;
 	}
@@ -51,11 +51,11 @@ public class LugarVoto implements Serializable {
 	}
 
 	public String getContraseña() {
-		return contraseña;
+		return password;
 	}
 
 	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+		this.password = contraseña;
 	}
 
 	public String getCiudad() {
@@ -79,7 +79,7 @@ public class LugarVoto implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((ciudad == null) ? 0 : ciudad.hashCode());
-		result = prime * result + ((contraseña == null) ? 0 : contraseña.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((pais == null) ? 0 : pais.hashCode());
@@ -100,10 +100,10 @@ public class LugarVoto implements Serializable {
 				return false;
 		} else if (!ciudad.equals(other.ciudad))
 			return false;
-		if (contraseña == null) {
-			if (other.contraseña != null)
+		if (password == null) {
+			if (other.password != null)
 				return false;
-		} else if (!contraseña.equals(other.contraseña))
+		} else if (!password.equals(other.password))
 			return false;
 		if (id != other.id)
 			return false;
@@ -122,7 +122,7 @@ public class LugarVoto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "LugarVoto [id=" + id + ", nombre=" + nombre + ", contraseña=" + contraseña + ", ciudad=" + ciudad
+		return "LugarVoto [id=" + id + ", nombre=" + nombre + ", contraseña=" + password + ", ciudad=" + ciudad
 				+ ", pais=" + pais + "]";
 	}
 
